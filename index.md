@@ -5,6 +5,10 @@ title:
 
 I am a Research Software Engineer at Princeton University, based in the Program for Computational and Applied Mathematics. I work full-time on [ASPIRE](https://github.com/ComputationalCryoEM/ASPIRE-Python), an open-source Python package which processes and reconstructs cryo-electron microscopy data. ASPIRE uses numerical libraries such as NumPy, SciPy, and [FINUFFT](https://github.com/flatironinstitute/finufft). The problem of single-particle cryo-EM is to reconstruct the 3D energy density (and hence, structure) of a macromolecule given many noisy 2-dimensional projections of this function at unknown rotations:
 
+$$
+\phi
+$$
+
 ![Image](https://quicklatex.com/cache3/74/ql_671de6d2466dfee3a005ddf9e6285b74_l3.png)
 
 _Image formation model in cryo-EM*_
