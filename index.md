@@ -9,9 +9,13 @@ title:
 I am a Research Software Engineer at Princeton University, based in the Program for Computational and Applied Mathematics. I work full-time on [ASPIRE](https://github.com/ComputationalCryoEM/ASPIRE-Python), an open-source Python package which processes and reconstructs cryo-electron microscopy data. ASPIRE uses numerical libraries such as NumPy, SciPy, and [FINUFFT](https://github.com/flatironinstitute/finufft), along with novel image processing algorithms to reconstruct the 3D structure of macromolecules from thousands of noisy projections:
 
 
-| _Raw electron microscope image showing many GroEL chaperone proteins frozen in vitreous ice_ | _Reconstructed 3-D structure of the protein_ |
+| _Detail from raw EM image showing viral particles frozen in vitreous ice_ * | _Reconstructed 3-D structure of the molecule_ *|
 | ------ | ------ |
-| ![groel](https://user-images.githubusercontent.com/34426450/144353253-1943e4d4-afa4-456f-a69e-84ba2178f1c2.png) | ![grolstruct](https://user-images.githubusercontent.com/34426450/144353335-0c3129a5-ce14-407d-a0aa-a24c9f486598.png) |
+| ![mrc](https://user-images.githubusercontent.com/34426450/144355201-1aea90a0-269b-4ba0-91d0-f6afd336c5fb.png) | ![3d](https://user-images.githubusercontent.com/34426450/144355210-fe05edfd-1d00-43b9-9882-a20145fb9d7e.png) |
+
+
+
+This website was built using the wonderful [Lagrange](https://github.com/LeNPaul/Lagrange) Jekyll theme, created by Paul Le.
 
 ---------
-First image courtesy of Wikimedia commons. Second image courtesy of [PDB101.rcsb.org](PDB101.rcsb.org)
+Images modified from figure in Xie, Q.; Yoshioka, C.K.; Chapman, M.S. Adeno-Associated Virus (AAV-DJ)—Cryo-EM Structure at 1.56 Å Resolution. Viruses 2020, 12, 1194. https://doi.org/10.3390/v12101194 accessed at [mdpi.com](mdpi.com) under open access.
