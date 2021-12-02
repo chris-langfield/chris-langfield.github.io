@@ -3,20 +3,15 @@ layout: page
 title: 
 ---
 
-I am a Research Software Engineer at Princeton University, based in the Program for Computational and Applied Mathematics. I work full-time on [ASPIRE](https://github.com/ComputationalCryoEM/ASPIRE-Python), an open-source Python package which processes and reconstructs cryo-electron microscopy data. ASPIRE uses numerical libraries such as NumPy, SciPy, and [FINUFFT](https://github.com/flatironinstitute/finufft). The problem of single-particle cryo-EM is to reconstruct the 3D energy density (and hence, structure) of a macromolecule given many noisy 2-dimensional projections of this function at unknown rotations:
+![thumbnail_IMG_8858](https://user-images.githubusercontent.com/34426450/144354025-bbfdd98f-af95-4f8e-8be8-50ef744558e6.jpeg)
 
-![Image](https://quicklatex.com/cache3/74/ql_671de6d2466dfee3a005ddf9e6285b74_l3.png)
 
-_Image formation model in cryo-EM: The function_ $$\phi : \mathbb{R}^3 \rightarrow \mathbb{R}$$ _is estimated from thousands of projection images_ $$I_i$$ _(1)_
+I am a Research Software Engineer at Princeton University, based in the Program for Computational and Applied Mathematics. I work full-time on [ASPIRE](https://github.com/ComputationalCryoEM/ASPIRE-Python), an open-source Python package which processes and reconstructs cryo-electron microscopy data. ASPIRE uses numerical libraries such as NumPy, SciPy, and [FINUFFT](https://github.com/flatironinstitute/finufft), along with novel image processing algorithms to reconstruct the 3D structure of macromolecules from thousands of noisy projections:
 
-The experimental image can be modeled via a convolution of this projection with the microscope's [point spread function](https://en.wikipedia.org/wiki/Point_spread_function) and finally the addition of Gaussian noise. 
 
-This challenging problem is still an area of active research, and many biological molecules have been reconstructed to resolutions of just a few angstroms (`10^-10` meters), including the [COVID-19 spike protein](https://www.ebi.ac.uk/emdb/EMD-11526). Many fields both within and adjacent to mathematics have applications to cryo-EM, including signal processing, computer vision, machine learning, and even [group theory](https://arxiv.org/abs/1712.10163).
-
-### Previous work 
-
-I worked in the [Cognitive Neuroscience Division](http://www.columbianeuroresearch.org/taub/res-cognitive.html) at Columbia University Irving Medical Center from 2018-2021. 
-
+| _Raw electron microscope image showing many GroEL chaperone proteins frozen in vitreous ice_ | _Reconstructed 3-D structure of the protein_ |
+| ------ | ------ |
+| ![groel](https://user-images.githubusercontent.com/34426450/144353253-1943e4d4-afa4-456f-a69e-84ba2178f1c2.png) | ![grolstruct](https://user-images.githubusercontent.com/34426450/144353335-0c3129a5-ce14-407d-a0aa-a24c9f486598.png) |
 
 ---------
-(1) Singer, A. (2018). Mathematics for cryo-electron microscopy. In B. Sirakov, P. N. de Souza, & M. Viana (Eds.), Invited Lectures (pp. 4013-4032). (Proceedings of the International Congress of Mathematicians, ICM 2018; Vol. 4). World Scientific Publishing Co. Pte Ltd.
+First image courtesy of Wikimedia commons. Second image courtesy of [PDB101.rcsb.org](PDB101.rcsb.org)
