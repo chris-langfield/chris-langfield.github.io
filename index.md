@@ -5,13 +5,9 @@ title:
 
 I am a Research Software Engineer at Princeton University, based in the Program for Computational and Applied Mathematics. I work full-time on [ASPIRE](https://github.com/ComputationalCryoEM/ASPIRE-Python), an open-source Python package which processes and reconstructs cryo-electron microscopy data. ASPIRE uses numerical libraries such as NumPy, SciPy, and [FINUFFT](https://github.com/flatironinstitute/finufft). The problem of single-particle cryo-EM is to reconstruct the 3D energy density (and hence, structure) of a macromolecule given many noisy 2-dimensional projections of this function at unknown rotations:
 
-$$
-\phi
-$$
-
 ![Image](https://quicklatex.com/cache3/74/ql_671de6d2466dfee3a005ddf9e6285b74_l3.png)
 
-_Image formation model in cryo-EM*_
+_Image formation model in cryo-EM: The function_ $$\phi : \mathbb{R}^3 \into \mathbb{R}$$ _is estimated from thousands of projection images_ $$I_i$$ _(1)_
 
 The experimental image can be modeled via a convolution of this projection with the microscope's [point spread function](https://en.wikipedia.org/wiki/Point_spread_function) and finally the addition of Gaussian noise. 
 
@@ -23,4 +19,4 @@ I worked in the [Cognitive Neuroscience Division](http://www.columbianeuroresear
 
 
 ---------
-* Singer, A. (2018). Mathematics for cryo-electron microscopy. In B. Sirakov, P. N. de Souza, & M. Viana (Eds.), Invited Lectures (pp. 4013-4032). (Proceedings of the International Congress of Mathematicians, ICM 2018; Vol. 4). World Scientific Publishing Co. Pte Ltd.
+(1) Singer, A. (2018). Mathematics for cryo-electron microscopy. In B. Sirakov, P. N. de Souza, & M. Viana (Eds.), Invited Lectures (pp. 4013-4032). (Proceedings of the International Congress of Mathematicians, ICM 2018; Vol. 4). World Scientific Publishing Co. Pte Ltd.
