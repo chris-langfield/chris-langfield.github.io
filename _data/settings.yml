@@ -10,6 +10,7 @@ menu:
 - {name: 'About',   url: 'about.html'}
 - {name: 'Contact', url: 'contact.html'}
 - {name: 'Posts', url: 'posts.html'}
+- {name: 'CV', url: 'cv.html'}
 
 # Available social icons are powered by Font Awesome, so you can use any icon that they offer
 social:
