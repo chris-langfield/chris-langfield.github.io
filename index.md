@@ -7,7 +7,7 @@ I am a Research Software Engineer at Princeton University, based in the Program 
 
 ![Image](https://quicklatex.com/cache3/74/ql_671de6d2466dfee3a005ddf9e6285b74_l3.png)
 
-_Image formation model in cryo-EM: The function_ $$\phi : \mathbb{R}^3 \into \mathbb{R}$$ _is estimated from thousands of projection images_ $$I_i$$ _(1)_
+_Image formation model in cryo-EM: The function_ $$\phi : \mathbb{R}^3 \rightarrow \mathbb{R}$$ _is estimated from thousands of projection images_ $$I_i$$ _(1)_
 
 The experimental image can be modeled via a convolution of this projection with the microscope's [point spread function](https://en.wikipedia.org/wiki/Point_spread_function) and finally the addition of Gaussian noise. 
 
