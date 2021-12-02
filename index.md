@@ -18,4 +18,4 @@ I am a Research Software Engineer at Princeton University, based in the Program 
 This website was built using the wonderful [Lagrange](https://github.com/LeNPaul/Lagrange) Jekyll theme, created by Paul Le.
 
 ---------
-Images modified from figure in Xie, Q.; Yoshioka, C.K.; Chapman, M.S. Adeno-Associated Virus (AAV-DJ)—Cryo-EM Structure at 1.56 Å Resolution. Viruses 2020, 12, 1194. https://doi.org/10.3390/v12101194 accessed at [mdpi.com](mdpi.com) under open access.
+* Images modified from figure in Xie, Q.; Yoshioka, C.K.; Chapman, M.S. Adeno-Associated Virus (AAV-DJ)—Cryo-EM Structure at 1.56 Å Resolution. Viruses 2020, 12, 1194. https://doi.org/10.3390/v12101194 accessed at [mdpi.com](mdpi.com) under open access.
