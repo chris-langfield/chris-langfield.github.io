@@ -28,7 +28,7 @@ _BS, Applied Mathematics (2018)_, University of Rochester
 * Designed compelling levels and puzzles for mobile game
 * Supervised team of remote game designers
 
-#### _Teaching Assistant_ | Univesrity of Rochester, Department of Mathematics | 8/16-5/18
+#### _Teaching Assistant_ | University of Rochester, Department of Mathematics | 8/16-5/18
 
 * Led weekly recitations, created quizzes, and assisted with exam grading
 * Courses: Undergraduate Multivariable Calculus and Linear Algebra/Differential Equations
