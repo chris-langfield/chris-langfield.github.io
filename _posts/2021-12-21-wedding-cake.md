@@ -6,7 +6,7 @@ categories: math
 tags: [math]
 ---
 
-This is a writeup of some progress on a problem I first formulated a while back. The context was a bit silly. Practitioners of [procedural generation](https://www.reddit.com/r/proceduralgeneration/) think a lot about noise, specifically sampling from stochastic processes to create realistic looking heightmaps, textures, and other content. This [blog post](https://www.redblobgames.com/articles/noise/introduction.html) gives a sort of ground-up approach to the intuition of different types of noise, smoothing, etc. In one of the examples, the author does something interesting. Their first example is generating a 1-D heightmap by sampling uniformly from discrete values up to some maximum. In pseudocode,
+This is a writeup of some progress on a problem I first formulated a while back. The original inspiration for the problem was noise generation. Practitioners of [procedural generation](https://www.reddit.com/r/proceduralgeneration/) think a lot about noise, specifically sampling from stochastic processes to create realistic looking heightmaps, textures, and other content. This [blog post](https://www.redblobgames.com/articles/noise/introduction.html) gives a sort of ground-up approach to the intuition of different types of noise, smoothing, etc. In one of the examples, the author does something interesting. Their first example is generating a 1-D heightmap by sampling uniformly from discrete values up to some maximum. In pseudocode,
 
 ```
 for i=0, i < map_length, i++
