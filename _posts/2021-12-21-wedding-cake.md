@@ -52,10 +52,27 @@ $$ Pr(X_1=s) = \frac{1}{k}(H_k-H_{s-1}) $$
 
 and further show that it is indeed a probability distribution on $$S$$. 
 
-Here's what this distribution looks like for $$k=30$$
+Here's what this distribution looks like for $$k=30$$, contrasted with uniform selection. 
 
 ![uniformandp1](https://user-images.githubusercontent.com/34426450/147142098-766a71e9-15be-434c-a8a4-213b139865d2.png)
 
+It does smooth out the distribution along a nice curve.
+
+Just as in the blog post, we can sample from this distribution and compare to sampling uniformly (uniform on top, our double-selection method on the bottom). Here $$k=10$$ so we can see a zoomed in 
+
+![Screen Shot 2021-12-22 at 2 47 29 PM](https://user-images.githubusercontent.com/34426450/147147232-ec35b4ec-24e2-4a17-8a6d-1e61e6618296.png)
+
+Nothing too crazy, but it does looks smoother. You could perhaps imagine doing this if you wanted a scrolling city skyline in the background of a game. I would be very curious to look into the properties of the spectra of these distributions. The double-selection process is still uncorrelated, so "white" noise, but it seems like some low pass filtering is being done here somehow (don't quote me). 
+
+I took this in a different, more impractical, direction though. I wanted to know how things would look if we repeated this selection process $$m$$ times. That is, pick $$X_0$$ uniformly from $$S$$, then pick $$X_1$$ uniformly from $$\{1 ... X_0 \}$$, then pick $$X_2$$ uniformly from $$\{1 ... X_1\}$$, and so on. What is the probability distribution of $$X_m$$? Clearly, this process would converge to picking 1 with probability 1 at some point. So as $$m$$ approaches $$k$$ and beyond, the distribution becomes degenerate. But for $$m < k$$, it seems like we could define a sequence of distributions that bias more and more towards lower values in curves like the one we saw in the case $$m=1$$. What are these curves? I would like to know, but I haven't figured it out yet. 
+
+Difficulties soon crop up when trying to find a general expression. We know that similarly to $$X_1$$, $$X_2$$'s distribution would satisfy:
+
+$$Pr(X_2=s) = \sum_{i=1}^{k} Pr(X_2=s, X_1=i) = \sum_{i=1}^k Pr(X_2=s|X_1=i)Pr(X_1=i)$$
+
+And substituting, again applying the intuition that for certain values of $$i$$ and $$s$$, $$Pr(X_2=s|X_1=i) = 0$$:
+
+$$Pr(X_2=s) = \sum_{i=1}^{k} Pr(X_2=s, X_1=i) = \sum_{i=1}^k Pr(X_2=s|X_1=i)Pr(X_1=i)$$
 
 
 
