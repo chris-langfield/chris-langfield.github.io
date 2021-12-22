@@ -74,6 +74,8 @@ And substituting, again applying the fact that for certain values of $$i$$ and $
 
 $$Pr(X_2=s|X_1=i) = 0$$
 
+we can write:
+
 $$Pr(X_2=s) = \frac{1}{k} \sum_{i=s}^{k} \frac{1}{i} (H_k - H_{i-1})$$
 
 This is not very nice, and I made no headway on simplifying it. This is where I left off a few years ago until I recently took another look at it. In Part 2, I'll go through finding a general expression for the "wedding cake" distributions that is workable, but still not totally satisfying.
