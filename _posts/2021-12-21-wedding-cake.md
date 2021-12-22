@@ -27,7 +27,7 @@ The blog post goes on to describe noise colors, time-averaging, and other more a
 
 ### The simple case: double selection one time
 
-Let's make the problem formal. We are first considering uniform selection from $$ S = \{1, 2, 3, ... k\} $$. Let $$X_0$$ be the corresponding random variable. Clearly $$X_0 \sim \unif(1,...k)$$. Now we use $$X_0$$ to define the sample space for a new random variable, $$X_1$$, sampling uniformly from the set $$\{s \in S: s \leq X_0\}$$. We want to find the probability mass function of $$X_1$$. 
+Let's make the problem formal. We are first considering uniform selection from $$ S = \{1, 2, 3, ... k\} $$. Let $$X_0$$ be the corresponding random variable. Clearly $$X_0 \sim unif(1,...k)$$. Now we use $$X_0$$ to define the sample space for a new random variable, $$X_1$$, sampling uniformly from the set $$\{s \in S: s \leq X_0\}$$. We want to find the probability mass function of $$X_1$$. 
 
 Applying the law of total probability, we can write
 
@@ -36,13 +36,25 @@ $$ Pr(X_1=s) = \sum_{i=1}^{k} Pr(X_1=s, X_0=i) = \sum_{i=1}^{k} Pr(X_1=s | X_0=i
 We know $$Pr(X_0 = i) = \frac{1}{k}$$. We can also observe that
 
 $$
-Pr(X_2=s|X_1=i) = \begin{cases} 
+Pr(X_1=s|X_0=i) = \begin{cases} 
     \frac{1}{i} & s\leq i \\
     0 & s > i \\
   \end{cases}
 $$
 
+Filling in this information, we can say:
 
+$$ Pr(X_1=s) = \frac{1}{k} \sum_{i=s}^k \frac{1}{i} $$
+
+With some algebra and using some identities about harmonic numbers, we can rewrite this as
+
+$$ Pr(X_1=s) = \frac{1}{k}(H_k-H_{s-1}) $$
+
+and further show that it is indeed a probability distribution on $$S$$. 
+
+Here's what this distribution looks like for $$k=30$$
+
+![uniformandp1](https://user-images.githubusercontent.com/34426450/147142098-766a71e9-15be-434c-a8a4-213b139865d2.png)
 
 
 
