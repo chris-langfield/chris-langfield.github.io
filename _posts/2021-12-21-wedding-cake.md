@@ -70,7 +70,9 @@ Difficulties soon crop up when trying to find a general expression. We know that
 
 $$Pr(X_2=s) = \sum_{i=1}^{k} Pr(X_2=s, X_1=i) = \sum_{i=1}^k Pr(X_2=s|X_1=i)Pr(X_1=i)$$
 
-And substituting, again applying the intuition that for certain values of $$i$$ and $$s$$, $$Pr(X_2=s|X_1=i) = 0$$:
+And substituting, again applying the fact that for certain values of $$i$$ and $$s$$
+
+$$Pr(X_2=s|X_1=i) = 0$$
 
 $$Pr(X_2=s) = \frac{1}{k} \sum_{i=s}^{k} \frac{1}{i} (H_k - H_{i-1})$$
 
