@@ -12,8 +12,9 @@ _BS, Applied Mathematics (2018)_, University of Rochester
 
 #### _Research Software Engineer_ | Princeton University, Program in Applied and Computational Mathematics | 8/21-present
 
-* Develops ASPIRE, an open-source cryo-electron microscopy image processing software package
-* Close collaboration with researchers
+* Full-time developer of ASPIRE, an open-source cryo-electron microscopy image processing software package
+* Plans and implements novel features using domain-specific knowledge of biochemistry, image processing, and mathematics
+* Collaborates with researchers to identify future use-cases and theoretical considerations for the software package
 
 #### _Research Assistant_ | Columbia University Medical Center, Cognitive Neuroscience Division | 10/18-8/21
 
