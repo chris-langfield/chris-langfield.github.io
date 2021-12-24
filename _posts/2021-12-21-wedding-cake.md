@@ -79,7 +79,7 @@ $$Pr(X_2=s|X_1=i) = \begin{cases}
     0 & s > i \\
   \end{cases}$$
 
-This is because $$X_2$$ is being selected *uniformly* from the range given by $$X_1$$. So if $$X_1 = i$$, the conditional probability of $$X_2$$ for any $$s \leq i$$ is simply $$frac{1}{i}$$. This fact is crucial.
+This is because $$X_2$$ is being selected *uniformly* from the range given by $$X_1$$. So if $$X_1 = i$$, the conditional probability of $$X_2$$ for any $$s \leq i$$ is simply $$\frac{1}{i}$$. This fact is crucial.
 
 With this in mind, and subsituting the expression derived above for $$Pr(X_1=s)$$, we can write:
 
