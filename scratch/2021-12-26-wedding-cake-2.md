@@ -22,7 +22,9 @@ This is what was derived in the last post. I mentioned that it is quite difficul
 
 $$p^k_m(s) = \sum_{i=s}^{k} \frac{1}{i} p^k_m-1 (s)$$
 
-This can be expanded into $$k$$ equations:
+The reasoning is similar to that used in Part 1. We saw that $$p^k_1(s) = \sum_{i=s}^k \frac{1}{i} p^k_0(s) = \sum_{i=s}^k \frac{1}{i} \frac{1}{k}$.
+
+This recursive relationship can be expanded into $$k$$ equations:
 
 $$
 \begin{align*}
