@@ -72,11 +72,16 @@ Difficulties soon crop up when trying to find a general expression. We know that
 
 $$Pr(X_2=s) = \sum_{i=1}^{k} Pr(X_2=s, X_1=i) = \sum_{i=1}^k Pr(X_2=s|X_1=i)Pr(X_1=i)$$
 
-And substituting, again applying the fact that for certain values of $$i$$ and $$s$$
+We can use the same reasoning as before to observe that 
 
-$$Pr(X_2=s|X_1=i) = 0$$
+$$Pr(X_2=s|X_1=i) = \begin{cases} 
+    \frac{1}{i} & s\leq i \\
+    0 & s > i \\
+  \end{cases}$$
 
-we can write:
+This is because $$X_2$$ is being selected *uniformly* from the range given by $$X_1$$. So if $$X_1 = i$$, the conditional probability of $$X_2$$ for any $$s \leq i$$ is simply $$frac{1}{i}$$. This fact is crucial.
+
+With this in mind, and subsituting the expression derived above for $$Pr(X_1=s)$$, we can write:
 
 $$Pr(X_2=s) = \frac{1}{k} \sum_{i=s}^{k} \frac{1}{i} (H_k - H_{i-1})$$
 
