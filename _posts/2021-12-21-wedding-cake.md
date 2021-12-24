@@ -50,6 +50,8 @@ With some algebra and using some identities about harmonic numbers, we can rewri
 
 $$ Pr(X_1=s) = \frac{1}{k}(H_k-H_{s-1}) $$
 
+(Here $$H_i$$ is the $$i$$'th [harmonic number](https://mathworld.wolfram.com/HarmonicNumber.html))
+
 and further show that it is indeed a probability distribution on $$S$$. 
 
 Here's what this distribution looks like for $$k=30$$, contrasted with uniform selection. 
