@@ -18,23 +18,33 @@ i.e. the base case of this process is simply the discrete uniform distribution. 
 
 $$p^k_1(s) = \frac{1}{k} (H_k - H_{s-1})$$
 
-This is what was derived in the last post. I mentioned that it is quite difficult to continue finding general expressions for $$p^k_m(s)$$ directly. However, there is a pattern with these distributions, namely that 
+This is what was derived in the last post. I mentioned that it is quite difficult to continue finding general expressions for $$p^k_m(s)$$ directly. However, there is a pattern with these distributions. First, recall:
 
-$$p^k_m(s) = \sum_{i=s}^{k} \frac{1}{i} p^k_m-1 (s)$$
+$$Pr(X_m = s) = \sum_{i=1}^k Pr(X_m = s | X_{m-1} = i) Pr(X_{m-1} = i) $$
 
-The reasoning is similar to that used in Part 1. We saw that $$p^k_1(s) = \sum_{i=s}^k \frac{1}{i} p^k_0(s) = \sum_{i=s}^k \frac{1}{i} \frac{1}{k}$.
-
-This recursive relationship can be expanded into $$k$$ equations:
+Using the same reasoning as in Part 1, we argue that 
 
 $$
-\begin{align*}
-    &p_m(1) = &1 \cdot p_{m-1}(1) + &\bigg(\frac{1}{2}\bigg)p_{m-1}(2) + &\bigg(\frac{1}{3}\bigg)p_{m-1}(3) + \dots + &\bigg(\frac{1}{k-1}\bigg)p_{m-1}(k-1) + &\bigg(\frac{1}{k}\bigg)p_{m-1}(k) \\
-    &p_m(2) = &0  + &\bigg(\frac{1}{2}\bigg) p_{m-1}(2) + &\bigg(\frac{1}{3}\bigg)p_{m-1}(3) + \dots + &\bigg(\frac{1}{k-1}\bigg)p_{m-1}(k-1) + &\bigg(\frac{1}{k}\bigg)p_{m-1}(k) \\
-    &p_m(3) = &0  + &0 + &\bigg(\frac{1}{3}\bigg)p_{m-1}(3) + \dots + &\bigg(\frac{1}{k-1}\bigg)p_{m-1}(k-1) + &\bigg(\frac{1}{k}\bigg)p_{m-1}(k) \\
-    &p_m(4) = &0 + &0 + &0  + \dots + &\bigg(\frac{1}{k-1}\bigg)p_{m-1}(k-1) + &\bigg(\frac{1}{k}\bigg)p_{m-1}(k) \\
-    &\dots \\
-    &p_m(k) = &0 + &0 + &0  + \dots + &0 + &\bigg(\frac{1}{k}\bigg)p_{m-1}(k) \\
-\end{align*}
+Pr(X_m=s|X_{m-1}=i) = \begin{cases} 
+    \frac{1}{i} & s\leq i \\
+    0 & s > i \\
+  \end{cases}
+$$
+
+for every $$m$$. This is due to the fact that once $$X_{m-1}$$ has been chosen, $$X_m$$ is sampled *uniformly* from $$1\dots X_{m-1}$$
+
+Therefore,
+
+$$p^k_m(s) = \sum_{i=s}^k \frac{1}{i} p^k_{m-1}(i)$$
+
+This recursive relationship can be expanded into $$k$$ equations:
+$$
+    p_m(1) = 1 \cdot p_{m-1}(1) + \bigg(\frac{1}{2}\bigg)p_{m-1}(2) + \bigg(\frac{1}{3}\bigg)p_{m-1}(3) + \dots + \bigg(\frac{1}{k-1}\bigg)p_{m-1}(k-1) + \bigg(\frac{1}{k}\bigg)p_{m-1}(k) \\
+    p_m(2) = 0  + \bigg(\frac{1}{2}\bigg) p_{m-1}(2) + \bigg(\frac{1}{3}\bigg)p_{m-1}(3) + \dots + \bigg(\frac{1}{k-1}\bigg)p_{m-1}(k-1) + \bigg(\frac{1}{k}\bigg)p_{m-1}(k) \\
+    p_m(3) = 0  + 0 + \bigg(\frac{1}{3}\bigg)p_{m-1}(3) + \dots + \bigg(\frac{1}{k-1}\bigg)p_{m-1}(k-1) + \bigg(\frac{1}{k}\bigg)p_{m-1}(k) \\
+    p_m(4) = 0 + 0 + 0  + \dots + \bigg(\frac{1}{k-1}\bigg)p_{m-1}(k-1) + \bigg(\frac{1}{k}\bigg)p_{m-1}(k) \\
+    \dots \\
+    p_m(k) = 0 + 0 + 0  + \dots + 0 + \bigg(\frac{1}{k}\bigg)p_{m-1}(k) \\
 $$
 
 If we now consider $$p^k_m$$ as a probability vector on the set $$S = \{1\dots k\}$$, then we have a matrix equation:
