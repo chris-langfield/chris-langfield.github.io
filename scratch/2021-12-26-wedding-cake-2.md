@@ -39,12 +39,12 @@ $$p^k_m(s) = \sum_{i=s}^k \frac{1}{i} p^k_{m-1}(i)$$
 
 This recursive relationship can be expanded into $$k$$ equations:
 $$
-    p_m(1) = 1 \cdot p_{m-1}(1) + \bigg(\frac{1}{2}\bigg)p_{m-1}(2) + \bigg(\frac{1}{3}\bigg)p_{m-1}(3) + \dots + \bigg(\frac{1}{k-1}\bigg)p_{m-1}(k-1) + \bigg(\frac{1}{k}\bigg)p_{m-1}(k) \\
-    p_m(2) = 0  + \bigg(\frac{1}{2}\bigg) p_{m-1}(2) + \bigg(\frac{1}{3}\bigg)p_{m-1}(3) + \dots + \bigg(\frac{1}{k-1}\bigg)p_{m-1}(k-1) + \bigg(\frac{1}{k}\bigg)p_{m-1}(k) \\
-    p_m(3) = 0  + 0 + \bigg(\frac{1}{3}\bigg)p_{m-1}(3) + \dots + \bigg(\frac{1}{k-1}\bigg)p_{m-1}(k-1) + \bigg(\frac{1}{k}\bigg)p_{m-1}(k) \\
-    p_m(4) = 0 + 0 + 0  + \dots + \bigg(\frac{1}{k-1}\bigg)p_{m-1}(k-1) + \bigg(\frac{1}{k}\bigg)p_{m-1}(k) \\
-    \dots \\
-    p_m(k) = 0 + 0 + 0  + \dots + 0 + \bigg(\frac{1}{k}\bigg)p_{m-1}(k) \\
+p_m(1) = 1 \cdot p_{m-1}(1) + \bigg(\frac{1}{2}\bigg)p_{m-1}(2) + \bigg(\frac{1}{3}\bigg)p_{m-1}(3) + \dots + \bigg(\frac{1}{k-1}\bigg)p_{m-1}(k-1) + \bigg(\frac{1}{k}\bigg)p_{m-1}(k) \\
+p_m(2) = 0  + \bigg(\frac{1}{2}\bigg) p_{m-1}(2) + \bigg(\frac{1}{3}\bigg)p_{m-1}(3) + \dots + \bigg(\frac{1}{k-1}\bigg)p_{m-1}(k-1) + \bigg(\frac{1}{k}\bigg)p_{m-1}(k) \\
+p_m(3) = 0  + 0 + \bigg(\frac{1}{3}\bigg)p_{m-1}(3) + \dots + \bigg(\frac{1}{k-1}\bigg)p_{m-1}(k-1) + \bigg(\frac{1}{k}\bigg)p_{m-1}(k) \\
+p_m(4) = 0 + 0 + 0  + \dots + \bigg(\frac{1}{k-1}\bigg)p_{m-1}(k-1) + \bigg(\frac{1}{k}\bigg)p_{m-1}(k) \\
+\dots \\
+p_m(k) = 0 + 0 + 0  + \dots + 0 + \bigg(\frac{1}{k}\bigg)p_{m-1}(k) \\
 $$
 
 If we now consider $$p^k_m$$ as a probability vector on the set $$S = \{1\dots k\}$$, then we have a matrix equation:
@@ -73,3 +73,18 @@ $$
     \end{pmatrix}
 $$
 
+Rather than thinking of the probability distributions $$p^k_0, p^k_1, \dots p^k_m$$, then, we can think of a sequence of *probability vectors* $$\mathbf{P}^k_0, \mathbf{P}^k_1, \dots \mathbf{P}^k_m$$ satisfying
+
+$$
+\mathbf{P}^k_m = \mathbf{A}\mathbf{P}^k_{m-1}
+$$
+
+Where $$\mathbf{A}$$ is the transition matrix shown above. Then
+
+$$\mathbf{P}^k_m = \mathbf{A}^m \mathbf{P}^k_0$$
+
+Since we have that $$p^k_0(s) = \frac{1}{k}$$ for all $$s$$, $$\mathbf{P}^k_0 = \big(\frac{1}{k}, \frac{1}{k}, \dots \frac{1}{k} \big)$$. 
+
+This expression, along with the base vector $$\mathbf{P}^k_0$$, defines a *matrix difference equation*, a well-studied topic (see for reference Ch. 7 in [Cull, Flahive and Robson: Difference Equations: From Rabbits to Chaos](https://link.springer.com/book/10.1007/0-387-27645-9)). 
+
+I want to pause briefly here to recap. The problem we've set ourselves is to find an expression for the probability distribution over $$S = \{1, 2, \dots k\}$$ induced by repeating the selection process $$m$$ times. For $$m=0$$, this reduces to the uniform distribution over $$S$$, which we call $$p^k_0$$. It's possible to find an expression for $$p^k_1$$ in closed form. However, as $$m$$ grows, it becomes very difficult to simplify these equations. There is a recursive relationship between the distributions however. After noticing this, we rewrote the problem in terms of a recursive matrix equation. Our distributions $$p^k_0, p^k_1 \dots$$ turned into probability vectors $$\mathbf{P}^k_0, \mathbf{P}^k_1, \dots$$. The last step was to realize that we can write the $$m$$'th probability vector as the $$m$$'th power of the matrix $$\mathbf{A}$$ times the base vector $$\mathbf{P}^k_0$$. This is, finally, a closed form expression, although it is an unwieldy one. Our task now will be to decompress the matrix equation in the hopes of finding an equation describing the probability distribution for each $$m$$.
