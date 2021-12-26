@@ -43,18 +43,23 @@ This recursive relationship can be expanded into $$k$$ equations:
 $$
 p^k_m(1) = 1 \cdot p_{m-1}(1) + \bigg(\frac{1}{2}\bigg)p^k_{m-1}(2) + \bigg(\frac{1}{3}\bigg)p^k_{m-1}(3) + \dots + \bigg(\frac{1}{k-1}\bigg)p^k_{m-1}(k-1) + \bigg(\frac{1}{k}\bigg)p^k_{m-1}(k) 
 $$
+
 $$
 p^k_m(2) = 0  + \bigg(\frac{1}{2}\bigg) p^k_{m-1}(2) + \bigg(\frac{1}{3}\bigg)p^k_{m-1}(3) + \dots + \bigg(\frac{1}{k-1}\bigg)p^k_{m-1}(k-1) + \bigg(\frac{1}{k}\bigg)p^k_{m-1}(k) 
 $$
+
 $$
 p^k_m(3) = 0  + 0 + \bigg(\frac{1}{3}\bigg)p^k_{m-1}(3) + \dots + \bigg(\frac{1}{k-1}\bigg)p^k_{m-1}(k-1) + \bigg(\frac{1}{k}\bigg)p^k_{m-1}(k) 
 $$
+
 $$
 p^k_m(4) = 0 + 0 + 0  + \dots + \bigg(\frac{1}{k-1}\bigg)p^k_{m-1}(k-1) + \bigg(\frac{1}{k}\bigg)p^k_{m-1}(k) 
 $$
+
 $$
-\dots
+...
 $$
+
 $$
 p^k_m(k) = 0 + 0 + 0  + \dots + 0 + \bigg(\frac{1}{k}\bigg)p^k_{m-1}(k) 
 $$
