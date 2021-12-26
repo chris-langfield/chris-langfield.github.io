@@ -27,7 +27,7 @@ The blog post goes on to describe noise colors, time-averaging, and other more a
 
 ### The simple case: double selection one time
 
-Let's make the problem formal. We are first considering uniform selection from $$ S = \{1, 2, 3, ... k\} $$. Let $$X_0$$ be the corresponding random variable. Clearly $$X_0 \sim unif(1,...k)$$. Now we use $$X_0$$ to define the sample space for a new random variable, $$X_1$$, sampling uniformly from the set $$\{s \in S: s \leq X_0\}$$. We want to find the probability mass function of $$X_1$$. 
+Let's make the problem formal. We are first considering uniform selection from $$ S = \{1, 2, 3, ... k\} $$. Let $$X_0$$ be the corresponding random variable. Clearly $$X_0 \sim \text{unif}(1,...k)$$. Now we use $$X_0$$ to define the sample space for a new random variable, $$X_1$$, sampling uniformly from the set $$\{s \in S: s \leq X_0\}$$. We want to find the probability mass function of $$X_1$$. 
 
 Applying the law of total probability, we can write
 
