@@ -207,7 +207,8 @@ $$
 (QD^m Q^{-1})_{ij} = \sum_{l=1}^k (-1)^{l-i} \binom{l-1}{i-1} \binom{j-1}{l-1} \bigg(\frac{1}{l}\bigg)^m
 $$
 
-#### Theorem
+
+<span style="background-color:blue">#### Theorem</span>
 
 *The following identity holds*
 
