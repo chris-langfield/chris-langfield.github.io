@@ -93,12 +93,12 @@ $$
 Rather than thinking of the probability distributions $$p^k_0, p^k_1, \dots p^k_m$$, then, we can think of a sequence of *probability vectors* $$\mathbf{P}^k_0, \mathbf{P}^k_1, \dots \mathbf{P}^k_m$$ satisfying
 
 $$
-\mathbf{P}^k_m = \mathbf{A}\mathbf{P}^k_{m-1}
+\mathbf{P}^k_m = \mathbf{W}\mathbf{P}^k_{m-1}
 $$
 
-Where $$\mathbf{A}$$ is the transition matrix shown above. Then
+Where $$\mathbf{W}$$ is the transition matrix shown above. Then
 
-$$\mathbf{P}^k_m = \mathbf{A}^m \mathbf{P}^k_0$$
+$$\mathbf{P}^k_m = \mathbf{W}^m \mathbf{P}^k_0$$
 
 Since we have that $$p^k_0(s) = \frac{1}{k}$$ for all $$s$$, $$\mathbf{P}^k_0 = \big(\frac{1}{k}, \frac{1}{k}, \dots \frac{1}{k} \big)$$. 
 
@@ -106,22 +106,22 @@ This expression, along with the base vector $$\mathbf{P}^k_0$$, defines a *matri
 
 ## Pascal and Inverse Pascal
 
-We take the standard approach to solving a matrix difference equation. Notice that $$\mathbf{A}$$ is an upper-triangular matrix, which means its eigenvalues can be read off the diagonal. These are $$1,\frac{1}{2}, \frac{1}{3}, \dots \frac{1}{k}$$. Because there are $$k$$ distinct eigenvalues, $$\mathbf{A}$$ [is diagonalizable](https://en.wikipedia.org/wiki/Diagonalizable_matrix). That means it can be written in the form
+We take the standard approach to solving a matrix difference equation. Notice that $$\mathbf{W}$$ is an upper-triangular matrix, which means its eigenvalues can be read off the diagonal. These are $$1,\frac{1}{2}, \frac{1}{3}, \dots \frac{1}{k}$$. Because there are $$k$$ distinct eigenvalues, $$\mathbf{W}$$ [is diagonalizable](https://en.wikipedia.org/wiki/Diagonalizable_matrix). That means it can be written in the form
 
 $$
-\mathbf{A} = \mathbf{Q} \mathbf{D} \mathbf{Q}^{-1}
+\mathbf{W} = \mathbf{Q} \mathbf{D} \mathbf{Q}^{-1}
 $$
 
-Where $$\mathbf{D} = \text{diag}(1,\frac{1}{2}, \dots \frac{1}{k})$$ and the columns of $$Q$$ are the corresponding eigenvectors of $$\mathbf{A}$$. This is particularly useful in this case because we can write, for example:
+Where $$\mathbf{D} = \text{diag}(1,\frac{1}{2}, \dots \frac{1}{k})$$ and the columns of $$Q$$ are the corresponding eigenvectors of $$\mathbf{W}$$. This is particularly useful in this case because we can write, for example:
 
 $$
-\mathbf{A}^2 = (\mathbf{Q}\mathbf{D}\mathbf{Q}^{-1} ) (\mathbf{Q}\mathbf{D}\mathbf{Q}^{-1}) = \mathbf{Q} \mathbf{D} (\mathbf{Q}^{-1}\mathbf{Q}) \mathbf{D} \mathbf{Q}^{-1} = \mathbf{Q}\mathbf{D}\mathbf{I}\mathbf{D}\mathbf{Q}^{-1} = \mathbf{Q}\mathbf{D}^2\mathbf{Q}^{-1}
+\mathbf{W}^2 = (\mathbf{Q}\mathbf{D}\mathbf{Q}^{-1} ) (\mathbf{Q}\mathbf{D}\mathbf{Q}^{-1}) = \mathbf{Q} \mathbf{D} (\mathbf{Q}^{-1}\mathbf{Q}) \mathbf{D} \mathbf{Q}^{-1} = \mathbf{Q}\mathbf{D}\mathbf{I}\mathbf{D}\mathbf{Q}^{-1} = \mathbf{Q}\mathbf{D}^2\mathbf{Q}^{-1}
 $$
 
 In general,
 
 $$
-\mathbf{A}^m = \mathbf{Q}\mathbf{D}^m\mathbf{Q}^{-1}
+\mathbf{W}^m = \mathbf{Q}\mathbf{D}^m\mathbf{Q}^{-1}
 $$
 
 With $$\mathbf{D}$$ being a diagonal matrix, $$\mathbf{D}^m$$ is easy to compute: $$\mathbf{D}^m = \text{diag}(1, \frac{1}{2^m}, \frac{1}{3^m}, \dots \frac{1}{k^m})$$
@@ -130,7 +130,7 @@ First we must find $$\mathbf{Q}$$ and $$\mathbf{Q}^{-1}$$:
 
 > **Proposition**
 >
->*The matrix $$\mathbf{Q}$$ whose columns are the eigenvectors of $$\mathbf{A}$$ is the **inverse Pascal matrix**, whose entries are given by:*
+>*The matrix $$\mathbf{Q}$$ whose columns are the eigenvectors of $$\mathbf{W}$$ is the **inverse Pascal matrix**, whose entries are given by:*
 >
 >$$
 >Q_{ij} = \begin{cases} 
@@ -226,9 +226,7 @@ $$\mathbf{Q}^{-1}$$ is of course just the inverse of the matrix above:
     proof
 >    </details>
 
-
-
-With this information, we can begin to work on computing $$\mathbf{P}^k_m$$. First, we would like to find an expression for the entries of $$\mathbf{Q}\mathbf{D}^m\mathbf{Q}^{-1}$$. The first matrix product, $$\mathbf{D}^m\mathbf{Q}^{-1}$$, is:
+With this information, we can begin to work on computing $$\mathbf{P}^k_m$$. First, we would like to find an expression for the entries of $$\mathbf{W} = \mathbf{Q}\mathbf{D}^m\mathbf{Q}^{-1}$$. The first matrix product, $$\mathbf{D}^m\mathbf{Q}^{-1}$$, is:
 
 $$
 (D^mQ^{-1})_{ij} = \sum_{l = 1}^k (D^m)_{il} (Q^{-1})_{lj} = \sum_{l=1}^k \delta_{il} \bigg(\frac{1}{l}\bigg)^m \binom{j-1}{l-1} = \binom{j-1}{i-1}\bigg(\frac{1}{i}\bigg)^m
@@ -237,16 +235,17 @@ $$
 Then,
 
 $$
-(QD^m Q^{-1})_{ij} = \sum_{l=1}^k (-1)^{l-i} \binom{l-1}{i-1} \binom{j-1}{l-1} \bigg(\frac{1}{l}\bigg)^m
+W_{ij} = (QD^m Q^{-1})_{ij} = \sum_{l=1}^k (-1)^{l-i} \binom{l-1}{i-1} \binom{j-1}{l-1} \bigg(\frac{1}{l}\bigg)^m
 $$
 
+This can be slightly simplified:
 
 >**Proposition**
 >
 >*The following identity holds*
 >
 >$$  
->\sum_{l=1}^k (-1)^{l-i} \binom{l-1}{i-1} \binom{j-1}{l-1} \bigg(\frac{1}{l}\bigg)^m = \binom{j-1}{i-1} \sum_{\gamma=0}^{j-i} (-1)^{\gamma} \binom{j-i}{\gamma} \bigg(\frac{1}{\gamma + i}\bigg)^m 
+>W_{ij} = \sum_{l=1}^k (-1)^{l-i} \binom{l-1}{i-1} \binom{j-1}{l-1} \bigg(\frac{1}{l}\bigg)^m = \binom{j-1}{i-1} \sum_{\gamma=0}^{j-i} (-1)^{\gamma} \binom{j-i}{\gamma} \bigg(\frac{1}{\gamma + i}\bigg)^m 
 >$$
 >
 >*given that we discard terms in the sum containing $$\binom{n}{k}$$ for $$k>n$$ and $$k<0$$, which correspond to cases where $$i>j$$ in the matrices.*
@@ -270,3 +269,9 @@ $$
     $$
     Reindexing via $$\gamma=l-i$$ gives us the righthand side of the equation. ◼️
 >    </details>
+
+The $$m$$'th probability vector $$\mathbf{P}^k_m$$ has components $$(p^k_m(1), p^k_m(2) \dots p^k_m(k))$$. Therefore, we can find an expression for the probability distribution $$p^k_m(s)$$  for $$s \in S = \{1, 2, \dots k\}$$ by multiplying the $$s$$'th row vector of $$\mathbf{W}$$ by the base vector $\mathbf{P}^k_0 = (\frac{1}{k}, \frac{1}{k}, \dots \frac{1}{k})$$:
+
+$$
+p^k_m(s) = \frac{1}{k} \sum_{l=1}^{k} W_{sl} = \frac{1}{k} \sum_{l=s}^k W_{sl}
+$$
