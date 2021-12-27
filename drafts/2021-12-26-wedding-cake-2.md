@@ -128,9 +128,9 @@ $$
 \mathbf{A}^m = \mathbf{Q}\mathbf{D}^m\mathbf{Q}^{-1}
 $$
 
-With $$\mathbf{D}$$ being a diagonal matrix, $$\mathbf{D}^m$$ is easy to compute. 
+With $$\mathbf{D}$$ being a diagonal matrix, $$\mathbf{D}^m$$ is easy to compute: $$\mathbf{D}^m = \text{diag}(1, \frac{1}{2^m}, \frac{1}{3^m}, \dots \frac{1}{k^m})$$
 
-It wasn't difficult to find $$\mathbf{Q}$$ and $$\mathbf{Q}^{-1}$$:
+First we must find $$\mathbf{Q}$$ and $$\mathbf{Q}^{-1}$$:
 
 #### Theorem
 
@@ -194,13 +194,13 @@ ______________________________________________
 With this information, we can begin to work on computing $$\mathbf{P}^k_m$$. First, we would like to find an expression for the entries of $$\mathbf{Q}\mathbf{D}^m\mathbf{Q}^{-1}$$. The first matrix product, $$\mathbf{D}^m\mathbf{Q}^{-1}$$, is:
 
 $$
-(D^mQ^{-1})_{ij} = \sum_{l = 1}^k (D^m)_{il} (Q^{-1})_{lj} = \sum_{l=1}^k \delta_{il} (\frac{1}{l})^m \binom{j-1}{l-1} = \binom{j-1}{i-1}(\frac{1}{i})^m
+(D^mQ^{-1})_{ij} = \sum_{l = 1}^k (D^m)_{il} (Q^{-1})_{lj} = \sum_{l=1}^k \delta_{il} \big(\frac{1}{l}\big)^m \binom{j-1}{l-1} = \binom{j-1}{i-1}(\frac{1}{i})^m
 $$
 
 Then,
 
 $$
-(QD^m Q^{-1})_{ij} = \sum_{l=1}^k (-1)^{l-i} \binom{l-1}{i-1} \binom{j-1}{l-1} (\frac{1}{l})^m
+(QD^m Q^{-1})_{ij} = \sum_{l=1}^k (-1)^{l-i} \binom{l-1}{i-1} \binom{j-1}{l-1} \big(\frac{1}{l}\big)^m
 $$
 
 #### Theorem
@@ -208,10 +208,10 @@ $$
 *The following identity holds*
 
 $$  
-\sum_{l=1}^k (-1)^{l-i} \binom{l-1}{i-1} \binom{j-1}{l-1} (\frac{1}{l})^m = \binom{j-1}{i-1} \sum_{\gamma=0}^{j-i} (-1)^{\gamma} \binom{j-i}{\gamma} (\frac{1}{\gamma + i})^m 
+\sum_{l=1}^k (-1)^{l-i} \binom{l-1}{i-1} \binom{j-1}{l-1} \big(\frac{1}{l}\big)^m = \binom{j-1}{i-1} \sum_{\gamma=0}^{j-i} (-1)^{\gamma} \binom{j-i}{\gamma} \big(\frac{1}{\gamma + i}\big)^m 
 $$
 
-*given that we discard terms in the sum containing $$\binom{n}{k}$$ for $$k>n$$ and $$k<0$$.*
+*given that we discard terms in the sum containing $$\binom{n}{k}$$ for $$k>n$$ and $$k<0$$, which correspond to cases where $$i>j$$ in the matrices.*
 
 #### Proof
 <details>
@@ -227,11 +227,11 @@ $$
     $$
     Then the lefthand side of the equation is equal to
     $$
-    \binom{j-1}{i-1} \sum_{l=1}^k (-1)^{l-i} \binom{j-i}{l-i} (\frac{1}{l})^m
+    \binom{j-1}{i-1} \sum_{l=1}^k (-1)^{l-i} \binom{j-i}{l-i} \big(\frac{1}{l}\big)^m
     $$
     We only allow terms where $$0 < l-i < j-i$$, so the limits of $$l$$ can be rewritten:
     $$
-    \binom{j-1}{i-1} \sum_{l=i}^j (-1)^{l-i} \binom{j-i}{l-i} (\frac{1}{l})^m
+    \binom{j-1}{i-1} \sum_{l=i}^j (-1)^{l-i} \binom{j-i}{l-i} \big(\frac{1}{l}\big)^m
     $$
     Reindexing via $$\gamma=l-i$$ gives us the righthand side of the equation.
 </details>
