@@ -208,9 +208,7 @@ $$
 $$
 
 
-<p markdown="1", style="background-color:grey">
-#### Theorem
-</p>
+<p markdown="1", style="background-color:grey">#### Theorem</p>
 
 *The following identity holds*
 
