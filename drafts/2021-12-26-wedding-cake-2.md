@@ -178,9 +178,9 @@ First we must find $$\mathbf{Q}$$ and $$\mathbf{Q}^{-1}$$:
     $$
     Note that the following identities are true for the binomial coefficients:
     $$
-    (\ast) \binom{n}{k} = \frac{k}{n} \binom{n-1}{k-1} \\
-    (\dagger) \sum_{i=0}^{n} (-1)^i \binom{n}{i} = 0 \\
-    (\ddagger) \sum_{i=0}^{D} (-1)^i \binom{n}{i} = (-1)^{D} \binom{n-1}{D}, \quad D<n
+    \binom{n-1}{k-1} = \frac{k}{n} \binom{n}{k} \quad (\ast)\\
+    \sum_{i=0}^{n} (-1)^i \binom{n}{i} = 0 \quad (\dagger) \\
+    \sum_{i=0}^{D} (-1)^i \binom{n}{i} = (-1)^{D} \binom{n-1}{D}, \quad D<n \quad (\ddagger)
     $$
     Then expanding the previous expression:
     $$
@@ -190,9 +190,9 @@ First we must find $$\mathbf{Q}$$ and $$\mathbf{Q}^{-1}$$:
     = \frac{(-1)^{a-1}}{a} \bigg( \sum_{l=0}^a (-1)^l \binom{a}{l} - \sum_{l=0}^{r-1} (-1)^l \binom{a}{l} \bigg) \\
     = \frac{(-1)^{a}}{a} \sum_{l=0}^{r-1} (-1)^l \binom{a}{l} \quad (\dagger) \\
     = \frac{(-1)^{a}}{a} (-1)^{r-1} \binom{a-1}{r-1} \quad (\ddagger) \\
-    = \frac{1}{a} (-1)^{a-1+r} \binom{a-1}{r-1} 
+    = \frac{1}{a} (-1)^{a-1+r} \binom{a-1}{r-1} = \frac{1}{a}(e_a)_r 
     $$
-    The final expression completes the proof. ◼️
+    Therefore, the columns of $$\mathbf{Q}$$ are the vectors $$e_a, \quad a = 1,2,\dots k$$.◼️
 ></details>
 
 $$\mathbf{Q}^{-1}$$ is of course just the inverse of the matrix above:
