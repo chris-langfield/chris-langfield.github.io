@@ -125,23 +125,26 @@ $$
 In general,
 
 $$
-\mathbf{A}^k = \mathbf{Q}\mathbf{D}^m\mathbf{Q}^{-1}
+\mathbf{A}^m = \mathbf{Q}\mathbf{D}^m\mathbf{Q}^{-1}
 $$
 
 With $$\mathbf{D}$$ being a diagonal matrix, $$\mathbf{D}^m$$ is easy to compute. 
 
+It wasn't difficult to find $$\mathbf{Q}$$ and $$\mathbf{Q}^{-1}$$:
+
 #### Theorem
 
-*The matrix $$\mathbf{Q}$$ whose columns are the eigenvectors of $$mathbf{A}$$ is the **inverse Pascal matrix** whose entries are given by:*
+*The matrix $$\mathbf{Q}$$ whose columns are the eigenvectors of $$\mathbf{A}$$ is the **inverse Pascal matrix**, whose entries are given by:*
 
 $$
 Q_{ij} = \begin{cases} 
-    (-1)^{j-i} \binom{j}{i}, & i \leq j \\
+    (-1)^{j-i} \binom{j-1}{i-1}, & i \leq j \\
     0 & i > j \\
   \end{cases}
 $$
 
 *That is,*
+
 $$
     \mathbf{Q}
     =
@@ -158,7 +161,7 @@ $$
 ______________________________________________
 
 
-The next result may not be a surprise. 
+
 
 #### Theorem
 
@@ -166,7 +169,7 @@ The next result may not be a surprise.
 
 $$
 Q^{-1}_{ij} = \begin{cases} 
-    \binom{j}{i}, & i \leq j \\
+    \binom{j-1}{i-1}, & i \leq j \\
     0 & i > j \\
   \end{cases}
 $$
@@ -188,4 +191,9 @@ $$
 
 ______________________________________________
 
+With this information, we can begin to work on computing $$\mathbf{P}^k_m$$. First, we would like to find an expression for the entries of $$\mathbf{Q}\mathbf{D}^m\mathbf{Q}^{-1}$$. The first matrix product, $$\mathbf{D}^m\mathbf{Q}^{-1}$$, is:
+
+$$
+(D^mQ^{-1})_{ij} = \sum_{l = 1}^k (D^m)_{il} (Q^{-1})_lj = \sum_{l=1}^k \delta_{il} \big(\frac{1}{l}\big)^m \binom{j-1}{l-1}
+$$
 
