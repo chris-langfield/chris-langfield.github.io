@@ -207,6 +207,7 @@ $$
 (QD^m Q^{-1})_{ij} = \sum_{l=1}^k (-1)^{l-i} \binom{l-1}{i-1} \binom{j-1}{l-1} \bigg(\frac{1}{l}\bigg)^m
 $$
 
+<span style="background-color:green">
 #### Theorem
 
 *The following identity holds*
@@ -239,3 +240,4 @@ $$
     $$
     Reindexing via $$\gamma=l-i$$ gives us the righthand side of the equation.
     </details>
+</span>
