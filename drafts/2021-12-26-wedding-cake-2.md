@@ -277,3 +277,20 @@ p^k_m(s) = \frac{1}{k} \sum_{l=1}^{k} W_{sl} = \frac{1}{k} \sum_{l=s}^k W_{sl}
 $$
 
 This is the "workable but unsatisfying" closed form I mentioned in the last post. Although it isn't very clean, it is straightforward to implement the computation of $W_{ij}$ in Python. Let's take a look at the distributions for different values of $$m$$:
+
+![Figure_1](https://user-images.githubusercontent.com/34426450/147511054-a5c78919-622b-4cab-be77-184e21535184.png)
+
+This matches our intuition. As $$m$$ grows larger, the tail of the distribution shrinks rapidly. At $$m=5$$ the probability of picking $$s=1$$ is more than 75%. 
+
+Strictly, at this point, the problem has been solved. For any choice of $$k$$ or $$m$$ we can compute the probability distribution $$p^k_m(s): S \into \mathbb{R}$$. We can make a quick definition to simplify things for Part 3. If the distribution of a random variable $$X$$ over $$S$$ is $$p^k_m(s)$$, then we'll say that $$X \sim W(k,m)$$. That is $$X$$ is distributed according to a Wedding Cake distribution with parameters $$k$$ and $$m$$. There is certainly more work to be done. In Part3 I will discuss the literature I was able to find involving similar sums and distributions. I will end Part 2 with one more result:
+
+>**Proposition**
+>
+>*The sum expressing the entries of $$\mathbf{W}$$ has an integral representation, specifically:*
+>
+>$$  
+>W_{ij} = \Int_0^1 \Int_0^1 \dots \Int_0^1 (x_1 x_2 \dots x_m)^{i-1} (1-x_1 x_2 \dots x_m)^{j-i} dx_1 dx_2 \dots dx_m 
+>$$
+><details><summary>Click to expand proof</summary> 
+    proof
+>    </details>
