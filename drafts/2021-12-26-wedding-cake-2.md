@@ -104,10 +104,6 @@ Since we have that $$p^k_0(s) = \frac{1}{k}$$ for all $$s$$, $$\mathbf{P}^k_0 = 
 
 This expression, along with the base vector $$\mathbf{P}^k_0$$, defines a *matrix difference equation*, a well-studied topic (see for reference Ch. 7 in [Cull, Flahive and Robson: Difference Equations: From Rabbits to Chaos](https://link.springer.com/book/10.1007/0-387-27645-9)). 
 
-I want to pause briefly here to recap. The problem we've set ourselves is to find an expression for the probability distribution over $$S = \{1, 2, \dots k\}$$ induced by repeating the selection process $$m$$ times. For $$m=0$$, this reduces to the uniform distribution over $$S$$, which we call $$p^k_0$$. It's possible to find an expression for $$p^k_1$$ in closed form. However, as $$m$$ grows, it becomes very difficult to simplify these equations. There is a recursive relationship between the distributions however. After noticing this, we rewrote the problem in terms of a recursive matrix equation. Our distributions $$p^k_0, p^k_1 \dots p^k_m$$ turned into probability vectors $$\mathbf{P}^k_0, \mathbf{P}^k_1, \dots, \mathbf{P}^k_m$$. 
-
-The last step was to realize that we can write the $$m$$'th probability vector as the $$m$$'th power of the matrix $$\mathbf{A}$$ times the base vector $$\mathbf{P}^k_0$$. This is, finally, a closed form expression, although it is an unwieldy one. Our task now will be to decompress the matrix equation in the hopes of finding a function over $$S$$ describing the probability distribution for each $$m$$.
-
 ## Pascal and Inverse Pascal
 
 We take the standard approach to solving a matrix difference equation. Notice that $$\mathbf{A}$$ is an upper-triangular matrix, which means its eigenvalues can be read off the diagonal. These are $$1,\frac{1}{2}, \frac{1}{3}, \dots \frac{1}{k}$$. Because there are $$k$$ distinct eigenvalues, $$\mathbf{A}$$ [is diagonalizable](https://en.wikipedia.org/wiki/Diagonalizable_matrix). That means it can be written in the form
@@ -194,13 +190,13 @@ ______________________________________________
 With this information, we can begin to work on computing $$\mathbf{P}^k_m$$. First, we would like to find an expression for the entries of $$\mathbf{Q}\mathbf{D}^m\mathbf{Q}^{-1}$$. The first matrix product, $$\mathbf{D}^m\mathbf{Q}^{-1}$$, is:
 
 $$
-(D^mQ^{-1})_{ij} = \sum_{l = 1}^k (D^m)_{il} (Q^{-1})_{lj} = \sum_{l=1}^k \delta_{il} \big(\frac{1}{l}\big)^m \binom{j-1}{l-1} = \binom{j-1}{i-1}(\frac{1}{i})^m
+(D^mQ^{-1})_{ij} = \sum_{l = 1}^k (D^m)_{il} (Q^{-1})_{lj} = \sum_{l=1}^k \delta_{il} \bigg(\frac{1}{l}\bigg)^m \binom{j-1}{l-1} = \binom{j-1}{i-1}(\frac{1}{i})^m
 $$
 
 Then,
 
 $$
-(QD^m Q^{-1})_{ij} = \sum_{l=1}^k (-1)^{l-i} \binom{l-1}{i-1} \binom{j-1}{l-1} \big(\frac{1}{l}\big)^m
+(QD^m Q^{-1})_{ij} = \sum_{l=1}^k (-1)^{l-i} \binom{l-1}{i-1} \binom{j-1}{l-1} \bigg(\frac{1}{l}\bigg)^m
 $$
 
 #### Theorem
@@ -208,7 +204,7 @@ $$
 *The following identity holds*
 
 $$  
-\sum_{l=1}^k (-1)^{l-i} \binom{l-1}{i-1} \binom{j-1}{l-1} \big(\frac{1}{l}\big)^m = \binom{j-1}{i-1} \sum_{\gamma=0}^{j-i} (-1)^{\gamma} \binom{j-i}{\gamma} \big(\frac{1}{\gamma + i}\big)^m 
+\sum_{l=1}^k (-1)^{l-i} \binom{l-1}{i-1} \binom{j-1}{l-1} \bigg(\frac{1}{l}\bigg)^m = \binom{j-1}{i-1} \sum_{\gamma=0}^{j-i} (-1)^{\gamma} \binom{j-i}{\gamma} \bigg(\frac{1}{\gamma + i}\bigg)^m 
 $$
 
 *given that we discard terms in the sum containing $$\binom{n}{k}$$ for $$k>n$$ and $$k<0$$, which correspond to cases where $$i>j$$ in the matrices.*
@@ -227,11 +223,11 @@ $$
     $$
     Then the lefthand side of the equation is equal to
     $$
-    \binom{j-1}{i-1} \sum_{l=1}^k (-1)^{l-i} \binom{j-i}{l-i} \big(\frac{1}{l}\big)^m
+    \binom{j-1}{i-1} \sum_{l=1}^k (-1)^{l-i} \binom{j-i}{l-i} \bigg(\frac{1}{l}\bigg)^m
     $$
-    We only allow terms where $$0 < l-i < j-i$$, so the limits of $$l$$ can be rewritten:
+    We only allow terms where $$0 < l-i < j-i$$, so the limits of summation can be rewritten:
     $$
-    \binom{j-1}{i-1} \sum_{l=i}^j (-1)^{l-i} \binom{j-i}{l-i} \big(\frac{1}{l}\big)^m
+    \binom{j-1}{i-1} \sum_{l=i}^j (-1)^{l-i} \binom{j-i}{l-i} \bigg(\frac{1}{l}\bigg)^m
     $$
     Reindexing via $$\gamma=l-i$$ gives us the righthand side of the equation.
 </details>
