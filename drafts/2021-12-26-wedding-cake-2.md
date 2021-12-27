@@ -128,7 +128,7 @@ With $$\mathbf{D}$$ being a diagonal matrix, $$\mathbf{D}^m$$ is easy to compute
 
 First we must find $$\mathbf{Q}$$ and $$\mathbf{Q}^{-1}$$:
 
-> **Theorem**
+> **Proposition**
 >
 >*The matrix $$\mathbf{Q}$$ whose columns are the eigenvectors of $$\mathbf{A}$$ is the **inverse Pascal matrix**, whose entries are given by:*
 >
@@ -161,18 +161,26 @@ First we must find $$\mathbf{Q}$$ and $$\mathbf{Q}^{-1}$$:
         0 & i > j \\
         \end{cases}
     $$
-    We propose that **A** has eigenvalue-eigenvector pairs
+    We propose that A has eigenvalue-eigenvector pairs
     $$
     \lambda_a = \frac{1}{a}, \quad (e_a)_r = \begin{cases}
         (-1)^{a-1+r}\binom{a-1}{r-1} & 1 \leq r \leq a \\
         0 & a < r \leq k
         \end{cases}
     $$
+    We must show 
+    $$
+    \mathbf{A}\cdot \mathbf{e}_a = \frac{1}{a} \mathbf{e}_a
+    $$
+    Or equivalently,
+    $$
+    (Ae_a)_r = \frac{1}{a} (e_a)_r, \quad 1 \leq r \leq a
+    $$
 ></details>
 
 $$\mathbf{Q}^{-1}$$ is of course just the inverse of the matrix above:
 
->**Theorem**
+>**Proposition**
 >
 >*$$\mathbf{Q}^{-1}$$ is equal to the **Pascal matrix**, whose entries are given by:*
 >
@@ -216,7 +224,7 @@ $$
 $$
 
 
->**Theorem**
+>**Proposition**
 >
 >*The following identity holds*
 >
