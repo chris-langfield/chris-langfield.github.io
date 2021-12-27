@@ -170,12 +170,19 @@ First we must find $$\mathbf{Q}$$ and $$\mathbf{Q}^{-1}$$:
     $$
     We must show 
     $$
-    \mathbf{A}\cdot \mathbf{e}_a = \frac{1}{a} \mathbf{e}_a
+    \mathbf{A}\cdot \mathbf{e}_a = \frac{1}{a} \mathbf{e}_a, \quad a = 1, 2, \dots k
     $$
     Or equivalently,
     $$
     (Ae_a)_r = \frac{1}{a} (e_a)_r, \quad 1 \leq r \leq a
     $$
+    Expanding gives
+    $$
+    (Ae_a)_r = \sum{l=a}^k \frac{1}{l} (-1)^{a-1+l} \binom{a-1}{l-1} \\
+    = (-1)^{a-1} \sum{l=a}^k \frac{1}{l} (-1)^{l} \binom{a-1}{l-1} \\
+    =  \frac{(-1)^{a-1}}{a} \sum{l=a}^k \binom{a}{l}
+    $$
+               
 ></details>
 
 $$\mathbf{Q}^{-1}$$ is of course just the inverse of the matrix above:
