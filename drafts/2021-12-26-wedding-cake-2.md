@@ -152,8 +152,8 @@ $$
       1 & -1 & 1 & -1 & 1 & -1 & \dots \\
       0 &  1 &-2 &  3 &-4 &  5 & \dots \\
       0 & 0 &  1 & -3 & 6 &-10 & \dots \\
-      0 & 0 & 0 &   1 & 4 & 10 & \dots \\
-      0 & 0 & 0 &   0 &-1 & -5 & \dots \\
+      0 & 0 & 0 &   1 &-4 & 10 & \dots \\
+      0 & 0 & 0 &   0 & 1 & -5 & \dots \\
       \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \ddots
     \end{pmatrix}
 $$
@@ -194,6 +194,28 @@ ______________________________________________
 With this information, we can begin to work on computing $$\mathbf{P}^k_m$$. First, we would like to find an expression for the entries of $$\mathbf{Q}\mathbf{D}^m\mathbf{Q}^{-1}$$. The first matrix product, $$\mathbf{D}^m\mathbf{Q}^{-1}$$, is:
 
 $$
-(D^mQ^{-1})_{ij} = \sum_{l = 1}^k (D^m)_{il} (Q^{-1})_lj = \sum_{l=1}^k \delta_{il} \big(\frac{1}{l}\big)^m \binom{j-1}{l-1} = \binom{j-1}{i-1}\big(\frac{1}{i})^m
+(D^mQ^{-1})_{ij} = \sum_{l = 1}^k (D^m)_{il} (Q^{-1})_{lj} = \sum_{l=1}^k \delta_{il} (\frac{1}{l})^m \binom{j-1}{l-1} = \binom{j-1}{i-1}(\frac{1}{i})^m
 $$
 
+Then,
+
+$$
+(QD^m Q^{-1})_{ij} = \sum_{l=1}^k (-1)^{l-i} \binom{l-1}{i-1} \binom{j-1}{l-1} (frac{1}{l})^m
+$$
+
+#### Theorem
+
+*The identity*
+
+$$  
+\sum_{l=1}^k (-1)^{l-i} \binom{l-1}{i-1} \binom{j-1}{l-1} (frac{1}{l})^m = \binom{j-1}{i-1} \sum_{\gamma=0}^{j-i} (-1)^{\gamma} \binom{j-i}{\gamma} (\frac{1}{\gamma})^m 
+$$
+
+*holds.*
+
+#### Proof
+<details>
+  <summary>Click to expand!</summary>
+  
+  proof
+</details>
