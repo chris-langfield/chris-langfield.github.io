@@ -198,7 +198,7 @@ ______________________________________________
 With this information, we can begin to work on computing $$\mathbf{P}^k_m$$. First, we would like to find an expression for the entries of $$\mathbf{Q}\mathbf{D}^m\mathbf{Q}^{-1}$$. The first matrix product, $$\mathbf{D}^m\mathbf{Q}^{-1}$$, is:
 
 $$
-(D^mQ^{-1})_{ij} = \sum_{l = 1}^k (D^m)_{il} (Q^{-1})_{lj} = \sum_{l=1}^k \delta_{il} \bigg(\frac{1}{l}\bigg)^m \binom{j-1}{l-1} = \binom{j-1}{i-1}(\frac{1}{i})^m
+(D^mQ^{-1})_{ij} = \sum_{l = 1}^k (D^m)_{il} (Q^{-1})_{lj} = \sum_{l=1}^k \delta_{il} \bigg(\frac{1}{l}\bigg)^m \binom{j-1}{l-1} = \binom{j-1}{i-1}\bigg(\frac{1}{i}\bigg)^m
 $$
 
 Then,
