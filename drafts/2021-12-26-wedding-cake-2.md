@@ -192,7 +192,7 @@ First we must find $$\mathbf{Q}$$ and $$\mathbf{Q}^{-1}$$:
     = \frac{(-1)^{a}}{a} (-1)^{r-1} \binom{a-1}{r-1} \quad (\ddagger) \\
     = \frac{1}{a} (-1)^{a-1+r} \binom{a-1}{r-1} = \frac{1}{a}(e_a)_r 
     $$
-    Therefore, the columns of $$\mathbf{Q}$$ are the vectors $$e_a, \quad a = 1,2,\dots k$$.◼️
+    Therefore, the columns of $$\mathbf{Q}$$ are the vectors $$\mathbf{e}_a, \quad a = 1,2,\dots k$$.◼️
 ></details>
 
 $$\mathbf{Q}^{-1}$$ is of course just the inverse of the matrix above:
