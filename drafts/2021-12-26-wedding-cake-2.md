@@ -200,24 +200,24 @@ $$
 Then,
 
 $$
-(QD^m Q^{-1})_{ij} = \sum_{l=1}^k (-1)^{l-i} \binom{l-1}{i-1} \binom{j-1}{l-1} (frac{1}{l})^m
+(QD^m Q^{-1})_{ij} = \sum_{l=1}^k (-1)^{l-i} \binom{l-1}{i-1} \binom{j-1}{l-1} (\frac{1}{l})^m
 $$
 
 #### Theorem
 
-*The identity*
+*The following identity holds*
 
 $$  
-\sum_{l=1}^k (-1)^{l-i} \binom{l-1}{i-1} \binom{j-1}{l-1} (frac{1}{l})^m = \binom{j-1}{i-1} \sum_{\gamma=0}^{j-i} (-1)^{\gamma} \binom{j-i}{\gamma} (\frac{1}{\gamma})^m 
+\sum_{l=1}^k (-1)^{l-i} \binom{l-1}{i-1} \binom{j-1}{l-1} (\frac{1}{l})^m = \binom{j-1}{i-1} \sum_{\gamma=0}^{j-i} (-1)^{\gamma} \binom{j-i}{\gamma} (\frac{1}{\gamma + i})^m 
 $$
 
-*holds.*
+*given that we discard terms in the sum containing $$\binom{n}{k}$$ for $$k>n$$ and $$k<0$$.*
 
 #### Proof
 <details>
   <summary>Click to expand proof</summary>
   
-    The following identity is true for the binomial coefficients: (see 4.1.8 [this document](http://www.cs.columbia.edu/~cs4205/files/CM4.pdf), where two proofs are provided. From J. Gross, lecture notes for Combinatorial Mathematics.)
+    The following identity is true for the binomial coefficients:
     $$
     \binom{n}{m}\binom{m}{k} = \binom{n}{k}\binom{n-k}{m-k}
     $$
@@ -225,4 +225,13 @@ $$
     $$
     \binom{j-1}{l-1}\binom{l-1}{i-1} = \binom{j-1}{i-1}\binom{j-1-(i-1)}{l-1-(i-1)} = \binom{j-1}{i-1}\binom{j-i}{l-i}
     $$
+    Then the lefthand side of the equation is equal to
+    $$
+    \binom{j-1}{i-1} \sum_{l=1}^k (-1)^{l-i} \binom{j-i}{l-i} (\frac{1}{l})^m
+    $$
+    We only allow terms where $$0 < l-i < j-i$$, so the limits of $$l$$ can be rewritten:
+    $$
+    \binom{j-1}{i-1} \sum_{l=i}^j (-1)^{l-i} \binom{j-i}{l-i} (\frac{1}{l})^m
+    $$
+    Reindexing via $$\gamma=l-i$$ gives us the righthand side of the equation.
 </details>
