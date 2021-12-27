@@ -178,20 +178,21 @@ First we must find $$\mathbf{Q}$$ and $$\mathbf{Q}^{-1}$$:
     $$
     Note that the following identities are true for the binomial coefficients:
     $$
-    \binom{n}{k} = \frac{k}{n} \binom{n-1}{k-1} \\
-    \sum{i=0}^{n} (-1)^i \binom{n}{i} = 0 \\
-    \sum{i=0}^{D} (-1)^i \binom{n}{i} = (-1)^{D} \binom{n-1}{D}, \quad D<n
+    (\ast) \binom{n}{k} = \frac{k}{n} \binom{n-1}{k-1} \\
+    (\dagger) \sum{i=0}^{n} (-1)^i \binom{n}{i} = 0 \\
+    (\ddagger) \sum{i=0}^{D} (-1)^i \binom{n}{i} = (-1)^{D} \binom{n-1}{D}, \quad D<n
     $$
     Then expanding the previous expression:
     $$
     (Ae_a)_r = \sum_{l=r}^a \frac{1}{l} (-1)^{a-1+l} \binom{a-1}{l-1} \\
     = (-1)^{a-1} \sum_{l=r}^a \frac{1}{l} (-1)^l \binom{a-1}{l-1} \\
-    =  \frac{(-1)^{a-1}}{a} \sum_{l=r}^a (-1)^l \binom{a}{l} \\
+    =  \frac{(-1)^{a-1}}{a} \sum_{l=r}^a (-1)^l \binom{a}{l} \quad (\ast) \\
     = \frac{(-1)^{a-1}}{a} \bigg( \sum_{l=0}^a (-1)^l \binom{a}{l} - \sum_{l=0}^{r-1} (-1)^l \binom{a}{l} \bigg) \\
-    = \frac{(-1)^{a}}{a} \sum{l=0}^{r-1} (-1)^l \binom{a}{l} \\
-    = \frac{(-1)^{a}}{a} (-1)^{r-1} \binom{a-1}{r-1} \frac{1}{a} (-1)^{a-1+r} \binom{a-1}{r-1}
+    = \frac{(-1)^{a}}{a} \sum_{l=0}^{r-1} (-1)^l \binom{a}{l} \quad (\dagger) \\
+    = \frac{(-1)^{a}}{a} (-1)^{r-1} \binom{a-1}{r-1} \quad (\ddagger) \\
+    = \frac{1}{a} (-1)^{a-1+r} \binom{a-1}{r-1} 
     $$
-    ◼️
+    The final expression completes the proof. ◼️
 ></details>
 
 $$\mathbf{Q}^{-1}$$ is of course just the inverse of the matrix above:
