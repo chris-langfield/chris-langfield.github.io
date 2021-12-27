@@ -208,7 +208,7 @@ $$
 $$
 
 
-<div style="background-color:grey">
+<div markdown="1",style="background-color:grey">
 #### Theorem
 
 *The following identity holds*
