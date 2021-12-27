@@ -154,7 +154,9 @@ $$
       \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \ddots
     \end{pmatrix}
 $$
+
 ______________________________________________
+
 
 The next result may not be a surprise. 
 
@@ -183,5 +185,7 @@ $$
       \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \ddots
     \end{pmatrix}
 $$
+
 ______________________________________________
+
 
