@@ -207,35 +207,35 @@ $$
 (QD^m Q^{-1})_{ij} = \sum_{l=1}^k (-1)^{l-i} \binom{l-1}{i-1} \binom{j-1}{l-1} \bigg(\frac{1}{l}\bigg)^m
 $$
 
->#### Theorem
+#### Theorem
 
->*The following identity holds*
+*The following identity holds*
 
->$$  
->\sum_{l=1}^k (-1)^{l-i} \binom{l-1}{i-1} \binom{j-1}{l-1} \bigg(\frac{1}{l}\bigg)^m = \binom{j-1}{i-1} \sum_{\gamma=0}^{j-i} (-1)^{\gamma} \binom{j-i}{\gamma} 
->\bigg(\frac{1}{\gamma + i}\bigg)^m 
->$$
+$$  
+\sum_{l=1}^k (-1)^{l-i} \binom{l-1}{i-1} \binom{j-1}{l-1} \bigg(\frac{1}{l}\bigg)^m = \binom{j-1}{i-1} \sum_{\gamma=0}^{j-i} (-1)^{\gamma} \binom{j-i}{\gamma} 
+\bigg(\frac{1}{\gamma + i}\bigg)^m 
+$$
 
->*given that we discard terms in the sum containing $$\binom{n}{k}$$ for $$k>n$$ and $$k<0$$, which correspond to cases where $$i>j$$ in the matrices.*
+*given that we discard terms in the sum containing $$\binom{n}{k}$$ for $$k>n$$ and $$k<0$$, which correspond to cases where $$i>j$$ in the matrices.*
 
->#### Proof
-><details><summary>Click to expand proof</summary>
+#### Proof
+<details><summary>Click to expand proof</summary>
   
->The following identity is true for the binomial coefficients:
->$$
->\binom{n}{m}\binom{m}{k} = \binom{n}{k}\binom{n-k}{m-k}
->$$
->Therefore, 
->$$
->\binom{j-1}{l-1}\binom{l-1}{i-1} = \binom{j-1}{i-1}\binom{j-1-(i-1)}{l-1-(i-1)} = \binom{j-1}{i-1}\binom{j-i}{l-i}
->$$
->Then the lefthand side of the equation is equal to
->$$
->\binom{j-1}{i-1} \sum_{l=1}^k (-1)^{l-i} \binom{j-i}{l-i} \bigg(\frac{1}{l}\bigg)^m
->$$
->We only allow terms where $$0 \leq l-i \leq j-i$$ so the limits of summation can be rewritten:
->$$
->\binom{j-1}{i-1} \sum_{l=i}^j (-1)^{l-i} \binom{j-i}{l-i} \bigg(\frac{1}{l}\bigg)^m
->$$
->Reindexing via $$\gamma=l-i$$ gives us the righthand side of the equation.
-></details>
+    The following identity is true for the binomial coefficients:
+    $$
+    \binom{n}{m}\binom{m}{k} = \binom{n}{k}\binom{n-k}{m-k}
+    $$
+    Therefore, 
+    $$
+    \binom{j-1}{l-1}\binom{l-1}{i-1} = \binom{j-1}{i-1}\binom{j-1-(i-1)}{l-1-(i-1)} = \binom{j-1}{i-1}\binom{j-i}{l-i}
+    $$
+    Then the lefthand side of the equation is equal to
+    $$
+    \binom{j-1}{i-1} \sum_{l=1}^k (-1)^{l-i} \binom{j-i}{l-i} \bigg(\frac{1}{l}\bigg)^m
+    $$
+    We only allow terms where $$0 \leq l-i \leq j-i$$ so the limits of summation can be rewritten:
+    $$
+    \binom{j-1}{i-1} \sum_{l=i}^j (-1)^{l-i} \binom{j-i}{l-i} \bigg(\frac{1}{l}\bigg)^m
+    $$
+    Reindexing via $$\gamma=l-i$$ gives us the righthand side of the equation.
+    </details>
