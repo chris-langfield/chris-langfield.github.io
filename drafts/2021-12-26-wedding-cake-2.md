@@ -156,12 +156,12 @@ First we must find $$\mathbf{Q}$$ and $$\mathbf{Q}^{-1}$$:
 ><details><summary>Click to expand proof</summary>
     The entries of the matrix are given by
     $$
-    A_{ij} = \begin{cases} 
+    W_{ij} = \begin{cases} 
         \frac{1}{j}, & i \leq j \\
         0 & i > j \\
         \end{cases}
     $$
-    We propose that A has eigenvalue-eigenvector pairs
+    We propose that W has eigenvalue-eigenvector pairs
     $$
     \lambda_a = \frac{1}{a}, \quad (e_a)_r = \begin{cases}
         (-1)^{a-1+r}\binom{a-1}{r-1} & 1 \leq r \leq a \\
@@ -170,11 +170,11 @@ First we must find $$\mathbf{Q}$$ and $$\mathbf{Q}^{-1}$$:
     $$
     We must show 
     $$
-    \mathbf{A}\cdot \mathbf{e}_a = \frac{1}{a} \mathbf{e}_a, \quad a = 1, 2, \dots k
+    \mathbf{W}\cdot \mathbf{e}_a = \frac{1}{a} \mathbf{e}_a, \quad a = 1, 2, \dots k
     $$
     Or equivalently,
     $$
-    (Ae_a)_r = \frac{1}{a} (e_a)_r, \quad 1 \leq r \leq a
+    (We_a)_r = \frac{1}{a} (e_a)_r, \quad 1 \leq r \leq a
     $$
     Note that the following identities are true for the binomial coefficients:
     $$
@@ -184,7 +184,7 @@ First we must find $$\mathbf{Q}$$ and $$\mathbf{Q}^{-1}$$:
     $$
     Then expanding the previous expression:
     $$
-    (Ae_a)_r = \sum_{l=r}^a \frac{1}{l} (-1)^{a-1+l} \binom{a-1}{l-1} \\
+    (We_a)_r = \sum_{l=r}^a \frac{1}{l} (-1)^{a-1+l} \binom{a-1}{l-1} \\
     = (-1)^{a-1} \sum_{l=r}^a \frac{1}{l} (-1)^l \binom{a-1}{l-1} \\
     =  \frac{(-1)^{a-1}}{a} \sum_{l=r}^a (-1)^l \binom{a}{l} \quad (\ast) \\
     = \frac{(-1)^{a-1}}{a} \bigg( \sum_{l=0}^a (-1)^l \binom{a}{l} - \sum_{l=0}^{r-1} (-1)^l \binom{a}{l} \bigg) \\
@@ -226,7 +226,7 @@ $$\mathbf{Q}^{-1}$$ is of course just the inverse of the matrix above:
     proof
 >    </details>
 
-With this information, we can begin to work on computing $$\mathbf{P}^k_m$$. First, we would like to find an expression for the entries of $$\mathbf{W} = \mathbf{Q}\mathbf{D}^m\mathbf{Q}^{-1}$$. The first matrix product, $$\mathbf{D}^m\mathbf{Q}^{-1}$$, is:
+With this information, we can begin to work on computing $$\mathbf{P}^k_m$$. First, we would like to find an expression for the entries of $$\mathbf{W}^m = \mathbf{Q}\mathbf{D}^m\mathbf{Q}^{-1}$$. The first matrix product, $$\mathbf{D}^m\mathbf{Q}^{-1}$$, is:
 
 $$
 (D^mQ^{-1})_{ij} = \sum_{l = 1}^k (D^m)_{il} (Q^{-1})_{lj} = \sum_{l=1}^k \delta_{il} \bigg(\frac{1}{l}\bigg)^m \binom{j-1}{l-1} = \binom{j-1}{i-1}\bigg(\frac{1}{i}\bigg)^m
@@ -235,7 +235,7 @@ $$
 Then,
 
 $$
-W_{ij} = (QD^m Q^{-1})_{ij} = \sum_{l=1}^k (-1)^{l-i} \binom{l-1}{i-1} \binom{j-1}{l-1} \bigg(\frac{1}{l}\bigg)^m
+W^m_{ij} = (QD^m Q^{-1})_{ij} = \sum_{l=1}^k (-1)^{l-i} \binom{l-1}{i-1} \binom{j-1}{l-1} \bigg(\frac{1}{l}\bigg)^m
 $$
 
 This can be slightly simplified:
@@ -245,7 +245,7 @@ This can be slightly simplified:
 >*The following identity holds*
 >
 >$$  
->W_{ij} = \sum_{l=1}^k (-1)^{l-i} \binom{l-1}{i-1} \binom{j-1}{l-1} \bigg(\frac{1}{l}\bigg)^m = \binom{j-1}{i-1} \sum_{\gamma=0}^{j-i} (-1)^{\gamma} \binom{j-i}{\gamma} \bigg(\frac{1}{\gamma + i}\bigg)^m 
+>W^m_{ij} = \sum_{l=1}^k (-1)^{l-i} \binom{l-1}{i-1} \binom{j-1}{l-1} \bigg(\frac{1}{l}\bigg)^m = \binom{j-1}{i-1} \sum_{\gamma=0}^{j-i} (-1)^{\gamma} \binom{j-i}{\gamma} \bigg(\frac{1}{\gamma + i}\bigg)^m 
 >$$
 >
 >*given that we discard terms in the sum containing $$\binom{n}{k}$$ for $$k>n$$ and $$k<0$$, which correspond to cases where $$i>j$$ in the matrices.*
@@ -270,13 +270,13 @@ This can be slightly simplified:
     Reindexing via $$\gamma=l-i$$ gives us the righthand side of the equation. ◼️
 >    </details>
 
-The $$m$$'th probability vector $$\mathbf{P}^k_m$$ has components $$(p^k_m(1), p^k_m(2) \dots p^k_m(k))$$. Therefore, we can find an expression for the probability distribution $$p^k_m(s)$$  for $$s \in S = \{1, 2, \dots k\}$$ by multiplying the $$s$$'th row vector of $$\mathbf{W}$$ by the base vector $\mathbf{P}^k_0 = (\frac{1}{k}, \frac{1}{k}, \dots \frac{1}{k})$:
+The $$m$$'th probability vector $$\mathbf{P}^k_m$$ has components $$(p^k_m(1), p^k_m(2) \dots p^k_m(k))$$. Therefore, we can find an expression for the probability distribution $$p^k_m(s)$$  for $$s \in S = \{1, 2, \dots k\}$$ by multiplying the $$s$$'th row vector of $$\mathbf{W}^m$$ by the base vector $\mathbf{P}^k_0 = (\frac{1}{k}, \frac{1}{k}, \dots \frac{1}{k})$:
 
 $$
-p^k_m(s) = \frac{1}{k} \sum_{l=1}^{k} W_{sl} = \frac{1}{k} \sum_{l=s}^k W_{sl}
+p^k_m(s) = \frac{1}{k} \sum_{l=1}^{k} W^m_{sl} = \frac{1}{k} \sum_{l=s}^k W^m_{sl}
 $$
 
-This is the "workable but unsatisfying" closed form I mentioned in the last post. Although it isn't very clean, it is straightforward to implement the computation of $W_{ij}$ in Python. Let's take a look at the distributions for different values of $$m$$:
+This is the "workable but unsatisfying" closed form I mentioned in the last post. Although the analytical expression is not very clean, it is straightforward to implement the computation of $W^m_{ij}$ in Python. Let's take a look at the distributions for different values of $$m$$:
 
 ![Figure_1](https://user-images.githubusercontent.com/34426450/147511054-a5c78919-622b-4cab-be77-184e21535184.png)
 
@@ -286,10 +286,10 @@ Strictly, at this point, the problem has been solved. For any choice of $$k$$ or
 
 >**Proposition**
 >
->*The sum expressing the entries of $$\mathbf{W}$$ has an integral representation, specifically:*
+>*The sum expressing the entries of $$\mathbf{W}^m$$ has an integral representation, specifically:*
 >
 >$$  
->W_{ij} = \int_0^1 \int_0^1 \dots \int_0^1 (x_1 x_2 \dots x_m)^{i-1} (1-x_1 x_2 \dots x_m)^{j-i} dx_1 dx_2 \dots dx_m 
+>W^m_{ij} = \int_0^1 \int_0^1 \dots \int_0^1 (x_1 x_2 \dots x_m)^{i-1} (1-x_1 x_2 \dots x_m)^{j-i} dx_1 dx_2 \dots dx_m 
 >$$
 ><details><summary>Click to expand proof</summary> 
     proof
