@@ -230,5 +230,5 @@ $$
     $$
     \binom{j-1}{i-1} \sum_{l=i}^j (-1)^{l-i} \binom{j-i}{l-i} \bigg(\frac{1}{l}\bigg)^m
     $$
-    Reindexing via $$\gamma=l-i$$ gives us the righthand side of the equation.
+    Reindexing via $$\gamma=l-i$$ gives us the righthand side of the equation. ◼️
 >    </details>
