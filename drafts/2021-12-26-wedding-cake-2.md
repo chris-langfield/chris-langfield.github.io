@@ -270,8 +270,10 @@ This can be slightly simplified:
     Reindexing via $$\gamma=l-i$$ gives us the righthand side of the equation. ◼️
 >    </details>
 
-The $$m$$'th probability vector $$\mathbf{P}^k_m$$ has components $$(p^k_m(1), p^k_m(2) \dots p^k_m(k))$$. Therefore, we can find an expression for the probability distribution $$p^k_m(s)$$  for $$s \in S = \{1, 2, \dots k\}$$ by multiplying the $$s$$'th row vector of $$\mathbf{W}$$ by the base vector $\mathbf{P}^k_0 = (\frac{1}{k}, \frac{1}{k}, \dots \frac{1}{k})$$:
+The $$m$$'th probability vector $$\mathbf{P}^k_m$$ has components $$(p^k_m(1), p^k_m(2) \dots p^k_m(k))$$. Therefore, we can find an expression for the probability distribution $$p^k_m(s)$$  for $$s \in S = \{1, 2, \dots k\}$$ by multiplying the $$s$$'th row vector of $$\mathbf{W}$$ by the base vector $\mathbf{P}^k_0 = (\frac{1}{k}, \frac{1}{k}, \dots \frac{1}{k})$:
 
 $$
 p^k_m(s) = \frac{1}{k} \sum_{l=1}^{k} W_{sl} = \frac{1}{k} \sum_{l=s}^k W_{sl}
 $$
+
+This is the "workable but unsatisfying" closed form I mentioned in the last post. Although it isn't very clean, it is straightforward to implement the computation of $W_{ij}$ in Python. Let's take a look at the distributions for different values of $$m$$:
