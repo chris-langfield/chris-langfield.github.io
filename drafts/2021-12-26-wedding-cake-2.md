@@ -64,7 +64,7 @@ $$
 p^k_m(k) = 0 + 0 + 0  + \dots + 0 + \bigg(\frac{1}{k}\bigg)p^k_{m-1}(k) 
 $$
 
-or equivalently,
+I'm insisting on keeping the superscript $$k$$ because it's important to remember that these distributions are parametrized by $$k$$, i.e. the size of the initial sample space, as well as by $$m$$. We can think of the equations above as a matrix multiplication, making the following expression equivalent:
 
 $$
     \begin{pmatrix}
@@ -104,4 +104,84 @@ Since we have that $$p^k_0(s) = \frac{1}{k}$$ for all $$s$$, $$\mathbf{P}^k_0 = 
 
 This expression, along with the base vector $$\mathbf{P}^k_0$$, defines a *matrix difference equation*, a well-studied topic (see for reference Ch. 7 in [Cull, Flahive and Robson: Difference Equations: From Rabbits to Chaos](https://link.springer.com/book/10.1007/0-387-27645-9)). 
 
-I want to pause briefly here to recap. The problem we've set ourselves is to find an expression for the probability distribution over $$S = \{1, 2, \dots k\}$$ induced by repeating the selection process $$m$$ times. For $$m=0$$, this reduces to the uniform distribution over $$S$$, which we call $$p^k_0$$. It's possible to find an expression for $$p^k_1$$ in closed form. However, as $$m$$ grows, it becomes very difficult to simplify these equations. There is a recursive relationship between the distributions however. After noticing this, we rewrote the problem in terms of a recursive matrix equation. Our distributions $$p^k_0, p^k_1 \dots$$ turned into probability vectors $$\mathbf{P}^k_0, \mathbf{P}^k_1, \dots$$. The last step was to realize that we can write the $$m$$'th probability vector as the $$m$$'th power of the matrix $$\mathbf{A}$$ times the base vector $$\mathbf{P}^k_0$$. This is, finally, a closed form expression, although it is an unwieldy one. Our task now will be to decompress the matrix equation in the hopes of finding a function over $$S$$ describing the probability distribution for each $$m$$.
+I want to pause briefly here to recap. The problem we've set ourselves is to find an expression for the probability distribution over $$S = \{1, 2, \dots k\}$$ induced by repeating the selection process $$m$$ times. For $$m=0$$, this reduces to the uniform distribution over $$S$$, which we call $$p^k_0$$. It's possible to find an expression for $$p^k_1$$ in closed form. However, as $$m$$ grows, it becomes very difficult to simplify these equations. There is a recursive relationship between the distributions however. After noticing this, we rewrote the problem in terms of a recursive matrix equation. Our distributions $$p^k_0, p^k_1 \dots p^k_m$$ turned into probability vectors $$\mathbf{P}^k_0, \mathbf{P}^k_1, \dots, \mathbf{P}^k_m$$. 
+
+The last step was to realize that we can write the $$m$$'th probability vector as the $$m$$'th power of the matrix $$\mathbf{A}$$ times the base vector $$\mathbf{P}^k_0$$. This is, finally, a closed form expression, although it is an unwieldy one. Our task now will be to decompress the matrix equation in the hopes of finding a function over $$S$$ describing the probability distribution for each $$m$$.
+
+## Pascal and Inverse Pascal
+
+We take the standard approach to solving a matrix difference equation. Notice that $$\mathbf{A}$$ is an upper-triangular matrix, which means its eigenvalues can be read off the diagonal. These are $$1,\frac{1}{2}, \frac{1}{3}, \dots \frac{1}{k}$$. Because there are $$k$$ distinct eigenvalues, $$\mathbf{A}$$ [is diagonalizable](https://en.wikipedia.org/wiki/Diagonalizable_matrix). That means it can be written in the form
+
+$$
+\mathbf{A} = \mathbf{Q} \mathbf{D} \mathbf{Q}^{-1}
+$$
+
+Where $$\mathbf{D} = \text{diag}(1,\frac{1}{2}, \dots \frac{1}{k})$$ and the columns of $$Q$$ are the corresponding eigenvectors of $$\mathbf{A}$$. This is particularly useful in this case because we can write, for example:
+
+$$
+\mathbf{A}^2 = (\mathbf{Q}\mathbf{D}\mathbf{Q}^{-1} ) (\mathbf{Q}\mathbf{D}\mathbf{Q}^{-1}) = \mathbf{Q} \mathbf{D} (\mathbf{Q}^{-1}\mathbf{Q}) \mathbf{D} \mathbf{Q}^{-1} = \mathbf{Q}\mathbf{D}\mathbf{I}\mathbf{D}\mathbf{Q}^{-1} = \mathbf{Q}\mathbf{D}^2\mathbf{Q}^{-1}
+$$
+
+In general,
+
+$$
+\mathbf{A}^k = \mathbf{Q}\mathbf{D}^m\mathbf{Q}^{-1}
+$$
+
+With $$\mathbf{D}$$ being a diagonal matrix, $$\mathbf{D}^m$$ is easy to compute. 
+
+#### Theorem
+
+*The matrix $$\mathbf{Q}$$ whose columns are the eigenvectors of $$mathbf{A}$$ is the **inverse Pascal matrix** whose entries are given by:*
+
+$$
+Q_{ij} = \begin{cases} 
+    (-1)^{j-i} \binom{j}{i}, & i \leq j \\
+    0 & i > j \\
+  \end{cases}
+$$
+
+*That is,*
+$$
+    \mathbf{Q}
+    =
+    \begin{pmatrix}
+      1 & -1 & 1 & -1 & 1 & -1 & \dots \\
+      0 &  1 &-2 &  3 &-4 &  5 & \dots \\
+      0 & 0 &  1 & -3 & 6 &-10 & \dots \\
+      0 & 0 & 0 &   1 & 4 & 10 & \dots \\
+      0 & 0 & 0 &   0 &-1 & -5 & \dots \\
+      \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \ddots
+    \end{pmatrix}
+$$
+______________________________________________
+
+The next result may not be a surprise. 
+
+#### Theorem
+
+*$$\mathbf{Q}^{-1}$$ is equal to the **Pascal matrix**, whose entries are given by:*
+
+$$
+Q^{-1}_{ij} = \begin{cases} 
+    \binom{j}{i}, & i \leq j \\
+    0 & i > j \\
+  \end{cases}
+$$
+
+*That is,*
+
+$$
+    \mathbf{Q}^{-1}
+    =
+    \begin{pmatrix}
+      1 & 1 & 1 & 1 & 1 & 1 & \dots \\
+      0 & 1 & 2 & 3 & 4 & 5 & \dots \\
+      0 & 0 & 1 & 3 & 6 & 10 & \dots \\
+      0 & 0 & 0 & 1 & 4 & 10 & \dots \\
+      0 & 0 & 0 & 0 & 1 & 5 & \dots \\
+      \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \ddots
+    \end{pmatrix}
+$$
+______________________________________________
+
