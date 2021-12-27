@@ -154,7 +154,20 @@ First we must find $$\mathbf{Q}$$ and $$\mathbf{Q}^{-1}$$:
 >    \end{pmatrix}
 >$$
 ><details><summary>Click to expand proof</summary>
-    proof
+    The entries of the matrix are given by
+    $$
+    A_{ij} = \begin{cases} 
+        \frac{1}{j}, & i \leq j \\
+        0 & i > j \\
+        \end{cases}
+    $$
+    We propose that **A** has eigenvalue-eigenvector pairs
+    $$
+    \lambda_a = \frac{1}{a}, \quad (e_a)_r = \begin{cases}
+        (-1)^{a-1+r}\binom{a-1}{r-1} & 1 \leq r \leq a \\
+        0 & a < r \leq k
+        \end{cases}
+    $$
 ></details>
 
 $$\mathbf{Q}^{-1}$$ is of course just the inverse of the matrix above:
