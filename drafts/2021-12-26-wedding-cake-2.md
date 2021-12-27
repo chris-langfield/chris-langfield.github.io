@@ -218,8 +218,7 @@ $$
 >
 >*given that we discard terms in the sum containing $$\binom{n}{k}$$ for $$k>n$$ and $$k<0$$, which correspond to cases where $$i>j$$ in the matrices.*
 >
-><details><summary>Click to expand proof</summary> 
-    
+><details><summary>####Click to expand proof</summary> 
     The following identity is true for the binomial coefficients:
     $$
     \binom{n}{m}\binom{m}{k} = \binom{n}{k}\binom{n-k}{m-k}
