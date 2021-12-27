@@ -215,7 +215,14 @@ $$
 
 #### Proof
 <details>
-  <summary>Click to expand!</summary>
+  <summary>Click to expand proof</summary>
   
-  proof
+    The following identity is true for the binomial coefficients: (see 4.1.8 [this document](http://www.cs.columbia.edu/~cs4205/files/CM4.pdf), where two proofs are provided. From J. Gross, lecture notes for Combinatorial Mathematics.)
+    $$
+    \binom{n}{m}\binom{m}{k} = \binom{n}{k}\binom{n-k}{m-k}
+    $$
+    Therefore, 
+    $$
+    \binom{j-1}{l-1}\binom{l-1}{i-1} = \binom{j-1}{i-1}\binom{j-1-(i-1)}{l-1-(i-1)} = \binom{j-1}{i-1}\binom{j-i}{l-i}
+    $$
 </details>
