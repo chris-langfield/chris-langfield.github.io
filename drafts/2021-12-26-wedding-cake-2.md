@@ -208,7 +208,8 @@ $$
 $$
 
 
-<span style="background-color:blue">#### Theorem</span>
+<div style="background-color:grey">
+#### Theorem
 
 *The following identity holds*
 
@@ -218,7 +219,7 @@ $$
 $$
 
 *given that we discard terms in the sum containing $$\binom{n}{k}$$ for $$k>n$$ and $$k<0$$, which correspond to cases where $$i>j$$ in the matrices.*
-
+    </div>
 #### Proof
 <details><summary>Click to expand proof</summary>
   
