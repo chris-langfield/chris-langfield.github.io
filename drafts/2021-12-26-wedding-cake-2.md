@@ -128,72 +128,65 @@ With $$\mathbf{D}$$ being a diagonal matrix, $$\mathbf{D}^m$$ is easy to compute
 
 First we must find $$\mathbf{Q}$$ and $$\mathbf{Q}^{-1}$$:
 
-#### Theorem
+> **Theorem**
+>
+>*The matrix $$\mathbf{Q}$$ whose columns are the eigenvectors of $$\mathbf{A}$$ is the **inverse Pascal matrix**, whose entries are given by:*
+>
+>$$
+>Q_{ij} = \begin{cases} 
+>    (-1)^{j-i} \binom{j-1}{i-1}, & i \leq j \\
+>    0 & i > j \\
+>  \end{cases}
+>$$
+>
+>*That is,*
+>
+>$$
+>    \mathbf{Q}
+>    =
+>    \begin{pmatrix}
+>      1 & -1 & 1 & -1 & 1 & -1 & \dots \\
+>      0 &  1 &-2 &  3 &-4 &  5 & \dots \\
+>      0 & 0 &  1 & -3 & 6 &-10 & \dots \\
+>      0 & 0 & 0 &   1 &-4 & 10 & \dots \\
+>      0 & 0 & 0 &   0 & 1 & -5 & \dots \\
+>      \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \ddots
+>    \end{pmatrix}
+>$$
+><details><summary>Click to expand proof</summary>
+    proof
+></details>
 
-*The matrix $$\mathbf{Q}$$ whose columns are the eigenvectors of $$\mathbf{A}$$ is the **inverse Pascal matrix**, whose entries are given by:*
-
-$$
-Q_{ij} = \begin{cases} 
-    (-1)^{j-i} \binom{j-1}{i-1}, & i \leq j \\
-    0 & i > j \\
-  \end{cases}
-$$
-
-*That is,*
-
-$$
-    \mathbf{Q}
-    =
-    \begin{pmatrix}
-      1 & -1 & 1 & -1 & 1 & -1 & \dots \\
-      0 &  1 &-2 &  3 &-4 &  5 & \dots \\
-      0 & 0 &  1 & -3 & 6 &-10 & \dots \\
-      0 & 0 & 0 &   1 &-4 & 10 & \dots \\
-      0 & 0 & 0 &   0 & 1 & -5 & \dots \\
-      \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \ddots
-    \end{pmatrix}
-$$
-
-
-#### Proof
-<details>
-  <summary>Click to expand proof</summary>
-  
-
-</details>
-
-______________________________________________
+>**Theorem**
+>
+>*$$\mathbf{Q}^{-1}$$ is equal to the **Pascal matrix**, whose entries are given by:*
+>
+>$$
+>Q^{-1}_{ij} = \begin{cases} 
+>    \binom{j-1}{i-1}, & i \leq j \\
+>    0 & i > j \\
+>  \end{cases}
+>$$
+>
+>*That is,*
+>
+>$$
+>    \mathbf{Q}^{-1}
+>    =
+>    \begin{pmatrix}
+>      1 & 1 & 1 & 1 & 1 & 1 & \dots \\
+>      0 & 1 & 2 & 3 & 4 & 5 & \dots \\
+>      0 & 0 & 1 & 3 & 6 & 10 & \dots \\
+>      0 & 0 & 0 & 1 & 4 & 10 & \dots \\
+>      0 & 0 & 0 & 0 & 1 & 5 & \dots \\
+>      \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \ddots
+>    \end{pmatrix}
+>$$
+><details><summary>Click to expand proof</summary> 
+    proof
+>    </details>
 
 
-
-
-#### Theorem
-
-*$$\mathbf{Q}^{-1}$$ is equal to the **Pascal matrix**, whose entries are given by:*
-
-$$
-Q^{-1}_{ij} = \begin{cases} 
-    \binom{j-1}{i-1}, & i \leq j \\
-    0 & i > j \\
-  \end{cases}
-$$
-
-*That is,*
-
-$$
-    \mathbf{Q}^{-1}
-    =
-    \begin{pmatrix}
-      1 & 1 & 1 & 1 & 1 & 1 & \dots \\
-      0 & 1 & 2 & 3 & 4 & 5 & \dots \\
-      0 & 0 & 1 & 3 & 6 & 10 & \dots \\
-      0 & 0 & 0 & 1 & 4 & 10 & \dots \\
-      0 & 0 & 0 & 0 & 1 & 5 & \dots \\
-      \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \ddots
-    \end{pmatrix}
-$$
-
-______________________________________________
 
 With this information, we can begin to work on computing $$\mathbf{P}^k_m$$. First, we would like to find an expression for the entries of $$\mathbf{Q}\mathbf{D}^m\mathbf{Q}^{-1}$$. The first matrix product, $$\mathbf{D}^m\mathbf{Q}^{-1}$$, is:
 
@@ -208,7 +201,7 @@ $$
 $$
 
 
->#### Theorem
+>**Theorem**
 >
 >*The following identity holds*
 >
@@ -218,7 +211,7 @@ $$
 >
 >*given that we discard terms in the sum containing $$\binom{n}{k}$$ for $$k>n$$ and $$k<0$$, which correspond to cases where $$i>j$$ in the matrices.*
 >
-><details><summary>####Click to expand proof</summary> 
+><details><summary>Click to expand proof</summary> 
     The following identity is true for the binomial coefficients:
     $$
     \binom{n}{m}\binom{m}{k} = \binom{n}{k}\binom{n-k}{m-k}
