@@ -179,8 +179,8 @@ First we must find $$\mathbf{Q}$$ and $$\mathbf{Q}^{-1}$$:
     Note that the following identities are true for the binomial coefficients:
     $$
     (\ast) \binom{n}{k} = \frac{k}{n} \binom{n-1}{k-1} \\
-    (\dagger) \sum{i=0}^{n} (-1)^i \binom{n}{i} = 0 \\
-    (\ddagger) \sum{i=0}^{D} (-1)^i \binom{n}{i} = (-1)^{D} \binom{n-1}{D}, \quad D<n
+    (\dagger) \sum_{i=0}^{n} (-1)^i \binom{n}{i} = 0 \\
+    (\ddagger) \sum_{i=0}^{D} (-1)^i \binom{n}{i} = (-1)^{D} \binom{n-1}{D}, \quad D<n
     $$
     Then expanding the previous expression:
     $$
