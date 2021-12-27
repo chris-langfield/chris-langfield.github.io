@@ -178,9 +178,10 @@ First we must find $$\mathbf{Q}$$ and $$\mathbf{Q}^{-1}$$:
     $$
     Expanding gives
     $$
-    (Ae_a)_r = \sum_{l=a}^k \frac{1}{l} (-1)^{a-1+l} \binom{a-1}{l-1} \\
-    = (-1)^{a-1} \sum_{l=a}^k \frac{1}{l} (-1)^{l} \binom{a-1}{l-1} \\
-    =  \frac{(-1)^{a-1}}{a} \sum_{l=a}^k \binom{a}{l}
+    (Ae_a)_r = \sum_{l=r}^a \frac{1}{l} (-1)^{a-1+l} \binom{a-1}{l-1} \\
+    = (-1)^{a-1} \sum_{l=r}^a \frac{1}{l} (-1)^l \binom{a-1}{l-1} \\
+    =  \frac{(-1)^{a-1}}{a} \sum_{l=r}^a (-1)^l \binom{a}{l}
+    = \frac{(-1)^{a-1}}{a} \bigg( \sum_{l=0}^a (-1)^l \binom{a}{l} - \sum{l=0}^{r-1} (-1)^{l} \binom{a}{l} \bigg)
     $$     
 ></details>
 
