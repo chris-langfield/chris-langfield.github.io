@@ -157,6 +157,8 @@ First we must find $$\mathbf{Q}$$ and $$\mathbf{Q}^{-1}$$:
     proof
 ></details>
 
+$$\mathbf{Q}^{-1}$$ is of course just the inverse of the matrix above:
+
 >**Theorem**
 >
 >*$$\mathbf{Q}^{-1}$$ is equal to the **Pascal matrix**, whose entries are given by:*
