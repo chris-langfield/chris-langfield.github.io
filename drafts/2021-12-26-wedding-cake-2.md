@@ -181,8 +181,7 @@ First we must find $$\mathbf{Q}$$ and $$\mathbf{Q}^{-1}$$:
     (Ae_a)_r = \sum_{l=a}^k \frac{1}{l} (-1)^{a-1+l} \binom{a-1}{l-1} \\
     = (-1)^{a-1} \sum_{l=a}^k \frac{1}{l} (-1)^{l} \binom{a-1}{l-1} \\
     =  \frac{(-1)^{a-1}}{a} \sum_{l=a}^k \binom{a}{l}
-    $$
-               
+    $$     
 ></details>
 
 $$\mathbf{Q}^{-1}$$ is of course just the inverse of the matrix above:
