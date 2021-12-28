@@ -182,7 +182,7 @@ First we must find $$\mathbf{Q}$$ and $$\mathbf{Q}^{-1}$$:
     \sum_{i=0}^{n} (-1)^i \binom{n}{i} = 0 \quad (\dagger) \\
     \sum_{i=0}^{D} (-1)^i \binom{n}{i} = (-1)^{D} \binom{n-1}{D}, \quad D<n \quad (\ddagger)
     $$
-    Then expanding the previous expression:
+    The first identity is easily verified. See https://math.stackexchange.com/questions/887960 for the latter two. Expanding the previous expression:
     $$
     (We_a)_r = \sum_{l=r}^a \frac{1}{l} (-1)^{a-1+l} \binom{a-1}{l-1} \\
     = (-1)^{a-1} \sum_{l=r}^a \frac{1}{l} (-1)^l \binom{a-1}{l-1} \\
