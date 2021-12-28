@@ -47,7 +47,7 @@ _BS, Applied Mathematics (2018)_, University of Rochester
 
 ## Technologies
 
-advanced intermediate: Python, Linux, HPC 
+advanced: Python, Linux, HPC 
 
 a bit of: C#, Matlab, Mathematica
 
