@@ -228,13 +228,19 @@ $$\mathbf{Q}^{-1}$$ is of course just the inverse of the matrix above:
 With this information, we can begin to work on computing $$\mathbf{P}^k_m$$. First, we would like to find an expression for the entries of $$\mathbf{W}^m = \mathbf{Q}\mathbf{D}^m\mathbf{Q}^{-1}$$. The first matrix product, $$\mathbf{D}^m\mathbf{Q}^{-1}$$, is:
 
 $$
-(D^mQ^{-1})_{ij} = \sum_{l = 1}^k (D^m)_{il} (Q^{-1})_{lj} = \sum_{l=1}^k \delta_{il} \bigg(\frac{1}{l}\bigg)^m \binom{j-1}{l-1} = \binom{j-1}{i-1}\bigg(\frac{1}{i}\bigg)^m
+(D^mQ^{-1})_{ij} = \sum_{l = 1}^k (D^m)_{il} (Q^{-1})_{lj} = \sum_{l=1}^k \delta_{il} \bigg(\frac{1}{l}\bigg)^m \binom{j-1}{l-1} = \\
+\begin{cases} 
+    \binom{j-1}{i-1}\bigg(\frac{1}{i}\bigg)^m, & i \leq j \\
+    0 & i > j \\
+  \end{cases}
 $$
 
 Then,
 
 $$
-W^m_{ij} = (QD^m Q^{-1})_{ij} = \sum_{l=1}^k (-1)^{l-i} \binom{l-1}{i-1} \binom{j-1}{l-1} \bigg(\frac{1}{l}\bigg)^m
+W^m_{ij} = (QD^m Q^{-1})_{ij} = \begin{cases}
+    \sum_{l=1}^k (-1)^{l-i} \binom{l-1}{i-1} \binom{j-1}{l-1} \bigg(\frac{1}{l}\bigg)^m & i \leq j \\
+    0 & i > j \\
 $$
 
 This can be slightly simplified:
@@ -247,7 +253,7 @@ This can be slightly simplified:
 >W^m_{ij} = \sum_{l=1}^k (-1)^{l-i} \binom{l-1}{i-1} \binom{j-1}{l-1} \bigg(\frac{1}{l}\bigg)^m = \binom{j-1}{i-1} \sum_{r=0}^{j-i} (-1)^{r} \binom{j-i}{r} \bigg(\frac{1}{r + i}\bigg)^m 
 >$$
 >
->*given that we discard terms in the sum containing $$\binom{n}{k}$$ for $$k>n$$ and $$k<0$$, which correspond to cases where $$i>j$$ in the matrices.*
+>*for $$i \leq j$$.*
 >
 ><details><summary>Click to expand proof</summary>
     The following identity is true for the binomial coefficients:
@@ -291,6 +297,7 @@ Strictly, at this point, the problem has been solved. For any choice of $$k$$ or
 >W^m_{ij} = \binom{j-1}{i-1} \int_0^1 \int_0^1 \dots \int_0^1 (x_1 x_2 \dots x_m)^{i-1} (1-x_1 x_2 \dots x_m)^{j-i} dx_1 dx_2 \dots dx_m 
 >$$
 >
+>*for $$i\leq j$$.*
 ><details><summary>Click to expand proof</summary> 
     Using the fact that
     $$
