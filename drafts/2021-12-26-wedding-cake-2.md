@@ -244,7 +244,7 @@ This can be slightly simplified:
 >*The following identity holds*
 >
 >$$  
->W^m_{ij} = \sum_{l=1}^k (-1)^{l-i} \binom{l-1}{i-1} \binom{j-1}{l-1} \bigg(\frac{1}{l}\bigg)^m = \binom{j-1}{i-1} \sum_{\gamma=0}^{j-i} (-1)^{\gamma} \binom{j-i}{\gamma} \bigg(\frac{1}{\gamma + i}\bigg)^m 
+>W^m_{ij} = \sum_{l=1}^k (-1)^{l-i} \binom{l-1}{i-1} \binom{j-1}{l-1} \bigg(\frac{1}{l}\bigg)^m = \binom{j-1}{i-1} \sum_{r=0}^{j-i} (-1)^{r} \binom{j-i}{r} \bigg(\frac{1}{r + i}\bigg)^m 
 >$$
 >
 >*given that we discard terms in the sum containing $$\binom{n}{k}$$ for $$k>n$$ and $$k<0$$, which correspond to cases where $$i>j$$ in the matrices.*
@@ -266,7 +266,7 @@ This can be slightly simplified:
     $$
     \binom{j-1}{i-1} \sum_{l=i}^j (-1)^{l-i} \binom{j-i}{l-i} \bigg(\frac{1}{l}\bigg)^m
     $$
-    Reindexing via $$\gamma=l-i$$ gives us the righthand side of the equation. ◼️
+    Reindexing via $$r=l-i$$ gives us the righthand side of the equation. ◼️
 >    </details>
 
 The $$m$$'th probability vector $$\mathbf{P}^k_m$$ has components $$(p^k_m(1), p^k_m(2) \dots p^k_m(k))$$. Therefore, we can find an expression for the probability distribution $$p^k_m(s)$$  for $$s \in S = \{1, 2, \dots k\}$$ by multiplying the $$s$$'th row vector of $$\mathbf{W}^m$$ by the base vector $\mathbf{P}^k_0 = (\frac{1}{k}, \frac{1}{k}, \dots \frac{1}{k})$:
