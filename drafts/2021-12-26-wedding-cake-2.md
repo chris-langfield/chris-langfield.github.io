@@ -228,22 +228,16 @@ $$\mathbf{Q}^{-1}$$ is of course just the inverse of the matrix above:
 With this information, we can begin to work on computing $$\mathbf{P}^k_m$$. First, we would like to find an expression for the entries of $$\mathbf{W}^m = \mathbf{Q}\mathbf{D}^m\mathbf{Q}^{-1}$$. The first matrix product, $$\mathbf{D}^m\mathbf{Q}^{-1}$$, is:
 
 $$
-(D^mQ^{-1})_{ij} = \sum_{l = 1}^k (D^m)_{il} (Q^{-1})_{lj} = \sum_{l=1}^k \delta_{il} \bigg(\frac{1}{l}\bigg)^m \binom{j-1}{l-1} = \\
-\begin{cases} 
-    \binom{j-1}{i-1}\bigg(\frac{1}{i}\bigg)^m, & i \leq j \\
-    0 & i > j \\
-  \end{cases}
+(D^mQ^{-1})_{ij} = \sum_{l = 1}^k (D^m)_{il} (Q^{-1})_{lj} = \sum_{l=1}^k \delta_{il} \bigg(\frac{1}{l}\bigg)^m \binom{j-1}{l-1} = \binom{j-1}{i-1}\bigg(\frac{1}{i}\bigg)^m, & i \leq j 
 $$
 
 Then,
 
 $$
-W^m_{ij} = (QD^m Q^{-1})_{ij} = \begin{cases}
-    \sum_{l=1}^k (-1)^{l-i} \binom{l-1}{i-1} \binom{j-1}{l-1} \bigg(\frac{1}{l}\bigg)^m & i \leq j \\
-    0 & i > j \\
+W^m_{ij} = (QD^m Q^{-1})_{ij} = \sum_{l=1}^k (-1)^{l-i} \binom{l-1}{i-1} \binom{j-1}{l-1} \bigg(\frac{1}{l}\bigg)^m & i \leq j 
 $$
 
-This can be slightly simplified:
+Note that because $W^m_{ij}$ is an upper triangular matrix, $W^m_{ij} = 0$ for $i>j$. This expression can be slightly simplified:
 
 >**Proposition**
 >
