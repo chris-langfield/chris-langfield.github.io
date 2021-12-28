@@ -254,7 +254,7 @@ Note that because $W^m_{ij}$ is an upper triangular matrix, $W^m_{ij} = 0$ for $
     $$
     \binom{n}{m}\binom{m}{k} = \binom{n}{k}\binom{n-k}{m-k}
     $$
-    Therefore, 
+    (J. Gross, lecture notes for combinatorial mathematics http://www.cs.columbia.edu/~cs4205/files/CM4.pdf). Therefore, 
     $$
     \binom{j-1}{l-1}\binom{l-1}{i-1} = \binom{j-1}{i-1}\binom{j-1-(i-1)}{l-1-(i-1)} = \binom{j-1}{i-1}\binom{j-i}{l-i}
     $$
