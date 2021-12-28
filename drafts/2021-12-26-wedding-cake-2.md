@@ -313,5 +313,5 @@ Strictly, at this point, the problem has been solved. For any choice of $$k$$ or
 As a corollary, $$p^k_1(s)$$ is a sum of Beta functions:
 
 $$
-p^k_1(s) = \frac{1}{k} \sum_{l=s}^k W^1_{sl} = \sum_{l=s}^k \binom{s-1}{l-1} \text{B}(l, l-s+1)
+p^k_1(s) = \frac{1}{k} \sum_{l=s}^k W^1_{sl} = \sum_{l=s}^k \binom{l-1}{s-1} \text{B}(s, l-s+1)
 $$
