@@ -312,5 +312,5 @@ Strictly, at this point, the problem has been solved. For any choice of $$k$$ or
 As a corollary, $$p^k_2(s)$$ is a sum of Beta functions:
 
 $$
-p^k_2(s) = \frac{1}{k} 
+p^k_2(s) = \frac{1}{k} \sum_{l=s}^k W^m_{sl} = \sum{l=s}^k \binom{s-1}{l-1} \text{B}(l, s-l+1)
 $$
