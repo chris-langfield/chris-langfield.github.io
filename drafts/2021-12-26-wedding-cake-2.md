@@ -303,7 +303,10 @@ Strictly, at this point, the problem has been solved. For any choice of $$k$$ or
     $$
     (text line for formatting)
     $$
-    = \binom{j-1}{i-1} \sum_{r=0}^{j-i} \binom{j-i}{r} (-1)^r \int_0^1 \int_0^1 \dots \int_0^1 x_1^{r+i-1} x_2^{r+i-1} \dots x_m^{r+i-1} dx_1 dx_2 \dots dx_m \\ 
+    = \binom{j-1}{i-1} \sum_{r=0}^{j-i} \binom{j-i}{r} (-1)^r \int_0^1 \int_0^1 \dots \int_0^1 x_1^{r+i-1} x_2^{r+i-1} \dots x_m^{r+i-1} dx_1 dx_2 \dots dx_m
+    $$
+    (text line for formatting)
+    $$
     = \binom{j-1}{i-1} \int_0^1 \int_0^1 \dots \int_0^1 (x_1^ x_2^ \dots x_m)^{i-1} \sum_{r=0}^{j-i} \binom{j-i}{r} (-1)^r (x_1 x_2 \dots x_m)^r dx_1 dx_2 \dots dx_m
     $$
     Via the binomial theorem:
