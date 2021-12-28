@@ -222,9 +222,7 @@ $$\mathbf{Q}^{-1}$$ is of course just the inverse of the matrix above:
 >      \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \ddots
 >    \end{pmatrix}
 >$$
-><details><summary>Click to expand proof</summary> 
-    proof
->    </details>
+> [Proof](https://proofwiki.org/wiki/Inverse_of_Pascal%27s_Triangle_expressed_as_Matrix)
 
 With this information, we can begin to work on computing $$\mathbf{P}^k_m$$. First, we would like to find an expression for the entries of $$\mathbf{W}^m = \mathbf{Q}\mathbf{D}^m\mathbf{Q}^{-1}$$. The first matrix product, $$\mathbf{D}^m\mathbf{Q}^{-1}$$, is:
 
