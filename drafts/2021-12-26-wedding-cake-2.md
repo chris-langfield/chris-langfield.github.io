@@ -310,8 +310,16 @@ Strictly, at this point, the problem has been solved. For any choice of $$k$$ or
     And the result follows directly. ◼️
 ></details>
 
-As a corollary, $$p^k_1(s)$$ is a sum of Beta functions:
+If we take $m=1$, we have
 
 $$
-p^k_1(s) = \frac{1}{k} \sum_{l=s}^k W^1_{sl} = \frac{1}{k} \sum_{l=s}^k \binom{l-1}{s-1} \text{B}(s, l-s+1) = \frac{1}{k} (H_k - H_s-1)
+W^1_{ij} = \binom{j-1}{i-1} \int_0^1 x^{i-1} (1-x)^{j-i} dx = \binom{j-1}{i-1} \text{B}(i, j-i+1)
 $$
+
+where $$B(x,y)$$ is the Beta function. Note that the definition of the beta function requires that for real arguments $$x$$ and $$y$$, $$x>0$$ and $$y>0$$. $$W^m_{ij} = 0$$ for $i>j$, so this expression is always valid. Then we have an identity
+
+$$
+p^k_1(s) = \frac{1}{k} \sum_{l=s}^k W^1_{sl} = \frac{1}{k} \sum_{l=s}^k \binom{l-1}{s-1} \text{B}(s, l-s+1) = \frac{1}{k} (H_k - H_{s-1})
+$$
+
+where the last expression is the original formula for $p^k_1(s)$ derived in part 1. 
