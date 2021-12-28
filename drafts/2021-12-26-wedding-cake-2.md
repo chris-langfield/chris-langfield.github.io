@@ -299,8 +299,8 @@ Strictly, at this point, the problem has been solved. For any choice of $$k$$ or
     $$
     W^m_{ij} = \binom{j-1}{i-1} \sum_{r=0}^{j-i} \binom{j-i}{r} (-1)^r \bigg(\int_0^1 x^{r+i-1} dx \bigg)^m \\
     = \binom{j-1}{i-1} \sum_{r=0}^{j-i} \binom{j-i}{r} (-1)^r \int_0^1 x_1^{r+i-1} dx_1  \int_0^1 x_2^{r+i-1} dx_2 \dots  \int_0^1 x_m^{r+i-1} dx_m \\
-    = \binom{j-1}{i-1} \sum_{r=0}^{j-i} \binom{j-i}{r} (-1)^r \int_0^1 \int_0^1 \dots \int_0^1 x_1^{r+i-1} x_2^{r+i-1} \dots x_m^{r+i-1} dx_1 dx_2 \dots dx_m
-    =  \binom{j-1}{i-1} \int_0^1 \int_0^1 \dots \int_0^1 (x_1^ x_2^ \dots x_m)^{i-1} \sum_{r=0}^{j-i} \binom{j-i}{r} (-1)^r (x_1 x_2 \dots x_m)^r  dx_1 dx_2 \dots dx_m 
+    = \binom{j-1}{i-1} \sum_{r=0}^{j-i} \binom{j-i}{r} (-1)^r \int_0^1 \int_0^1 \dots \int_0^1 x_1^{r+i-1} x_2^{r+i-1} \dots x_m^{r+i-1} dx_1 dx_2 \dots dx_m \\
+    =  \binom{j-1}{i-1} \int_0^1 \int_0^1 \dots \int_0^1 (x_1^ x_2^ \dots x_m)^{i-1} \sum_{r=0}^{j-i} \binom{j-i}{r} (-1)^r (x_1 x_2 \dots x_m)^r dx_1 dx_2\dots dx_m 
     $$
     Via the binomial theorem:
     $$
@@ -309,8 +309,8 @@ Strictly, at this point, the problem has been solved. For any choice of $$k$$ or
     And the result follows directly. ◼️
 >    </details>
 
-As a corollary, $$p^k_2(s)$$ is a sum of Beta functions:
+As a corollary, $$p^k_1(s)$$ is a sum of Beta functions:
 
 $$
-p^k_2(s) = \frac{1}{k} \sum_{l=s}^k W^m_{sl} = \sum{l=s}^k \binom{s-1}{l-1} \text{B}(l, s-l+1)
+p^k_1(s) = \frac{1}{k} \sum_{l=s}^k W^m_{sl} = \sum{l=s}^k \binom{s-1}{l-1} \text{B}(l, s-l+1)
 $$
