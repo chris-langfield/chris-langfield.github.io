@@ -275,7 +275,7 @@ $$
 p^k_m(s) = \frac{1}{k} \sum_{l=1}^{k} W^m_{sl} = \frac{1}{k} \sum_{l=s}^k W^m_{sl}
 $$
 
-This is the "workable but unsatisfying" closed form I mentioned in the last post. Although the analytical expression is not very clean, it is straightforward to implement the computation of $W^m_{ij}$ in Python. Let's take a look at the distributions for different values of $$m$$:
+Note that we can start the summation at column $$s$$ because $W^m_{ij}$ is upper triangular. Therefore the $s$'th row has zeros in columns 1 up through $s-1$. This is the "workable but unsatisfying" closed form I mentioned in the last post. Although the mathematical expression is not very clean, it is straightforward to implement the computation of $W^m_{ij}$ in Python. Let's take a look at the distributions for different values of $$m$$:
 
 ![Figure_1](https://user-images.githubusercontent.com/34426450/147511054-a5c78919-622b-4cab-be77-184e21535184.png)
 
