@@ -281,7 +281,7 @@ This is the "workable but unsatisfying" closed form I mentioned in the last post
 
 The code is available on [GitHub](https://github.com/chris-langfield/Wedding-Cake-Distribution). This matches our intuition. As $$m$$ grows larger, the tail of the distribution shrinks rapidly. At $$m=5$$ the probability of picking $$s=1$$ is more than 75%. 
 
-Strictly, at this point, the problem has been solved. For any choice of $$k$$ or $$m$$ we can compute the probability distribution $$p^k_m(s): S \mapsto \mathbb{R}$$. We can make a quick definition to simplify things for Part 3. If the distribution of a random variable $$X$$ over $$S$$ is $$p^k_m(s)$$, then we'll say that $$X \sim W(k,m)$$. That is $$X$$ is distributed according to a Wedding Cake distribution with parameters $$k$$ and $$m$$. There is certainly more work to be done. In Part3 I will discuss the literature I was able to find involving similar sums and distributions. I will end Part 2 with one more result:
+Strictly, at this point, the problem has been solved. For any choice of $$k$$ or $$m$$ we can compute the probability distribution $$p^k_m(s): S \mapsto \mathbb{R}$$. We can make a quick definition to simplify things for Part 3. If the distribution of a random variable $$X$$ over $$S$$ is $$p^k_m(s)$$, then we'll say that $$X \sim W(k,m)$$. That is $$X$$ is distributed according to a Wedding Cake distribution with parameters $$k$$ and $$m$$. There is certainly more work to be done. In Part 3 I will discuss the literature I was able to find involving similar sums and distributions.There is one more interesting result I would like to add:
 
 >**Proposition**
 >
@@ -300,10 +300,17 @@ Strictly, at this point, the problem has been solved. For any choice of $$k$$ or
     W^m_{ij} = \binom{j-1}{i-1} \sum_{r=0}^{j-i} \binom{j-i}{r} (-1)^r \bigg(\int_0^1 x^{r+i-1} dx \bigg)^m \\
     = \binom{j-1}{i-1} \sum_{r=0}^{j-i} \binom{j-i}{r} (-1)^r \int_0^1 x_1^{r+i-1} dx_1  \int_0^1 x_2^{r+i-1} dx_2 \dots  \int_0^1 x_m^{r+i-1} dx_m \\
     = \binom{j-1}{i-1} \sum_{r=0}^{j-i} \binom{j-i}{r} (-1)^r \int_0^1 \int_0^1 \dots \int_0^1 x_1^{r+i-1} x_2^{r+i-1} \dots x_m^{r+i-1} dx_1 dx_2 \dots dx_m
-    $$ =  \binom{j-1}{i-1} \int_0^1 \int_0^1 \dots \int_0^1 (x_1^ x_2^ \dots x_m)^{i-1} \sum_{r=0}^{j-i} \binom{j-i}{r} (-1)^r (x_1 x_2 \dots x_m)^r  dx_1 dx_2 \dots dx_m $$
+    =  \binom{j-1}{i-1} \int_0^1 \int_0^1 \dots \int_0^1 (x_1^ x_2^ \dots x_m)^{i-1} \sum_{r=0}^{j-i} \binom{j-i}{r} (-1)^r (x_1 x_2 \dots x_m)^r  dx_1 dx_2 \dots dx_m 
+    $$
     Via the binomial theorem:
     $$
     \sum_{r=0}^{j-i} \binom{j-i}{r} (-1)^r (x_1 x_2 \dots x_m)^r = (1-x_1 x_2 \dots x_m)^{j-i}
     $$
     And the result follows directly. ◼️
 >    </details>
+
+As a corollary, $$p^k_2(s)$$ is a sum of Beta functions:
+
+$$
+p^k_2(s) = \frac{1}{k} 
+$$
