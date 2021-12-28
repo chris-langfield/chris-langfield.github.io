@@ -249,7 +249,8 @@ This can be slightly simplified:
 >
 >*given that we discard terms in the sum containing $$\binom{n}{k}$$ for $$k>n$$ and $$k<0$$, which correspond to cases where $$i>j$$ in the matrices.*
 >
-><details><summary>Click to expand proof</summary> 
+><details><summary>Click to expand proof</summary>
+    
     The following identity is true for the binomial coefficients:
     $$
     \binom{n}{m}\binom{m}{k} = \binom{n}{k}\binom{n-k}{m-k}
@@ -290,7 +291,9 @@ Strictly, at this point, the problem has been solved. For any choice of $$k$$ or
 >$$  
 >W^m_{ij} = \binom{j-1}{i-1} \int_0^1 \int_0^1 \dots \int_0^1 (x_1 x_2 \dots x_m)^{i-1} (1-x_1 x_2 \dots x_m)^{j-i} dx_1 dx_2 \dots dx_m 
 >$$
+>
 ><details><summary>Click to expand proof</summary> 
+    
    Using the fact that
    $$
    \frac{1}{r+i} = \int_0^1 x^{r+i-1} dx
