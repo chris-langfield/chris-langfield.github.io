@@ -281,7 +281,7 @@ Note that we can start the summation at column $$s$$ because $W^m_{ij}$ is upper
 
 The code is available on [GitHub](https://github.com/chris-langfield/Wedding-Cake-Distribution). This matches our intuition. As $$m$$ grows larger, the tail of the distribution shrinks rapidly. At $$m=5$$ the probability of picking $$s=1$$ is more than 75%. 
 
-Strictly, at this point, the problem has been solved. For any choice of $$k$$ or $$m$$ we can compute the probability distribution $$p^k_m(s): S \mapsto \mathbb{R}$$. We can make a quick definition to simplify things for Part 3. If the distribution of a random variable $$X$$ over $$S$$ is $$p^k_m(s)$$, then we'll say that $$X \sim W(k,m)$$. That is $$X$$ is distributed according to a Wedding Cake distribution with parameters $$k$$ and $$m$$. In Part 3 I will discuss the literature I was able to find involving similar sums and distributions. There is one more interesting result I would like to add:
+Strictly, at this point, the problem has been solved. For any choice of $$k$$ or $$m$$ we can compute the probability distribution $$p^k_m(s): S \mapsto \mathbb{R}$$. We can make a quick definition to simplify things for Part 3. If the distribution of a random variable $$X$$ over $$S$$ is $$p^k_m(s)$$, then we'll say that $$X \sim W(k,m)$$. That is $$X$$ is distributed according to a Wedding Cake distribution with parameters $$k$$ and $$m$$. There is one more interesting result I would like to add:
 
 >**Proposition**
 >
