@@ -49,7 +49,7 @@ _BS, Applied Mathematics (2018)_, University of Rochester
 
 advanced: Python, Linux, HPC 
 
-a bit of: C#, Matlab, Mathematica
+a bit of: C/C++, C#, Matlab, Mathematica
 
 
 
