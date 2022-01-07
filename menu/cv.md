@@ -8,13 +8,18 @@ permalink: /cv
 
 _BS, Applied Mathematics (2018)_, University of Rochester
 
+## Publications
+
+* Sunderaraman, P., Gazes, Y., Ortiz, G., Langfield, C., Mensing, A., Chapman, S., Joyce, J. L., Brickman, A. M., Stern, Y., & Cosentino, S. (2021). Financial decision-making and self-awareness for financial decision-making is associated with white matter integrity in older adults. Human Brain Mapping, 1– 10. https://doi.org/10.1002/hbm.25747
+
 ## Experience
 
 #### _Research Software Engineer_ | Princeton University, Program in Applied and Computational Mathematics | 8/21-present
 
 * Full-time developer of ASPIRE, an open-source cryo-electron microscopy image processing software package
 * Plans and implements novel features using domain-specific knowledge of biochemistry, image processing, and mathematics
-* Collaborates with researchers to identify future use-cases and theoretical considerations for the software package
+* Collaborates with researchers to identify future use-cases and theoretical considerations for the project
+* Consults literature from the research group as well as external literature during implementation of algorithms and scientific features
 
 #### _Research Assistant_ | Columbia University Medical Center, Cognitive Neuroscience Division | 10/18-8/21
 
