@@ -3,7 +3,9 @@ layout: home
 title: Home
 image: headshot-modified.png
 ---
-
+{% if page.image %}
+  <img src="{{ site.github.url }}/assets/img/{{ page.image }}">
+{% endif %}
 <h1>
 Welcome to my github homepage! Some recent posts are below:
 
