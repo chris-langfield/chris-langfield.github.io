@@ -13,7 +13,7 @@ I am a [research software engineer](https://us-rse.org/) at Princeton University
 
 ### EMS
 
-From 2018 to 2021 I was proud to work as an emergency medical technician with Richmond County Ambulance and with Northwell Health in the NYC 911 system.
+I am a New York State certified emergency medical technician. From 2018 to 2021 I was proud to work as an EMT with Richmond County Ambulance and with Northwell Health in the NYC 911 system.
 
 | ![nsuh](https://user-images.githubusercontent.com/34426450/148696716-8cbfba7b-1dad-40a5-b23c-b6a11745bb3a.jpg) |
 |:--:|
