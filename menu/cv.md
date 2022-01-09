@@ -10,8 +10,8 @@ _BS, Applied Mathematics (2018)_, University of Rochester
 
 ## Publications
 
-* Garrett Wright, Junchao Xia, Vineet Bansal, Chris Langfield, Josh Carmichael, Gabi Pragier, Joakim Andén, Ayelet Heimowitz, Itay Sason, Amit Moscovich, Amit Singer, Yunpeng Shi, & Yoel Shkolnisky. (2021). ComputationalCryoEM/ASPIRE-Python: v0.8.1 (v0.8.1). Zenodo. https://doi.org/10.5281/zenodo.5657282
-* Sunderaraman, P., Gazes, Y., Ortiz, G., Langfield, C., Mensing, A., Chapman, S., Joyce, J. L., Brickman, A. M., Stern, Y., & Cosentino, S. (2021). Financial decision-making and self-awareness for financial decision-making is associated with white matter integrity in older adults. Human Brain Mapping, 1– 10. https://doi.org/10.1002/hbm.25747
+* Garrett Wright, Junchao Xia, Vineet Bansal, Chris Langfield, Josh Carmichael, Gabi Pragier, Joakim Andén, Ayelet Heimowitz, Itay Sason, Amit Moscovich, Amit Singer, Yunpeng Shi, & Yoel Shkolnisky. (2021). ComputationalCryoEM/ASPIRE-Python: v0.8.1 (v0.8.1). Zenodo. [https://doi.org/10.5281/zenodo.5657282](https://doi.org/10.5281/zenodo.5657282)
+* Sunderaraman, P., Gazes, Y., Ortiz, G., Langfield, C., Mensing, A., Chapman, S., Joyce, J. L., Brickman, A. M., Stern, Y., & Cosentino, S. (2021). Financial decision-making and self-awareness for financial decision-making is associated with white matter integrity in older adults. Human Brain Mapping, 1– 10. [https://doi.org/10.1002/hbm.25747](https://doi.org/10.1002/hbm.25747)
 
 ## Experience
 
@@ -25,7 +25,7 @@ _BS, Applied Mathematics (2018)_, University of Rochester
 #### _Research Assistant_ | Columbia University Medical Center, Cognitive Neuroscience Division | 10/18-8/21
 
 * Maintained data pipeline for fMRI studies of >500 participants, primarily using scientific image processing software and psychological experiment software
-* During COVID-19, implemented remote neuropsychological experiment setup using AWS appstream 
+* During COVID-19, implemented remote neuropsychological experiment setup using AWS AppStream
 * Created and maintained lab wiki
 * Assisted with performing analyses of image and behavioral data
 
