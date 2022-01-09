@@ -17,6 +17,6 @@ I am a New York State certified emergency medical technician. From 2018 to 2021 
 
 | ![nsuh](https://user-images.githubusercontent.com/34426450/148696716-8cbfba7b-1dad-40a5-b23c-b6a11745bb3a.jpg) |
 |:--:|
-| <b>At North Shore University Hospital at the height of COVID-19 in NYC </b>|
+| *Outside North Shore University Hospital in 2020* |
 
 
