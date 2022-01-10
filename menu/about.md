@@ -1,6 +1,7 @@
 ---
 layout: page
 title: About me
+image: image: headshot-modified_200x200.png
 permalink: /about
 ---
 
