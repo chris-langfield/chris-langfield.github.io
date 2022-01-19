@@ -10,7 +10,6 @@ I am a [research software engineer](https://us-rse.org/) at Princeton University
 * Applied mathematics, especially mathematical biology and mathematical physics
 * Signal and image processing 
 * Scientific software development (see the [ASPIRE](https://github.com/ComputationalCryoEM/ASPIRE-Python) software package, to which I am a contributor)
-* Heterodox economics: [The complexity of exchange](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.593.3725&rep=rep1&type=pdf)
 
 ### EMS
 
