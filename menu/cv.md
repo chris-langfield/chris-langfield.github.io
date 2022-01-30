@@ -29,12 +29,6 @@ _BS, Applied Mathematics (2018)_, University of Rochester
 * Created and maintained lab wiki
 * Assisted with performing analyses of image and behavioral data
 
-#### _Game Designer / Software Engineering Intern_ | Mitosis Games | 2/18-10/18
-
-* Developed front end of Unity-C# puzzle game
-* Designed compelling levels and puzzles for mobile game
-* Supervised team of remote game designers
-
 #### _Teaching Assistant_ | University of Rochester, Department of Mathematics | 8/16-5/18
 
 * Led weekly recitations, created quizzes, and assisted with exam grading
