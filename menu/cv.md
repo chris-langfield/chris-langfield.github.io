@@ -19,7 +19,7 @@ _BS, Applied Mathematics (2018)_, University of Rochester
 
 #### _Research Software Engineer_ | Princeton University, Program in Applied and Computational Mathematics | 8/21-present
 
-* Full-time developer of ASPIRE, an open-source cryo-electron microscopy image processing software package
+* Full-time developer of [ASPIRE](http://spr.math.princeton.edu/), an open-source cryo-electron microscopy image processing software package
 * Plans and implements novel features using domain-specific knowledge of biochemistry, image processing, and mathematics
 * Collaborates with researchers to identify future use-cases and theoretical considerations for the project
 * Consults literature from the research group as well as external literature during implementation of algorithms and scientific features
