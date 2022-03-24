@@ -9,9 +9,11 @@ permalink: /cv
 _BS, Applied Mathematics (2018)_, University of Rochester
 
 ## Publications
+* Eich, T. S., Gazes, Y., **Langfield, C.**, Habeck, C., & Stern, Y. (In Prep). Common and distinct neural networks are associated with age-related local costs in task switching
 
-* Garrett Wright, Junchao Xia, Vineet Bansal, Chris Langfield, Josh Carmichael, Gabi Pragier, Joakim Andén, Ayelet Heimowitz, Itay Sason, Amit Moscovich, Amit Singer, Yunpeng Shi, & Yoel Shkolnisky. (2021). ComputationalCryoEM/ASPIRE-Python: v0.8.1 (v0.8.1). Zenodo. [https://doi.org/10.5281/zenodo.5657282](https://doi.org/10.5281/zenodo.5657282)
-* Sunderaraman, P., Gazes, Y., Ortiz, G., Langfield, C., Mensing, A., Chapman, S., Joyce, J. L., Brickman, A. M., Stern, Y., & Cosentino, S. (2021). Financial decision-making and self-awareness for financial decision-making is associated with white matter integrity in older adults. Human Brain Mapping, 1– 10. [https://doi.org/10.1002/hbm.25747](https://doi.org/10.1002/hbm.25747)
+* Garrett Wright, Junchao Xia, Vineet Bansal, **Chris Langfield**, Josh Carmichael, Gabi Pragier, Joakim Andén, Ayelet Heimowitz, Itay Sason, Amit Moscovich, Amit Singer, Yunpeng Shi, & Yoel Shkolnisky. (2021). ComputationalCryoEM/ASPIRE-Python: v0.8.1 (v0.8.1). Zenodo. [https://doi.org/10.5281/zenodo.5657282](https://doi.org/10.5281/zenodo.5657282)
+
+* Sunderaraman, P., Gazes, Y., Ortiz, G., **Langfield, C.**, Mensing, A., Chapman, S., Joyce, J. L., Brickman, A. M., Stern, Y., & Cosentino, S. (2021). Financial decision-making and self-awareness for financial decision-making is associated with white matter integrity in older adults. Human Brain Mapping, 1– 10. [https://doi.org/10.1002/hbm.25747](https://doi.org/10.1002/hbm.25747)
 
 ## Experience
 
