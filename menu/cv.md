@@ -8,6 +8,10 @@ permalink: /cv
 
 _BS, Applied Mathematics (2018)_, University of Rochester
 
+* GPA: 3.82/4.00
+
+* Dean's Scholarship (2014-2018)
+
 ## Publications
 * Eich, T. S., Gazes, Y., **Langfield, C.**, Habeck, C., & Stern, Y. (In Prep). Common and distinct neural networks are associated with age-related local costs in task switching
 
