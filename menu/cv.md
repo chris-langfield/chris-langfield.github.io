@@ -8,20 +8,18 @@ permalink: /cv
 
 _BS, Applied Mathematics (2018)_, University of Rochester
 
-* GPA: 3.82/4.00
-
 * Dean's Scholarship (2014-2018)
-
-## Publications
-* Eich, T. S., Gazes, Y., **Langfield, C.**, Habeck, C., & Stern, Y. (In Prep). Common and distinct neural networks are associated with age-related local costs in task switching
-
-* Garrett Wright, Junchao Xia, Vineet Bansal, **Chris Langfield**, Josh Carmichael, Gabi Pragier, Joakim Andén, Ayelet Heimowitz, Itay Sason, Amit Moscovich, Amit Singer, Yunpeng Shi, & Yoel Shkolnisky. (2021). ComputationalCryoEM/ASPIRE-Python: v0.8.1 (v0.8.1). Zenodo. [https://doi.org/10.5281/zenodo.5657282](https://doi.org/10.5281/zenodo.5657282)
-
-* Sunderaraman, P., Gazes, Y., Ortiz, G., **Langfield, C.**, Mensing, A., Chapman, S., Joyce, J. L., Brickman, A. M., Stern, Y., & Cosentino, S. (2021). Financial decision-making and self-awareness for financial decision-making is associated with white matter integrity in older adults. Human Brain Mapping, 1– 10. [https://doi.org/10.1002/hbm.25747](https://doi.org/10.1002/hbm.25747)
 
 ## Experience
 
-#### _Research Software Engineer_ | Princeton University, Program in Applied and Computational Mathematics | 8/21-present
+#### _Research Software Engineer_ | Columbia University, International Brain Lab | 5/23 - present
+
+* Chairs and coordinates activities of neural analysis working group with members across the globe.
+* Contributes novel methods and algorithmic improvements for spike sorting and neuroelectrophysiology data processing.
+* Maintains, expands, and provides user support for IBL’s wide array of open-source electrophysiology packages.
+* Performs analyses and creates high quality plots for IBL platform papers and data analysis reports.
+
+#### _Research Software Engineer_ | Princeton University, Program in Applied and Computational Mathematics | 8/21-2/23
 
 * Full-time developer of [ASPIRE](http://spr.math.princeton.edu/), an open-source cryo-electron microscopy image processing software package
 * Plans and implements novel features using domain-specific knowledge of biochemistry, image processing, and mathematics
@@ -50,6 +48,18 @@ _BS, Applied Mathematics (2018)_, University of Rochester
 
 * Worked part time with the Human Language Processing Lab
 * Created text and audio stimuli for mTurk psycholinguistics experiments
+
+## Publications
+* Teal S. Eich, Christopher Langfield, Jayant Sakhardande, Yunglin Gazes, Christian Habeck, and Yaakov Stern. Older adults compensate for switch, but not mixing costs, relative to younger adults on an intrinsically cued task switching experiment. Frontiers in Aging Neuroscience, 15, apr 2023
+  
+* Christopher Langfield, Joshua Carmichael, Garrett Wright, Joakim Anden, and Amit Singer. Representing steerable bases for cryo-EM in ASPIRE. In 2022 IEEE 18th International Conference on e-Science (e-Science). IEEE, oct 2022
+  
+* Garrett Wright, Joakim Andén, Vineet Bansal, Junchao Xia, Chris Langfield, Josh Carmichael, Robbie Brook, Yunpeng Shi, Ayelet Heimowitz, Gabi Pragier, Itay Sason, Amit Moscovich, Yoel Shkolnisky, and Amit Singer. Computationalcryoem/aspire-python: v0.9.2, 2022
+  
+* Preeti Sunderaraman, Yunglin Gazes, Gema Ortiz, Christopher Langfield, Ashley Mensing, Silvia Chapman, Jillian L. Joyce, Adam M. Brickman, Yaakov Stern, and Stephanie Cosentino. Financial decision-making and self-awareness for financial decision-making is associated with white matter integrity in older adults. Human Brain Mapping, jan 2022
+  
+* Yunglin Gazes, Ruiyang Li, Ashley Mensing, Reshma S. Babukutty, Diala Noofoory,
+Geneva Hidalgo Nazario, Christopher Langfield, Jayant Sakhardande, and Seonjoo Lee. White matter fiber density for vocabulary better maintained than fluid abilities in aging. Alzheimer's & Dementia, 17(S4), dec 2021
 
 ## Technologies
 
