@@ -69,7 +69,7 @@ Just as in the blog post, we can sample from this distribution and compare to sa
 
 ![Screen Shot 2021-12-22 at 2 47 29 PM](https://user-images.githubusercontent.com/34426450/147147232-ec35b4ec-24e2-4a17-8a6d-1e61e6618296.png)
 
-Nothing too crazy, but it does looks smoother. You could perhaps imagine doing this if you wanted a scrolling city skyline in the background of a game. I would be very curious to look into the properties of the spectra of these distributions. The double-selection process is still uncorrelated, so "white" noise, but it seems like some low pass filtering is being done here somehow (don't quote me). 
+Nothing too crazy, but it does looks smoother. You could perhaps imagine doing this if you wanted a scrolling city skyline in the background of a game.
 
 I took this in a different, more impractical, direction though. I wanted to know how things would look if we repeated this selection process $$m$$ times. That is, pick $$X_0$$ uniformly from $$S$$, then pick $$X_1$$ uniformly from $$\{1 ... X_0 \}$$, then pick $$X_2$$ uniformly from $$\{1 ... X_1\}$$, and so on. What is the probability distribution of $$X_m$$? Clearly, this process would converge to picking 1 with probability 1 at some point. So as $$m$$ approaches $$k$$ and beyond, the distribution becomes degenerate. But for $$m < k$$, it seems like we could define a sequence of distributions that bias more and more towards lower values in curves like the one we saw in the case $$m=1$$. My nickname for these are "wedding cake" distributions because they represent sampling repeatedly from a shrinking set of integers. 
 
