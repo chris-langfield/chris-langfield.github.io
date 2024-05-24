@@ -4,6 +4,8 @@ title: "CV"
 permalink: /cv
 ---
 
+<embed src="https://chris-langfield.github.io/assets/2024_CV.pdf" type="application/pdf"/>
+
 ## Education
 
 _BS, Applied Mathematics (2018)_, University of Rochester
