@@ -1,8 +1,10 @@
 ---
 layout: home
-title: home
-image: headshot-modified_200x200.png
-permalink:
+title: Home
 ---
 
-I am a [research software engineer](https://us-rse.org/) at the [International Brain Lab](https://github.com/int-brain-lab) based at Columbia University. I studied applied mathematics at the University of Rochester. I'm primarily interested in signal and image processing, computational mathematics, and scientific software.
+<h1>
+Welcome to my github homepage! Some recent posts are below:
+
+This site was built using the wonderful <a href="https://github.com/LeNPaul/Lagrange">Lagrange theme by Paul Le</a> 
+</h1>
