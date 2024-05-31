@@ -15,7 +15,7 @@ I'm using [PyGSP](https://pygsp.readthedocs.io/en/stable/) and my own [hexfft](h
 Graph signal processing is a framework for processing signals whose domains are the vertices of graphs. There are already many introductions to the topic ([1](https://arxiv.org/abs/1211.0053), [2](https://infoscience.epfl.ch/record/256648?ln=en), [3](https://sybernix.medium.com/introduction-to-graph-signal-processing-ab9c0fde4d51), [4](https://balcilar.medium.com/struggling-signals-from-graph-34674e699df8)) so I'll just very quickly summarize: A graph $\mathcal{G}$ can be defined as
 
 $$
-\mathcal{G} = \\{ \mathcal{V}, \mathcal{E}, \mathbf{W} \\}
+\mathcal{G} = ( \mathcal{V}, \mathcal{E}, \mathbf{W} )
 $$
 
 where $\mathcal{V}$ is a set of vertices and $\mathcal{E}$ is a set of edges between the vertices. If the graph $\mathcal{G}$ has $V = \vert\mathcal{V}\vert$ vertices, the *adjacency matrix* $\mathbf{W}$ is a $V$ by $V$ matrix where $W_{ij}$ is nonzero when vertices $i$ and $j$ have an edge connecting them, and zero otherwise. To start with, I'm only considering *unweighted* graphs, where all the nonzero entries of $\mathbf{W}$ are 1. Additionally, graphs can be *directed* meaning that there can be a directed edge from vertex $i$ to vertex $j$ but not the other way around, and that the edges could have different weights. For now I consider only undirected graphs (the adjacency matrix $\mathbf{W}$ is symmetric in this case). 
@@ -187,7 +187,7 @@ for i in range(N):
 
 Now plot them next to each other:
 > A note on normalization: `PyGSP` returns the 0-frequency (DC component) as a constant $\frac{1}{\sqrt{V}}$, and the numerically computed eigenvectors are scaled to have amplitude $\frac{1}{4}$. They were normalized for the purposes of plotting.
-> 
+
 ![compare_1d_gft_fourier](https://github.com/chris-langfield/chris-langfield.github.io/assets/34426450/743417a5-baad-4c06-bbf2-8bf8dd8b0090)
 
 I arranged the graph eigenvectors (blue) and the Fourier modes (red) so that we can see our intuition is confirmed. For each spatial frequency, there are two graph Laplacian eigenvectors: one sine and one cosine (sometimes with a sign flip). It seems that the graph Fourier decomposition for a signal on a ring graph is largely an equivalent decomposition to the 1D Fourier decomposition.
