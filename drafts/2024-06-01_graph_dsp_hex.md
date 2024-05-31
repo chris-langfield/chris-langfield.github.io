@@ -124,7 +124,7 @@ $$
       0 & 1 & 0 & 1 & \cdots & 0 \\
       \cdots \\
       0 & \cdots & & 1 & 0 & 1 \\
-      1 & & \cdots & & 0 & 1 \\
+      1 & & \cdots & & 1 & 0 \\
     \end{pmatrix}
 $$
 
