@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Graph Signal Processing and the hexagonal grid"
+title: "Graph Signal Processing and Regular Grids"
 author: "Chris Langfield"
 categories: math
 tags: [math]
@@ -12,7 +12,7 @@ I'm using [PyGSP](https://pygsp.readthedocs.io/en/stable/) and my own [hexfft](h
 
 # Graph Signal Processing
 
-Graph signal processing is a framework for processing signals whose domains are the vertices of graphs. There are already many excellent introductions to the topic ([1](https://arxiv.org/abs/1211.0053), [2](https://infoscience.epfl.ch/record/256648?ln=en), [3](https://sybernix.medium.com/introduction-to-graph-signal-processing-ab9c0fde4d51), [4](https://balcilar.medium.com/struggling-signals-from-graph-34674e699df8)) so I'll just very quickly summarize: A graph $\mathcal{G}$ can be defined as
+Graph signal processing is a framework for processing signals whose domains are the vertices of graphs. There are already many introductions to the topic ([1](https://arxiv.org/abs/1211.0053), [2](https://infoscience.epfl.ch/record/256648?ln=en), [3](https://sybernix.medium.com/introduction-to-graph-signal-processing-ab9c0fde4d51), [4](https://balcilar.medium.com/struggling-signals-from-graph-34674e699df8)) so I'll just very quickly summarize: A graph $\mathcal{G}$ can be defined as
 
 $$
 \mathcal{G} = \\{ \mathcal{V}, \mathcal{E}, \mathbf{W} \\}
@@ -20,5 +20,74 @@ $$
 
 where $\mathcal{V}$ is a set of vertices and $\mathcal{E}$ is a set of edges between the vertices. If the graph $\mathcal{G}$ has $V = |\mathcal{V}|$ vertices, the *adjacency matrix* $\mathbf{W}$ is a $V$ by $V$ matrix where $W_{ij}$ is nonzero when vertices $i$ and $j$ have an edge connecting them, and zero otherwise. To start with, I'm only considering *unweighted* graphs, where all the nonzero entries of $\mathbf{W}$ are 1. Additionally, graphs can be *directed* meaning that there can be a directed edge from vertex $i$ to vertex $j$ but not the other way around, and that the edges could have different weights. For now I consider only undirected graphs (the adjacency matrix $\mathbf{W}$ is symmetric in this case). 
 
-For example, 
+A graph signal $f$, then is a map:
+
+$$
+f : \mathcal{V} \rightarrow \mathbb{R}
+$$
+
+## Example in `PyGSP`
+
+We can define a graph based on the adjacency matrix $\mathbf{W}$. Plotting a constant signal allows us to just see the graph's geometry.
+
+```python
+import pygsp
+
+W = np.array([[0., 0., 1., 1., 0.],
+       [0., 0., 1., 1., 1.],
+       [1., 1., 0., 0., 1.],
+       [1., 1., 0., 0., 0.],
+       [0., 1., 1., 0., 0.]])
+
+g = pygsp.graphs.Graph(W)
+g.set_coordinates()
+g.plot_signal(np.ones(5))
+```
+![graph](https://github.com/chris-langfield/chris-langfield.github.io/assets/34426450/a652e7b0-d084-490c-98ce-b8948179ede9)
+
+We can define a random signal on this graph by specifying a number for each vertex:
+
+```python
+f = np.random.randn(5)
+print(f)
+```
+```
+[ 1.01241896  1.66358438 -0.20836631  0.6641997   2.31801111]
+```
+
+Plot this signal on its domain:
+
+```python
+fig, ax = plt.subplots()
+g.plot_signal(f, ax=ax)
+ax.set_title("Random signal")
+```
+
+![randgraphsignal](https://github.com/chris-langfield/chris-langfield.github.io/assets/34426450/86cd687b-2283-462e-96fb-b584c761afc5)
+
+## The Graph Fourier Transform
+
+In analogy with the fact that the continuous space [Fourier modes are eigenfunctions of the the Laplacian operator](https://www.math.ucla.edu/~tao/preprints/fourier.pdf), the Graph Fourier Transform is defined as the decomposition of a graph signal into the eigenvectors of the [graph Laplacian matrix](https://en.wikipedia.org/wiki/Laplacian_matrix). This is defined as:
+
+$$
+\mathbf{L} = \mathbf{D} - \mathbf{W}
+$$
+
+where $\mathbf{W}$ is the adjacency matrix defined above. $D$ is the *degree matrix*, a diagonal matrix whose $i$'th diagonal entry is the number of edges connecting to vertex $i$. In other words,
+
+$$
+D_{ii} = \sum_{j} W_{ij}
+$$
+
+Because $L$ is a real, symmetric matrix, it has $V$ (the number of vertices) real and orthogonal eigenvectors $u_{i}$, each of which is also a graph signal. This collection of eigenvectors can be seen as a kind of basis for signals defined on the graph $\mathcal{G}$. The eigenvectors $\lambda_i$ are thought of as the "graph frequency" values. 
+
+The graph Fourier transform is then defined as:
+
+$$
+\hat{f} (\lambda_i) = \sum_j f(j) u_i^{*} (j)
+$$
+
+$\hat{f}$ is considered to be a function defined at the graph frequency values $\lambda_i$ and is thus a vector in $\mathbb{R}^V$.
+
+# Graphs of regular grids
 
