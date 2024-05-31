@@ -177,8 +177,30 @@ ax.set_title("3rd graph Laplacian eigenvector")
 ```
 ![ring_eigenmode](https://github.com/chris-langfield/chris-langfield.github.io/assets/34426450/52de25b9-09eb-4fbf-85b0-c700f0a1c87a)
 
+This eigenvector appears to be a sinusoid with a frequency of 2, a promising start for a graph Fourier basis. Because the graph Fourier eigenvectors are just 1D vectors of length 32, we can plot them on a line and compare with the standard Fourier modes. First we compute the Fourier basis functions for $N=32$:
 
+```python
+Uf = np.zeros((N, N), np.complex128)
+for i in range(N):
+    Uf[:, i] = np.exp(-2.j * np.pi * i * np.arange(N) / N)
+```
 
+Now plot them next to each other:
+> A note on normalization: `PyGSP` returns the 0-frequency (DC component) as a constant $\frac{1}{\sqrt{V}}$, and the numerically computed eigenvectors are scaled to have amplitude $\frac{1}{4}$. They were normalized for the purposes of plotting.
+> 
+![compare_1d_gft_fourier](https://github.com/chris-langfield/chris-langfield.github.io/assets/34426450/743417a5-baad-4c06-bbf2-8bf8dd8b0090)
+
+I arranged the graph eigenvectors (blue) and the Fourier modes (red) so that we can see our intuition is confirmed. For each spatial frequency, there are two graph Laplacian eigenvectors: one sine and one cosine (sometimes with a sign flip). It seems that the graph Fourier decomposition for a signal on a ring graph is largely an equivalent decomposition to the 1D Fourier decomposition.
+
+As a last step, we can check our analytical expression for the eigenvalues above against the numerically computed ones:
+
+```python
+eigs_numerical = np.sort(np.linalg.eigvals(rg.L.toarray()))
+eigs_analytic = np.sort(np.array([2*(1-np.cos(2*np.pi * k / N)) for k in range(N)]))
+np.allclose(eigs_numerical-eigs_analytic)
+```
+
+# The graph Fourier transform on a 2D grid is not the 2D FFT
 
 
 
