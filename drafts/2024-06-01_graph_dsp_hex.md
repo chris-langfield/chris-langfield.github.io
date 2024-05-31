@@ -128,19 +128,54 @@ $$
     \end{pmatrix}
 $$
 
-Because each row is a circular shift of the top row $(0, 1, 0, \cdots, 1)$, $\mathbf{W}$ is a [circulant matrix](https://en.wikipedia.org/wiki/Circulant_matrix). It therefore immediately follows that the eigenvectors $u_k$ are
+Since $\mathbf{D} = \text{diag}(2, 2, 2, \cdots)$ (each vertex has two neighbors), we have
 
 $$
-u_k = \big(1, \exp(\frac{2 \pi i k}{V}), \exp(\frac{2 \pi i (2k)}{V}), \exp(\frac{2 \pi i (3k)}{V}), \cdots , \exp(\frac{2 \pi i (nk)}{V}), \cdots, \exp(\frac{2 \pi i (V-1)k}{V}) \big)
+    \mathbf{L} = 
+    \begin{pmatrix}
+      2 & -1 & 0 & 0 & \cdots & -1 \\
+      -1 & 2 & -1 & 0 & \cdots & 0 \\
+      0 & -1 & 2 & -1 & \cdots & 0 \\
+      \cdots \\
+      0 & \cdots & & -1 & 2 & -1 \\
+      -1 & & \cdots & & -1 & 2 \\
+    \end{pmatrix}
 $$
 
+Because each row is a circular shift of the top row $(2, -1, 0, \cdots, -1)$, $\mathbf{W}$ is a symmetric and [circulant matrix](https://en.wikipedia.org/wiki/Circulant_matrix). It therefore immediately follows that the eigenvectors $u_k$ are
 
-Let's compute the graph Fourier basis and the regular 1D Fourier basis and compare. The `compute_fourier_basis()` method in `PyGSP` automatically computes the eigendecomposition of the graph Laplacian. The eigenvectors are stored in the array `Graph.U`:
+$$
+u_k = \bigg(1, \exp\big(\frac{2 \pi i k}{V}\big), \exp\big(\frac{2 \pi i (2k)}{V}\big), \exp\big(\frac{2 \pi i (3k)}{V}\big), \cdots , \exp\big(\frac{2 \pi i (nk)}{V}), \cdots, \exp\big(\frac{2 \pi i (V-1)k}{V}\big) \bigg)
+$$
+
+Also using the properties of symmetric circulant matrices, the eigenvalues of $\mathbf{L}$ are given as
+
+$$
+\lambda_k = 2 - \exp\big(\frac{2 \pi i k}{V}\big) - \exp\big( \frac{2 \pi i (V-1)}{V} \big) = 2\big(1-\cos(\frac{2 \pi k}{V})\big)
+$$
+
+Note that these eigenvalues, the "graph spectrum" do not correspond to the eigenvalues of the regular Laplacian ($\pi^2 k^2$ where $k$ is the frequency).
+
+![eigsring](https://github.com/chris-langfield/chris-langfield.github.io/assets/34426450/ca62029a-2271-47d6-81cc-ecdc22ad16e0)
+
+Because $\mathbf{L}$ has real eigenvalues, the set of imaginary and real components of the eigenvectors $u_k$ will span $R^{V}$ and we can select a real basis from among multiples of this set of vectors, which have the form
+
+$$
+s_k = \bigg(0, \sin\big(\frac{2 \pi k}{V}\big), \sin\big(\frac{2 \pi (2k)}{V}\big), \sin\big(\frac{2 \pi (3k)}{V}\big), \cdots , \sin\big(\frac{2 \pi (nk)}{V}), \cdots, \sin\big(\frac{2 \pi (V-1)k}{V}\big) \bigg)
+$$
+
+$$
+c_k = \bigg(1, \cos\big(\frac{2 \pi k}{V}\big), \cos\big(\frac{2 \pi (2k)}{V}\big), \cos\big(\frac{2 \pi (3k)}{V}\big), \cdots , \cos\big(\frac{2 \pi (nk)}{V}), \cdots, \cos\big(\frac{2 \pi (V-1)k}{V}\big) \bigg)
+$$
+
+Let's numerically compute the graph Fourier basis and compare with the regular 1D Fourier basis. The `compute_fourier_basis()` method in `PyGSP` automatically computes the eigendecomposition of the graph Laplacian. The eigenvectors are stored in the array `Graph.U`:
 
 ```python
-rg.compute_fourier_basis()
-rg.plot_signal(rg.U[:, 3])
+fig, ax = plt.subplots()
+rg.plot_signal(rg.U[:, 3], ax=ax)
+ax.set_title("3rd graph Laplacian eigenvector")
 ```
+![ring_eigenmode](https://github.com/chris-langfield/chris-langfield.github.io/assets/34426450/52de25b9-09eb-4fbf-85b0-c700f0a1c87a)
 
 
 
