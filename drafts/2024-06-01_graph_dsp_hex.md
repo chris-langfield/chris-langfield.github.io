@@ -89,5 +89,63 @@ $$
 
 $\hat{f}$ is considered to be a function defined at the graph frequency values $\lambda_i$ and is thus a vector in $\mathbb{R}^V$.
 
-# Graphs of regular grids
+# The 1D DFT as the graph Fourier transform on a ring
+
+Does the graph Fourier transform have any connection to the discrete Fourier transform? We can take the simple example of a signal defined as a 1D timeseries. We can think of the domain (equidistant points) as a graph where the vertices lie in a line, each one only connected to its two neighbors. We can also connect the first and last nodes to enforce a periodic boundary condition. Let's take as an example a sine wave sampled at 32 points. 
+
+We can build this in `PyGSP`:
+
+```python
+N = 32
+rg = pygsp.graphs.Ring(N)
+sine = np.sin(2*np.pi*np.arange(N)/N)
+rg.plot_signal(sine)
+```
+![sine_ring](https://github.com/chris-langfield/chris-langfield.github.io/assets/34426450/647d1a9e-ec7c-4667-a104-46a49b11b3a5)
+
+This is what the adjacency matrix of this ring graph looks like:
+
+```python
+fig, ax = plt.subplots()
+ax.matshow(rg.W.toarray())
+ax.set_title("N=32 Ring graph adjacency matrix")
+```
+![ringadjacency](https://github.com/chris-langfield/chris-langfield.github.io/assets/34426450/e0f607f3-b324-449c-b43d-74b99d665910)
+
+We can mathematically show that the graph Laplacian eigenvectors are equivalent to the Fourier modes, however we'll find that the eigenvalues (the "graph frequency") do not correspond to our usual notion of spatial frequency.
+
+We can see that the adjacency matrix $\mathbf{W}$ has the following form:
+
+$$
+    \mathbf{W} = 
+    \begin{pmatrix}
+      0 & 1 & 0 & 0 & \cdots & 1 \\
+      1 & 0 & 1 & 0 & \cdots & 0 \\
+      0 & 1 & 0 & 1 & \cdots & 0 \\
+      \cdots \\
+      0 & \cdots & & 1 & 0 & 1 \\
+      1 & & \cdots & & 0 & 1 \\
+    \end{pmatrix}
+$$
+
+Because each row is a circular shift of the top row $(0, 1, 0, \cdots, 1)$, $\mathbf{W}$ is a [circulant matrix](https://en.wikipedia.org/wiki/Circulant_matrix). It therefore immediately follows that the eigenvectors $u_k$ are
+
+$$
+u_k = \big(1, \exp(\frac{2 \pi i k}{V}), \exp(\frac{2 \pi i (2k)}{V}), \exp(\frac{2 \pi i (3k)}{V}), \cdots , \exp(\frac{2 \pi i (nk)}{V}), \cdots, \exp(\frac{2 \pi i (V-1)k}{V}) \big)
+$$
+
+
+Let's compute the graph Fourier basis and the regular 1D Fourier basis and compare. The `compute_fourier_basis()` method in `PyGSP` automatically computes the eigendecomposition of the graph Laplacian. The eigenvectors are stored in the array `Graph.U`:
+
+```python
+rg.compute_fourier_basis()
+rg.plot_signal(rg.U[:, 3])
+```
+
+
+
+
+
+
+
 
