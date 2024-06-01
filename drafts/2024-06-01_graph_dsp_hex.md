@@ -73,7 +73,7 @@ $$
 \mathbf{L} = \mathbf{D} - \mathbf{W}
 $$
 
-where $\mathbf{W}$ is the adjacency matrix defined above. $D$ is the *degree matrix*, a diagonal matrix whose $i$'th diagonal entry is the number of edges connecting to vertex $i$. In other words,
+where $\mathbf{W}$ is the adjacency matrix defined above. $\mathbf{D}$ is the *degree matrix*, a diagonal matrix whose $i$'th diagonal entry is the number of edges connecting to vertex $i$. In other words,
 
 $$
 D_{ii} = \sum_{j} W_{ij}
