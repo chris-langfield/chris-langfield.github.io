@@ -145,27 +145,27 @@ $$
 Because each row is a circular shift of the top row $(2, -1, 0, \cdots, -1)$, $\mathbf{W}$ is a symmetric and [circulant matrix](https://en.wikipedia.org/wiki/Circulant_matrix). It therefore immediately follows that the eigenvectors $u_k$ are
 
 $$
-u_k = \bigg(1, \exp\big(\frac{2 \pi i k}{V}\big), \exp\big(\frac{2 \pi i (2k)}{V}\big), \exp\big(\frac{2 \pi i (3k)}{V}\big), \cdots , \exp\big(\frac{2 \pi i (nk)}{V}), \cdots, \exp\big(\frac{2 \pi i (V-1)k}{V}\big) \bigg)
+u_k = \bigg(1, \exp\big(\frac{2 \pi i k}{N}\big), \exp\big(\frac{2 \pi i (2k)}{N}\big), \exp\big(\frac{2 \pi i (3k)}{N}\big), \cdots , \exp\big(\frac{2 \pi i (nk)}{N}), \cdots, \exp\big(\frac{2 \pi i (N-1)k}{N}\big) \bigg)
 $$
 
-Also using the properties of symmetric circulant matrices, the eigenvalues of $\mathbf{L}$ are given as
+Also using the properties of symmetric circulant matrices, the eigenvalues of $\mathbf{L}$ are
 
 $$
-\lambda_k = 2 - \exp\big(\frac{2 \pi i k}{V}\big) - \exp\big( \frac{2 \pi i (V-1)}{V} \big) = 2\big(1-\cos(\frac{2 \pi k}{V})\big)
+\lambda_k = 2 - \exp\big(\frac{2 \pi i k}{N}\big) - \exp\big( \frac{2 \pi i (N-1)}{N} \big) = 2\big(1-\cos(\frac{2 \pi k}{N})\big)
 $$
 
 Note that these eigenvalues, the "graph spectrum" do not correspond to the eigenvalues of the regular Laplacian ($\pi^2 k^2$ where $k$ is the frequency).
 
 ![eigsring](https://github.com/chris-langfield/chris-langfield.github.io/assets/34426450/ca62029a-2271-47d6-81cc-ecdc22ad16e0)
 
-Because $\mathbf{L}$ has real eigenvalues, the set of imaginary and real components of the eigenvectors $u_k$ will span $R^{V}$ and we can select a real basis from among multiples of this set of vectors, which have the form
+Because $\mathbf{L}$ has real eigenvalues, the set of imaginary and real components of the eigenvectors $u_k$ will span $R^{N}$ and we can select a real basis from among multiples of this set of vectors, which have the form
 
 $$
-s_k = \bigg(0, \sin\big(\frac{2 \pi k}{V}\big), \sin\big(\frac{2 \pi (2k)}{V}\big), \sin\big(\frac{2 \pi (3k)}{V}\big), \cdots , \sin\big(\frac{2 \pi (nk)}{V}), \cdots, \sin\big(\frac{2 \pi (V-1)k}{V}\big) \bigg)
+s_k = \bigg(0, \sin\big(\frac{2 \pi k}{N}\big), \sin\big(\frac{2 \pi (2k)}{N}\big), \sin\big(\frac{2 \pi (3k)}{N}\big), \cdots , \sin\big(\frac{2 \pi (nk)}{N}), \cdots, \sin\big(\frac{2 \pi (N-1)k}{N}\big) \bigg)
 $$
 
 $$
-c_k = \bigg(1, \cos\big(\frac{2 \pi k}{V}\big), \cos\big(\frac{2 \pi (2k)}{V}\big), \cos\big(\frac{2 \pi (3k)}{V}\big), \cdots , \cos\big(\frac{2 \pi (nk)}{V}), \cdots, \cos\big(\frac{2 \pi (V-1)k}{V}\big) \bigg)
+c_k = \bigg(1, \cos\big(\frac{2 \pi k}{N}\big), \cos\big(\frac{2 \pi (2k)}{N}\big), \cos\big(\frac{2 \pi (3k)}{N}\big), \cdots , \cos\big(\frac{2 \pi (nk)}{N}), \cdots, \cos\big(\frac{2 \pi (N-1)k}{N}\big) \bigg)
 $$
 
 Let's numerically compute the graph Fourier basis and compare with the regular 1D Fourier basis. The `compute_fourier_basis()` method in `PyGSP` automatically computes the eigendecomposition of the graph Laplacian. The eigenvectors are stored in the array `Graph.U`:
@@ -186,7 +186,7 @@ for i in range(N):
 ```
 
 Now plot them next to each other:
-> A note on normalization: `PyGSP` returns the 0-frequency (DC component) as a constant $\frac{1}{\sqrt{V}}$, and the numerically computed eigenvectors are scaled to have amplitude $\frac{1}{4}$. They were normalized for the purposes of plotting.
+> A note on normalization: `PyGSP` returns the 0-frequency (DC component) as a constant $\frac{1}{\sqrt{N}}$, and the numerically computed eigenvectors are scaled to have amplitude $\frac{1}{4}$. They were normalized for the purposes of plotting.
 
 ![compare_1d_gft_fourier](https://github.com/chris-langfield/chris-langfield.github.io/assets/34426450/743417a5-baad-4c06-bbf2-8bf8dd8b0090)
 
@@ -237,6 +237,18 @@ The result:
 
 ![6x6square_periodic](https://github.com/chris-langfield/chris-langfield.github.io/assets/34426450/df4606fd-436e-4f41-b198-de44fe1e97ed)
 
-Note that this graph can no longer be embedded in 2D Euclidean space as its geometry is that of a torus.
+Note that this graph can no longer be embedded in 2D Euclidean space as its geometry is that of a torus. Inspection of the new adjacency matrix will show that it fills in the missing connections between the top and bottom, and the sides of the graph, such that each vertex has 4 edges. Lucky for us, this is now a circulant matrix. This makes the eigenvectors and eigenvalues of the graph Laplacian easy to derive. Since $\mathbf{D} = \text{diag}(4, 4, 4, ...)$, the Laplacian is the circulant matrix repetition of the vector
+
+$$
+(4, -1, 0, 0, \cdots, 0, -1, 0, \cdots, 0, -1, 0, \cdots, 0, -1)^T
+$$
+
+with 4 at entry 0, and -1's at entries $1$, $N$, $N^2-N$, and $N^2-1$. The eigenvectors of an $N^2$ by $N^2$ circulant matrix will be:
+
+$$
+u_k = \bigg(1, \exp\big(\frac{2 \pi i k}{N^2}\big), \exp\big(\frac{2 \pi i (2k)}{N^2}\big), \exp\big(\frac{2 \pi i (3k)}{N^2}\big), \cdots , \exp\big(\frac{2 \pi i (nk)}{N^2}), \cdots, \exp\big(\frac{2 \pi i (N^2-1)k}{N^2}\big) \bigg)
+$$
+
+
 
 
