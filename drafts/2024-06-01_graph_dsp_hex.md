@@ -26,7 +26,7 @@ $$
 f : \mathcal{V} \rightarrow \mathbb{R}
 $$
 
-## Example in `PyGSP`
+## Example in PyGSP
 
 We can define a graph based on the adjacency matrix $\mathbf{W}$. Plotting a constant signal allows us to just see the graph's geometry.
 
@@ -317,7 +317,7 @@ fig.suptitle("12x12 Square Graph: Eigenvector modes (analytic)")
 ```
 ![square_eigenvec_12x12_analytic](https://github.com/chris-langfield/chris-langfield.github.io/assets/34426450/433c2f16-4684-4536-a54c-4fc094f2c6b5)
 
-The eigenfunctions are in a different order (the $k$ order is not guaranteed with the numerical eigendecomposition performed in `pygsp`) but I'm convinced the math checks out.
+The eigenfunctions are in a different order (I'm not totally sure about the order of the numerical eigen-decomposition performed in `pygsp`) but I'm convinced the math checks out.
 
 The periodic boundary conditions are crucial for this to work. To demonstrate this, let's plot the graph Laplacian eigenfunctions *without* the periodic boundary conditions. In this case we'll use the `pygsp.graphs.Grid2d` class:
 
