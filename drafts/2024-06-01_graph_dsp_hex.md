@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Graph Signal Processing and Lattice Grids"
+title: "Graph Signal Processing and Lattice Fourier Transforms"
 author: "Chris Langfield"
 categories: math
 tags: [math]
@@ -200,9 +200,9 @@ eigs_analytic = np.sort(np.array([2*(1-np.cos(2*np.pi * k / N)) for k in range(N
 np.allclose(eigs_numerical-eigs_analytic)
 ```
 
-# The graph Fourier transform on a 2D grid is not the 2D DFT
+# The graph Fourier transform on a 2D grid and the 2D DFT
 
-We would like to try this on a 2D grid. If we can think of a 1D timeseries as a graph signal on a ring graph, can we process an image as a signal defined on a lattice? (answer: yes) Is the graph Fourier transform comparable to the 2D discrete Fourier transform? (answer: no)
+We would like to try this on a 2D grid. If we can think of a 1D timeseries as a graph signal on a ring graph, can we process an image as a signal defined on a lattice? Is the graph Fourier transform comparable to the 2D discrete Fourier transform? 
 
 The simplest initial approach will be to construct a [square lattice graph](https://en.wikipedia.org/wiki/Lattice_graph), where each vertex connects to four others (with careful consideration of edge cases). Graph based techniques for image processing have of course progressed far beyond this (see [here](http://www.arxiv.org/abs/1211.0053), Example 2, where 8 neighbors instead of 4 are used). 
 
@@ -248,6 +248,114 @@ with 4 at entry 0, and -1's at entries $1$, $N$, $N^2-N$, and $N^2-1$. The eigen
 $$
 u_k = \bigg(1, \exp\big(\frac{2 \pi i k}{N^2}\big), \exp\big(\frac{2 \pi i (2k)}{N^2}\big), \exp\big(\frac{2 \pi i (3k)}{N^2}\big), \cdots , \exp\big(\frac{2 \pi i (nk)}{N^2}), \cdots, \exp\big(\frac{2 \pi i (N^2-1)k}{N^2}\big) \bigg)
 $$
+
+The eigenvalues are (again using the properties listed in the [Wikipedia article](https://en.wikipedia.org/wiki/Circulant_matrix) for circulant matrices):
+
+$$
+\lambda_k = 4  - \exp\big(\frac{2 \pi i k}{N^2}\big)  - \exp\big(\frac{2 \pi i k N}{N^2}\big) -  \exp\big(\frac{2 \pi i k (N^2 - N)}{N^2}\big) - \exp\big( \frac{2 \pi i k (N^2-1)}{N} \big)
+$$
+
+This can be simplified via some algebra with the complex exponentials, and we found that the eigenvalues are real as expected:
+
+$$
+\lambda_k = 4 - \exp\big(\frac{2 \pi i k}{N^2}\big)  - \exp\big(\frac{2 \pi i k}{N}\big) -  \exp\big(\frac{2 \pi i k N}{N} \big) \exp\big(\frac{-2 \pi i k}{N}\big) - \exp\big(\frac{2 \pi i k N^2}{N^2}\big) \exp\big( -\frac{2 \pi i k}{N^2} \big)
+$$
+
+$$
+= 4 - \bigg(\exp\big(\frac{2 \pi i k}{N^2}\big) + \exp\big( -\frac{2 \pi i k}{N^2} \big)\bigg) + \bigg(\exp\big(\frac{2 \pi i k}{N}\big) + \exp\big( -\frac{2 \pi i k}{N} \big)\bigg)
+$$
+
+$$
+= 4 - \bigg( 2 \cos\big(\frac{2 \pi k}{N^2}\big) + 2 \cos \big(\frac{2 \pi k}{N}\big) \bigg)
+$$
+
+These eigenvectors $u_k$ don't appear to have any obvious 2 dimensional structure. They are regular sinusoids evaluated over a domain of $N^2$ sequential points. This is a consequence of the fact that in order to create the adjacency matrix, and hence compute the graph Laplacian, the vertices must be listed in one dimension. They are, however, graph signals according to the theory, defined on the periodic square lattice graph defined above. 
+
+When we plot these eigenvectors and compare with the 2D Fourier modes, they are remarkably similar. We again see the phenomenon where the real Laplacian eigenfunctions appear to have a sine and a cosine wave for each spatial frequency.
+
+![12x12_eigenvector_modes](https://github.com/chris-langfield/chris-langfield.github.io/assets/34426450/e8acbe49-1a77-48ec-aabb-d1ee8536b071)
+
+![12x12_fourier_modes](https://github.com/chris-langfield/chris-langfield.github.io/assets/34426450/bce7efc0-368b-406a-b662-73241ad54de3)
+
+Despite the fact that in computing the graph Laplacian, we have serialized the vertices, their geometric relation to each other is stored in the adjacency matrix $\mathbf{W}$. The code to reproduce the above plots is here. Note we cannot use the pre-written `pygsp.graphs.Grid2d` class, but have to create a graph from the circulant adjacency matrix defined above. 
+
+```python
+N=12
+circ = np.zeros(N**2)
+circ[[1, N, N**2-N, N**2-1]] = 1
+adj = scipy.linalg.circulant(circ).T
+psg = pygsp.graphs.Graph(W=adj)
+
+fig, axs = plt.subplots(4, 4)
+for i, ax in enumerate(axs.flat):
+    ax.matshow(psg.U[:, i].reshape(N1, N2))
+fig.suptitle("12x12 Square Graph: Eigenvector modes")
+
+Uf = np.zeros((N1, N2, N1, N2), np.complex128)
+x, y = np.meshgrid(np.arange(N1), np.arange(N2), indexing="xy")
+for i in range(N1):
+    for j in range(N2):
+        Uf[i, j, :, :] = np.exp(2.j * np.pi * (i*x/N1+j*y/N2))
+fig, axs = plt.subplots(4, 4)
+for i in range(4):
+    for j in range(4):
+        axs[i, j].matshow(np.real(Uf[i, j, :, :]))
+fig.suptitle("12x12 Square Graph: Fourier modes")
+```
+
+This was so surprising to me that I was convinced my derivation of the eigenfunctions was wrong. To sanity check, we can compute the analytic forms derived above and take a look:
+
+```python
+analytic_U = np.zeros((N1*N2, N1*N2))
+for k in range((N1*N2)):
+    analytic_U[:, k] = np.exp(2.j * np.pi * k * np.arange(N1*N2)/(N1*N2))
+
+fig, axs = plt.subplots(4, 4)
+for i, ax in enumerate(axs.flat):
+    ax.matshow(analytic_U[:, i].reshape(N1, N2))
+fig.suptitle("12x12 Square Graph: Eigenvector modes (analytic)")
+```
+![square_eigenvec_12x12_analytic](https://github.com/chris-langfield/chris-langfield.github.io/assets/34426450/433c2f16-4684-4536-a54c-4fc094f2c6b5)
+
+The eigenfunctions are in a different order (the $k$ order is not guaranteed with the numerical eigendecomposition performed in `pygsp`) but I'm convinced the math checks out.
+
+The periodic boundary conditions are crucial for this to work. To demonstrate this, let's plot the graph Laplacian eigenfunctions *without* the periodic boundary conditions. In this case we'll use the `pygsp.graphs.Grid2d` class:
+
+```python
+N1, N2 = 12, 12
+sg = pygsp.graphs.Grid2d(N1, N2)
+fig, axs = plt.subplots(4, 4)
+for i, ax in enumerate(axs.flat):
+    ax.matshow(sg.U[:, i].reshape(N1, N2))
+fig.suptitle("12x12 Square Graph: Eigenvector modes (no periodic boundary conditions)")
+```
+![12x12_no_periodic](https://github.com/chris-langfield/chris-langfield.github.io/assets/34426450/f6442641-9a57-44ec-b5f2-5388c136fc9d)
+
+These basis functions are totally different. Visually, they seem to encode spatial information about the graph's structure, but they aren't the Fourier modes. In fact, they more closely resemble the [Discrete Cosine Transform](https://en.wikipedia.org/wiki/Discrete_cosine_transform) basis:
+
+![dct](https://github.com/chris-langfield/chris-langfield.github.io/assets/34426450/65c0c6d6-a407-4cdb-8b2d-f044011410d5)
+>image courtesy of [Wikimedia](https://commons.wikimedia.org/wiki/File:DCT-8x8.png)
+
+We can also see differences in the graph spectrum (the Laplacian eigenvalues). Here we compare the eigenvalues derived analytically above, the eigenvalues of the graph with periodic boundary conditions added and those of the graph without boundary conditions. (the first two are identical):
+
+```python
+eigs_noboundary = np.linalg.eigvals(sg.L.toarray())
+eigs_boundary = np.linalg.eigvals(psg.L.toarray())
+eigs_analytic = np.sort(
+    np.array(
+        [4-2*np.cos(2*np.pi*k/(N1**2)) - 2*np.cos(2*np.pi*k/N1) 
+         for k in range(N1**2)]
+    )
+)
+
+fig, ax = plt.subplots()
+ax.plot(np.sort(eigs_noboundary)[::-1], label="numerical - no boundary conditions")
+ax.plot(np.sort(eigs_boundary)[::-1], label="numerical - with periodic boundary conditions")
+ax.plot(np.sort(eigs_analytic)[::-1], label="analytic - with periodic boundary conditions")
+fig.suptitle("Graph Laplacian eigenvalues: 12x12 Square Grid Graph")
+ax.legend()
+```
+![eigvals_comparison12x12](https://github.com/chris-langfield/chris-langfield.github.io/assets/34426450/ddbb7b04-59a5-4ae4-986f-3194b9d2ad8d)
 
 
 
