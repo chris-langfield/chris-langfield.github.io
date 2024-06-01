@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Graph Signal Processing and Regular Grids"
+title: "Graph Signal Processing and Lattice Grids"
 author: "Chris Langfield"
 categories: math
 tags: [math]
@@ -200,9 +200,43 @@ eigs_analytic = np.sort(np.array([2*(1-np.cos(2*np.pi * k / N)) for k in range(N
 np.allclose(eigs_numerical-eigs_analytic)
 ```
 
-# The graph Fourier transform on a 2D grid is not the 2D FFT
+# The graph Fourier transform on a 2D grid is not the 2D DFT
 
+We would like to try this on a 2D grid. If we can think of a 1D timeseries as a graph signal on a ring graph, can we process an image as a signal defined on a lattice? (answer: yes) Is the graph Fourier transform comparable to the 2D discrete Fourier transform? (answer: no)
 
+The simplest initial approach will be to construct a [square lattice graph](https://en.wikipedia.org/wiki/Lattice_graph), where each vertex connects to four others (with careful consideration of edge cases). Graph based techniques for image processing have of course progressed far beyond this (see [here](http://www.arxiv.org/abs/1211.0053), Example 2, where 8 neighbors instead of 4 are used). 
 
+This graph is already implemented in `PyGSP`, and we can take a look.
+
+```python
+N1, N2 = 6, 6
+sg = pygsp.graphs.Grid2d(N1, N2)
+sg.plot_signal(np.ones(N1*N2))
+```
+
+![2ggrid](https://github.com/chris-langfield/chris-langfield.github.io/assets/34426450/07775d21-11ff-491d-8801-8a4823855114)
+
+We choose the convention of labelling the 144 vertices starting at the bottom right, and proceeding right along each row, wrapping back to the left for each row. So the bottom row consists of vertices 0, 2, ... 11, the next-from bottom row 12, 13, ... 23, etc.
+
+The adjacency matrix $\mathbf{W}$ looks like this:
+
+![adj6grid2d](https://github.com/chris-langfield/chris-langfield.github.io/assets/34426450/4e9bbf55-45c1-4d17-bd5d-34e7ad7faed8)
+
+The first thing to notice is that this is not (yet) a circulant matrix as in the 1D case. However, looking at the structure of the matrix above, we can see that something may be missing. Recall that the sum across row $i$ of the adjacency matrix is the *degree* of vertex $i$, i.e. the number of vertices connecting to it. Note that quite a few of the rows in the adjacency matrix above have less than 4 nonzero entries. This is because this implementation of the graph does not include periodic boundary connections. The top 6 rows and bottom 6 rows correspond to the bottom and top row of vertices in the graph respectively, which all lack a connection down or up respectively. Additionally every 6 rows, a pair of rows have only 3 connections. These correspond to the first and last vertex of each row in the graph, which lack a left and a right connection, respectively. 
+
+For an $N$ by $N$ square lattice graph, we can populate the periodicity conditions as follows:
+
+```python
+import scipy
+circ = np.zeros(N**2)
+circ[[1, N, N**2-N, N**2-1]] = 1
+adj = scipy.linalg.circulant(circ).T
+```
+
+The result:
+
+![6x6square_periodic](https://github.com/chris-langfield/chris-langfield.github.io/assets/34426450/df4606fd-436e-4f41-b198-de44fe1e97ed)
+
+Note that this graph can no longer be embedded in 2D Euclidean space as its geometry is that of a torus.
 
 
