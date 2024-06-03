@@ -224,14 +224,16 @@ The adjacency matrix $\mathbf{W}$ looks like this:
 
 The first thing to notice is that this is not (yet) a circulant matrix as in the 1D case. However, looking at the structure of the matrix above, we can see that something may be missing. Recall that the sum across row $i$ of the adjacency matrix is the *degree* of vertex $i$, i.e. the number of vertices connecting to it. Note that quite a few of the rows in the adjacency matrix above have less than 4 nonzero entries. This is because this implementation of the graph does not include periodic boundary connections. The top 6 rows and bottom 6 rows correspond to the bottom and top row of vertices in the graph respectively, which all lack a connection down or up respectively. Additionally every 6 rows, a pair of rows have only 3 connections. These correspond to the first and last vertex of each row in the graph, which lack a left and a right connection, respectively. 
 
-For an $N$ by $N$ square lattice graph, we can populate the periodicity conditions as follows:
+For an $N_1$ by $N_2$ square lattice graph, we can populate the periodicity conditions as follows:
 
 ```python
 import scipy
-circ = np.zeros(N**2)
-circ[[1, N, N**2-N, N**2-1]] = 1
+circ = np.zeros(N1*N2)
+circ[[1, N2, N1*N2-N2, N1*N2-1]] = 1
 adj = scipy.linalg.circulant(circ).T
 ```
+
+(we keep $N_1 = N_2$ in what follows for simplicity.)
 
 The result:
 
@@ -356,6 +358,72 @@ fig.suptitle("Graph Laplacian eigenvalues: 12x12 Square Grid Graph")
 ax.legend()
 ```
 ![eigvals_comparison12x12](https://github.com/chris-langfield/chris-langfield.github.io/assets/34426450/ddbb7b04-59a5-4ae4-986f-3194b9d2ad8d)
+
+# The graph Fourier transform on a triangular lattice and the hexagonal DFT
+
+Lastly, because we know [I love hexagons](https://chris-langfield.github.io/hex), I want to work out the graph signal processing for a hexagonal grid and compare with the hexagonal discrete Fourier transform. 
+
+We can represent a signal with 2D hexagonal sampling as being a graph signal over a [triangular grid graph](https://mathworld.wolfram.com/TriangularGridGraph.html). `PyGSP` does not currently implement this graph so I messily rolled my own as follows. I set the XY coordinates of the vertices for visualization using grid generation from `hexfft`. 
+
+```python
+from hexfft.array import generate_grid
+import scipy
+import pygsp
+import numpy as np
+
+def TriangleGrid2d(N1, N2, periodic=True):
+    W = np.zeros((N1*N2, N1*N2))
+
+    if periodic:
+        c0 = np.zeros(N1*N2)
+        c0[[1, N2-1, N2, N1*N2-N2, N1*N2-N2+1, N1*N2 - 1]] = 1.
+        c1 = np.zeros(N1*N2)
+        c1[[1, N2, N2+1, N1*N2-N2-1, N1*N2-N2, N1*N2-1]] = 1.
+
+        even_block = scipy.linalg.circulant(c0).T
+        odd_block = scipy.linalg.circulant(c1).T
+
+        for i in range(N1):
+            idx = slice(i*N1,(i+1)*N1)
+            if i % 2 == 0:
+                W[idx, :] = even_block[idx, :]
+            else:
+                W[idx, :] = odd_block[idx]
+
+    else:
+        for i in range(N1*N2-1):
+            j = i + 1
+            if j % N2 == 0:
+                continue
+            else:
+                W[i, j] = 1.
+                W[j, i] = 1.
+
+        for i in range(N1):
+            if i == 0:
+                W[i, N2] = 1.
+                for j in range(1, N2):
+                    W[i + j, N2 + j - 1: N2 + j + 1] = 1.
+            elif i == N1 - 1 and i % 2 == 0:
+                W[i*N2, i*N2 - N2] = 1.
+                for j in range(1, N2):
+                    W[i*N2 + j, -N2 + i*N2 + j - 1: -N2 + i*N2 + j + 1] = 1.
+            elif i % 2 == 0:
+                W[i*N2, i*N2 + N2] = 1.
+                W[i*N2, i*N2 - N2] = 1.
+                for j in range(1, N2):
+                    W[i*N2 + j, N2 + i*N2 + j - 1: N2 + i*N2 + j + 1] = 1.
+                    W[i*N2 + j, -N2 + i*N2 + j - 1: -N2 + i*N2 + j + 1] = 1.
+            
+        W = W + W.T
+        W[W > 0] = 1.
+
+    x, y = generate_grid((N1, N2), "offset")
+    coords = np.stack([x.flatten(), y.flatten()]).T
+    return pygsp.graphs.Graph(W=W, coords=coords)
+```
+
+We learned from implementing the graph Fourier transform on the square lattice that boundary conditions are very important.  
 
 
 
