@@ -8,7 +8,7 @@ tags: [math]
 
 In this post I compare the [graph Fourier transform](https://en.wikipedia.org/wiki/Graph_Fourier_transform) with the standard discrete Fourier transform in 1D and on square and hexagonal 2D grids. Primarily I wanted to explore some of the theoretical and computational building blocks for processing 2D images (square or hexagonal) using Graph Signal Processing, a relatively recent field in digital signal processing and machine learning. 
 
-I'm using [PyGSP](https://pygsp.readthedocs.io/en/stable/) and my own [hexfft](https://github.com/chris-langfield/hexfft). See the bottom of the post for a list of resources I consulted.
+I'm using [PyGSP](https://pygsp.readthedocs.io/en/stable/) and my own [hexfft](https://github.com/chris-langfield/hexfft).
 
 # Graph Signal Processing
 
@@ -239,7 +239,7 @@ The result:
 
 ![6x6square_periodic](https://github.com/chris-langfield/chris-langfield.github.io/assets/34426450/df4606fd-436e-4f41-b198-de44fe1e97ed)
 
-Note that this graph can no longer be embedded in 2D Euclidean space as its geometry is that of a torus. Inspection of the new adjacency matrix will show that it fills in the missing connections between the top and bottom, and the sides of the graph, such that each vertex has 4 edges. Lucky for us, this is now a circulant matrix. This makes the eigenvectors and eigenvalues of the graph Laplacian easy to derive. Since $\mathbf{D} = \text{diag}(4, 4, 4, ...)$, the Laplacian is the circulant matrix repetition of the vector
+Inspection of the new adjacency matrix will show that it fills in the missing connections between the top and bottom, and the sides of the graph, such that each vertex has 4 edges. Lucky for us, this is now a circulant matrix. This makes the eigenvectors and eigenvalues of the graph Laplacian easy to derive. Since $\mathbf{D} = \text{diag}(4, 4, 4, ...)$, the Laplacian is the circulant matrix repetition of the vector
 
 $$
 (4, -1, 0, 0, \cdots, 0, -1, 0, \cdots, 0, -1, 0, \cdots, 0, -1)^T
@@ -374,57 +374,71 @@ import numpy as np
 def TriangleGrid2d(N1, N2, periodic=True):
     W = np.zeros((N1*N2, N1*N2))
 
+    for i in range(N1*N2-1):
+        j = i + 1
+        if j % N2 == 0:
+            continue
+        else:
+            W[i, j] = 1.
+            W[j, i] = 1.
+
+    for i in range(N1):
+        if i == 0:
+            W[i, N2] = 1.
+            for j in range(1, N2):
+                W[i + j, N2 + j - 1: N2 + j + 1] = 1.
+        elif i == N1 - 1 and i % 2 == 0:
+            W[i*N2, i*N2 - N2] = 1.
+            for j in range(1, N2):
+                W[i*N2 + j, -N2 + i*N2 + j - 1: -N2 + i*N2 + j + 1] = 1.
+        elif i % 2 == 0:
+            W[i*N2, i*N2 + N2] = 1.
+            W[i*N2, i*N2 - N2] = 1.
+            for j in range(1, N2):
+                W[i*N2 + j, N2 + i*N2 + j - 1: N2 + i*N2 + j + 1] = 1.
+                W[i*N2 + j, -N2 + i*N2 + j - 1: -N2 + i*N2 + j + 1] = 1.
+        
     if periodic:
-        c0 = np.zeros(N1*N2)
-        c0[[1, N2-1, N2, N1*N2-N2, N1*N2-N2+1, N1*N2 - 1]] = 1.
-        c1 = np.zeros(N1*N2)
-        c1[[1, N2, N2+1, N1*N2-N2-1, N1*N2-N2, N1*N2-1]] = 1.
-
-        even_block = scipy.linalg.circulant(c0).T
-        odd_block = scipy.linalg.circulant(c1).T
-
         for i in range(N1):
-            idx = slice(i*N1,(i+1)*N1)
+            # side to side
+            W[i*N2, (i+1)*N2 - 1] = 1.
+            # slant right connections at sides
             if i % 2 == 0:
-                W[idx, :] = even_block[idx, :]
-            else:
-                W[idx, :] = odd_block[idx]
-
-    else:
-        for i in range(N1*N2-1):
-            j = i + 1
-            if j % N2 == 0:
-                continue
-            else:
-                W[i, j] = 1.
-                W[j, i] = 1.
-
-        for i in range(N1):
+                W[i*N2, (i+2)*N2 -1] = 1.
+                # slant left connections at sides
+                W[i*N2-1, i*N2] = 1.
+        for i in range(N2):
+        # slant right connections at top
+            W[i, N1*N2 - N2 + i] = 1.
+            # slant left connections at top
             if i == 0:
-                W[i, N2] = 1.
-                for j in range(1, N2):
-                    W[i + j, N2 + j - 1: N2 + j + 1] = 1.
-            elif i == N1 - 1 and i % 2 == 0:
-                W[i*N2, i*N2 - N2] = 1.
-                for j in range(1, N2):
-                    W[i*N2 + j, -N2 + i*N2 + j - 1: -N2 + i*N2 + j + 1] = 1.
-            elif i % 2 == 0:
-                W[i*N2, i*N2 + N2] = 1.
-                W[i*N2, i*N2 - N2] = 1.
-                for j in range(1, N2):
-                    W[i*N2 + j, N2 + i*N2 + j - 1: N2 + i*N2 + j + 1] = 1.
-                    W[i*N2 + j, -N2 + i*N2 + j - 1: -N2 + i*N2 + j + 1] = 1.
-            
-        W = W + W.T
-        W[W > 0] = 1.
+                W[i, N1*N2-1] = 1.
+            else:
+                W[i, N1*N2 - N2 + i -1] = 1.
+
+    W = W + W.T
+    W[W > 0] = 1.
 
     x, y = generate_grid((N1, N2), "offset")
     coords = np.stack([x.flatten(), y.flatten()]).T
     return pygsp.graphs.Graph(W=W, coords=coords)
 ```
 
-We learned from implementing the graph Fourier transform on the square lattice that boundary conditions are very important.  
+Unfortunately, besides being symmetric, this matrix does not appear to have any special structure that would point to an analytic solution to it's eigenvalues and eigenvectors, so I'll rely on numerically computing them. 
 
+![6x6hexgrid_aperiodic](https://github.com/chris-langfield/chris-langfield.github.io/assets/34426450/95e2607f-9106-4b64-ae6d-8415eedd22bf)
+![6x6hexgrid_periodic](https://github.com/chris-langfield/chris-langfield.github.io/assets/34426450/24a376b4-adda-4d48-9e64-d871fb975591)
+
+We learned from implementing the graph Fourier transform on the square lattice that boundary conditions can potentially be very important in the eigendecomposition of the graph Laplacian. Above, we saw that the graph Fourier basis becomes the Fourier transform in 1 and 2 dimensions when the appropriate periodic boundary conditions are added. Let's see if the same holds for a hexagonal grid. 
+
+Let's first compute the hexagonal FFT over a 12x12 graph to see what we're comparing with:
+
+![12x12_hexfft](https://github.com/chris-langfield/chris-langfield.github.io/assets/34426450/7111122b-b24a-4cd2-a774-3efdd823c4e3)
+
+Now we'll look at the graph Fourier basis with and without periodic boundary conditions. 
+
+![12x12_hex_eigen_aperiodic](https://github.com/chris-langfield/chris-langfield.github.io/assets/34426450/0acb9099-55f4-45d7-8d3f-803e72505ab3)
+![12x12_hex_eigen_periodic](https://github.com/chris-langfield/chris-langfield.github.io/assets/34426450/a7801c6d-05d7-451d-88a8-8f85840323e1)
 
 
 
