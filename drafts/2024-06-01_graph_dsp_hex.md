@@ -431,14 +431,27 @@ Unfortunately, besides being symmetric, this matrix does not appear to have any 
 
 We learned from implementing the graph Fourier transform on the square lattice that boundary conditions can potentially be very important in the eigendecomposition of the graph Laplacian. Above, we saw that the graph Fourier basis becomes the Fourier transform in 1 and 2 dimensions when the appropriate periodic boundary conditions are added. Let's see if the same holds for a hexagonal grid. 
 
-Let's first compute the hexagonal FFT over a 12x12 graph to see what we're comparing with:
+Let's first compute the hexagonal FFT over a 12x12 graph to see what we're comparing with. (plots below generated with `hexfft.plot.hexshow()`)
 
-![12x12_hexfft](https://github.com/chris-langfield/chris-langfield.github.io/assets/34426450/7111122b-b24a-4cd2-a774-3efdd823c4e3)
+![12x12_hexfft](https://github.com/chris-langfield/chris-langfield.github.io/assets/34426450/20f55453-30dd-4d49-ae31-ea2dbb10f7c3)
+
+> Note: In the above plot I have excluded the frequency zero (DC) component, and in the plots below I have excluded the first eigenvector to highlight the pattern in the graph Fourier basis with periodic boundary conditions discussed below.
 
 Now we'll look at the graph Fourier basis with and without periodic boundary conditions. 
 
-![12x12_hex_eigen_aperiodic](https://github.com/chris-langfield/chris-langfield.github.io/assets/34426450/0acb9099-55f4-45d7-8d3f-803e72505ab3)
-![12x12_hex_eigen_periodic](https://github.com/chris-langfield/chris-langfield.github.io/assets/34426450/a7801c6d-05d7-451d-88a8-8f85840323e1)
+![12x12_hex_eigen_aperiodic](https://github.com/chris-langfield/chris-langfield.github.io/assets/34426450/f02d342c-bd34-42e0-8ab9-ce4fd2c9671a)
+![12x12_hex_eigen_periodic](https://github.com/chris-langfield/chris-langfield.github.io/assets/34426450/db03aeae-0bd3-479d-8ba6-1442b80ac8f3)
 
+In this case, adding periodic boundary conditions does not lead to a graph Fourier basis with equivalent components to the hexagonal FFT. It's clear from the plots that this basis encodes the hexagonal geometry of the grid, but not along oblique axis directions as in the `hexfft` implementation of the hexagonal Fourier transform. Just like in the 1D and square 2D case, they come in pairs which oscillate along the same directions, but spatially shifted relative to each other. This is analogous to how we decomposed the complex exponential eigenvectors in the previous cases into their real and imaginary parts, which have the same frequency but with a phase shift. These basis functions are gorgeous and deserve a closer look, which will have to wait for a future post. 
+
+One more observation is that the eigenvalues of the graph Laplacian for the hexagonal grid exhibit a rather smooth magnitude profile when sorted. This is similar to the eigenvalues from the previous cases, which fall off according to a sinuisoid curve:
+
+![12x12_hex_graph_laplace_eigenvalues](https://github.com/chris-langfield/chris-langfield.github.io/assets/34426450/bf2fa2cc-ae04-4bd1-9b75-670e2174d0ac)
+
+# Conclusion
+
+The purpose of this post was to explore how graph signal processing can be used to analyze more conventional signals that we wouldn't typically think of as graphs (timeseries as a ring graph, a 2D image as a toroid square lattice graph, etc). We showed that the 1D and 2D DFTs have comparable graph Fourier transform analogs when their domains are represented as graphs. We found that the hexagonal case is more complicated. It does not reduce to the slanted-coordinate hexagonal FFT [implemented by `hexfft`](https://ieeexplore.ieee.org/abstract/document/205759), but maybe the basis functions we found are a more useful decomposition basis for hexagonally sampled data?
+
+The (unpolished) code used for this post can be found [here](https://github.com/chris-langfield/hexfft/blob/main/examples/graph_signal_processing_example.py)
 
 
